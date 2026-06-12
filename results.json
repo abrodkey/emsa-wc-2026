@@ -1,0 +1,91 @@
+{
+  "updated": "2026-06-12T16:03:25.976Z",
+  "season": "2026 FIFA World Cup",
+  "source": "ESPN fifa.world feed",
+  "phase": "group-stage",
+  "standings": {
+    "A": {
+      "Mexico": 1,
+      "Korea Republic": 2,
+      "Czechia": 3,
+      "South Africa": 4
+    }
+  },
+  "complete": {
+    "A": false
+  },
+  "tableMeta": {
+    "A": [
+      {
+        "team": "Mexico",
+        "P": 1,
+        "W": 1,
+        "D": 0,
+        "L": 0,
+        "GF": 2,
+        "GA": 0,
+        "GD": 2,
+        "Pts": 3
+      },
+      {
+        "team": "Korea Republic",
+        "P": 1,
+        "W": 1,
+        "D": 0,
+        "L": 0,
+        "GF": 2,
+        "GA": 1,
+        "GD": 1,
+        "Pts": 3
+      },
+      {
+        "team": "Czechia",
+        "P": 1,
+        "W": 0,
+        "D": 0,
+        "L": 1,
+        "GF": 1,
+        "GA": 2,
+        "GD": -1,
+        "Pts": 0
+      },
+      {
+        "team": "South Africa",
+        "P": 1,
+        "W": 0,
+        "D": 0,
+        "L": 1,
+        "GF": 0,
+        "GA": 2,
+        "GD": -2,
+        "Pts": 0
+      }
+    ]
+  },
+  "thirds": [],
+  "champion": "",
+  "boot": "",
+  "eliminated": [],
+  "matches": [
+    {
+      "group": "A",
+      "home": "Mexico",
+      "away": "South Africa",
+      "hs": 2,
+      "as": 0,
+      "state": "post",
+      "detail": "FT",
+      "date": "2026-06-11T19:00Z"
+    },
+    {
+      "group": "A",
+      "home": "Korea Republic",
+      "away": "Czechia",
+      "hs": 2,
+      "as": 1,
+      "state": "post",
+      "detail": "FT",
+      "date": "2026-06-12T02:00Z"
+    }
+  ]
+}

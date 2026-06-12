@@ -1,0 +1,8 @@
+{
+  "_comment": "Manual corrections applied on top of the auto-computed scores every hour. Edit this file to set the Champion / Golden Boot once known, fix a rare tiebreaker, or mark knockout eliminations. Anything left blank is ignored.",
+  "champion": "",
+  "boot": "",
+  "eliminated": [],
+  "thirds": [],
+  "standings": {}
+}
