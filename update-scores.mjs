@@ -126,14 +126,22 @@ async function main(){
   const matches = await fetchMatches();
   const ov = loadOverrides();
 
-  const standings = {}, complete = {}, tableMeta = {};
+  const standings = {}, complete = {}, scoring = {}, tableMeta = {};
   for (const g of GL){
     const gm = matches.filter(m => m.group === g);
-    if (!gm.length) continue;                      // no games yet -> no provisional table
+    if (!gm.length) continue;                      // no games yet -> nothing to show
     const tbl = tableFor(GROUPS[g], gm);
-    standings[g] = {}; tbl.forEach((e,i) => standings[g][e.t] = i+1);
-    complete[g] = gm.filter(m => m.state === "post").length >= 6;
+    // always expose the live table (even mid-round) for the Scores & Tables view
     tableMeta[g] = tbl.map(e => ({ team:e.t, P:e.P, W:e.W, D:e.D, L:e.L, GF:e.GF, GA:e.GA, GD:e.GD, Pts:e.Pts }));
+    complete[g] = gm.filter(m => m.state === "post").length >= 6;
+    // only score a group once EVERY team has completed its first match (a fair full round)
+    const playedPost = {}; GROUPS[g].forEach(t => playedPost[t] = 0);
+    gm.forEach(m => { if (m.state === "post"){ playedPost[m.home]++; playedPost[m.away]++; } });
+    const allPlayed = GROUPS[g].every(t => playedPost[t] >= 1);
+    if (allPlayed){
+      scoring[g] = true;
+      standings[g] = {}; tbl.forEach((e,i) => standings[g][e.t] = i+1);
+    }
   }
 
   // manual standings corrections (per fully-specified group) win
@@ -155,7 +163,7 @@ async function main(){
     season: "2026 FIFA World Cup",
     source: "ESPN fifa.world feed",
     phase: allDone ? "groups-complete" : "group-stage",
-    standings, complete, tableMeta, thirds,
+    standings, complete, scoring, tableMeta, thirds,
     champion: ov.champion || "",
     boot: ov.boot || "",
     eliminated: ov.eliminated || [],

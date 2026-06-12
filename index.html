@@ -222,7 +222,7 @@
 6/11/2026 11:04:52,,Kameron Akbarzadeh,He’s a winner 🏆 ,Portugal,Kylian Mbappe,1st,4th,2nd,3rd,2nd,3rd,4th,1st,1st,2nd,4th,3rd,1st,3rd,4th,2nd,1st,4th,3rd,2nd,1st,2nd,3rd,4th,1st,3rd,2nd,4th,1st,4th,3rd,2nd,1st,2nd,4th,3rd,1st,3rd,2nd,4th,1st,4th,3rd,2nd,1st,2nd,4th,3rd,"Algeria, Iran, Ivory Coast, Norway, Panama, Paraguay, Scotland, Sweden"
 6/11/2026 11:15:30,,Andrew Robinson,Golden bracket,Spain,Kylian mbappe,1st,3rd,2nd,4th,2nd,4th,3rd,1st,1st,2nd,4th,3rd,2nd,1st,4th,3rd,1st,4th,3rd,2nd,1st,2nd,3rd,4th,1st,2nd,3rd,4th,1st,3rd,4th,2nd,1st,2nd,4th,3rd,1st,3rd,2nd,4th,1st,3rd,4th,2nd,1st,2nd,4th,3rd,"Algeria, DR Congo, Iran, Ivory Coast, Norway, Panama, Sweden, Türkiye"</script>
 <script id="seed" type="application/json">{
-  "updated": "2026-06-12T16:03:25.976Z",
+  "updated": "2026-06-12T16:17:56.446Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -236,6 +236,9 @@
   },
   "complete": {
     "A": false
+  },
+  "scoring": {
+    "A": true
   },
   "tableMeta": {
     "A": [
@@ -335,13 +338,13 @@ const PLAYERS=csv.slice(1).filter(r=>r[2]&&r[2].trim()).map(r=>{const picks={};G
 
 /* ----- live results (from feed) ----- */
 function blankStandings(){const s={};GL.forEach(g=>{s[g]={};GROUPS[g].forEach(t=>s[g][t]=null);});return s;}
-let results={standings:blankStandings(),complete:{},tableMeta:{},thirds:[],champion:"",boot:"",eliminated:[],matches:[],updated:null};
+let results={standings:blankStandings(),complete:{},scoring:{},tableMeta:{},thirds:[],champion:"",boot:"",eliminated:[],matches:[],updated:null};
 function ingest(data){
   if(!data) return;
   const s=blankStandings();
   if(data.standings) GL.forEach(g=>{ if(data.standings[g]) Object.keys(data.standings[g]).forEach(t=>{ if(GROUPS[g].includes(t)) s[g][t]=data.standings[g][t]; }); });
   results={
-    standings:s, complete:data.complete||{}, tableMeta:data.tableMeta||{},
+    standings:s, complete:data.complete||{}, scoring:data.scoring||{}, tableMeta:data.tableMeta||{},
     thirds:Array.isArray(data.thirds)?data.thirds.slice():[],
     champion:data.champion||"", boot:data.boot||"", eliminated:data.eliminated||[],
     matches:Array.isArray(data.matches)?data.matches.slice():[], updated:data.updated||null
@@ -422,12 +425,15 @@ function relTime(iso){ if(!iso)return "—"; const d=(Date.now()-new Date(iso).g
 function renderScores(){
   const note=document.getElementById("scoreNote");
   const nMatch=results.matches.length, played=results.matches.filter(m=>m.state==="post").length;
-  note.innerHTML=`Updated <b>${relTime(results.updated)}</b> from the live ESPN feed · ${played} match${played===1?"":"es"} final${nMatch>played?`, ${nMatch-played} live`:""}. Tables are computed automatically; a group locks pool points once it's <b>final</b>.`;
+  note.innerHTML=`Updated <b>${relTime(results.updated)}</b> from the live ESPN feed · ${played} match${played===1?"":"es"} final${nMatch>played?`, ${nMatch-played} live`:""}. A group starts <b>counting</b> once every team has played its first match, scores update live as positions shift, and <b>locks</b> when the group is final.`;
   document.getElementById("grpTables").innerHTML=GL.map(g=>{
     const meta=results.tableMeta&&results.tableMeta[g];
     if(!meta||!meta.length) return `<div class="grp-card"><h4>Group ${g}</h4><div style="color:var(--muted);font-size:13px;padding:6px 2px">No matches played yet.</div></div>`;
     const rows=meta.map((e,i)=>`<tr class="${i<2?'adv':(i===2?'maybe':'')}"><td>${i+1}</td><td>${fl(e.team)} ${esc(e.team)}</td><td>${e.P}</td><td>${e.W}-${e.D}-${e.L}</td><td>${e.GD>0?'+':''}${e.GD}</td><td><b>${e.Pts}</b></td></tr>`).join("");
-    return `<div class="grp-card"><h4>Group ${g} ${groupComplete(g)?'<span class="done">● FINAL</span>':'<span class="live">● LIVE</span>'}</h4><table class="mini"><thead><tr><th></th><th>Team</th><th>P</th><th>W-D-L</th><th>GD</th><th>Pts</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    const badge = groupComplete(g) ? '<span class="done">● FINAL</span>'
+      : (results.scoring&&results.scoring[g]) ? '<span class="live">● LIVE · counting</span>'
+      : '<span style="color:var(--muted);font-weight:800;font-size:11px">○ awaiting full round</span>';
+    return `<div class="grp-card"><h4>Group ${g} ${badge}</h4><table class="mini"><thead><tr><th></th><th>Team</th><th>P</th><th>W-D-L</th><th>GD</th><th>Pts</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }).join("");
   const fx=results.matches.slice().sort((a,b)=>new Date(a.date)-new Date(b.date));
   document.getElementById("fixtures").innerHTML = fx.length? fx.map(m=>{

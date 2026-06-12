@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-12T16:13:14.023Z",
+  "updated": "2026-06-12T16:17:56.446Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -13,6 +13,9 @@
   },
   "complete": {
     "A": false
+  },
+  "scoring": {
+    "A": true
   },
   "tableMeta": {
     "A": [
