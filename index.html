@@ -154,7 +154,7 @@
   <div class="hero">
     <div class="wrap">
       <h1><span class="ball">⚽</span> EMSA World Cup 2026 <span style="opacity:.6;font-weight:600">·</span> League Dashboard</h1>
-      <div class="sub"><span class="phase">📍 Phase 1 of 2 · Group Stage</span>Scores auto-update every 10 minutes from the live feed. Standings are provisional until each group is final; knockout-bracket scoring gets layered on once those picks come in.</div>
+      <div class="sub"><span class="phase">📍 Phase 1 of 2 · Group Stage</span>Scores are pulled live from the ESPN feed and recomputed right in your browser every 2 minutes. Standings are provisional until each group is final; knockout-bracket scoring gets layered on once those picks come in.</div>
       <div class="stripe" id="heroStats"></div>
     </div>
   </div>
@@ -235,7 +235,7 @@
       <div class="foot" id="insFoot"></div>
     </section>
 
-    <div class="foot">Live scores via the public ESPN <code>fifa.world</code> feed · refreshed every 10 minutes by a GitHub Action · group tables are computed from match results (FIFA tiebreakers, best-effort).</div>
+    <div class="foot">Live scores from the public ESPN <code>fifa.world</code> feed, computed in your browser every 2 minutes · group tables use FIFA tiebreakers (best-effort).</div>
   </div>
 
 <script id="rawcsv" type="text/plain">Timestamp,Email Address,Full Name,Bracket Name (For Standings Display),Tournament Winner,Golden Boot Winner (Top Scorer in Tournament),Group A [Mexico],Group A [South Africa],Group A [Korea Republic],Group A [Czechia],Group B [Canada],Group B [Bosnia-Herzegovina],Group B [Qatar],Group B [Switzerland],Group C [Brazil],Group C [Morocco],Group C [Haiti],Group C [Scotland],Group D [USA],Group D [Paraguay],Group D [Australia],Group D [Türkiye],Group E [Germany],Group E [Curaçao],Group E [Ivory Coast],Group E [Ecuador],Group F [Netherlands],Group F [Japan],Group F [Sweden],Group F [Tunisia],Group G [Belgium],Group G [Egypt],Group G [Iran],Group G [New Zealand],Group H [Spain],Group H [Cape Verde],Group H [Saudi Arabia],Group H [Uruguay],Group I [France],Group I [Senegal],Group I [Iraq],Group I [Norway],Group J [Argentina],Group J [Algeria],Group J [Austria],Group J [Jordan],Group K [Portugal],Group K [DR Congo],Group K [Uzbekistan],Group K [Colombia],Group L [England],Group L [Croatia],Group L [Ghana],Group L [Panama],Which 8 third-place teams advance to the Round of 32?
@@ -277,7 +277,7 @@
 6/11/2026 11:04:52,,Kameron Akbarzadeh,He’s a winner 🏆 ,Portugal,Kylian Mbappe,1st,4th,2nd,3rd,2nd,3rd,4th,1st,1st,2nd,4th,3rd,1st,3rd,4th,2nd,1st,4th,3rd,2nd,1st,2nd,3rd,4th,1st,3rd,2nd,4th,1st,4th,3rd,2nd,1st,2nd,4th,3rd,1st,3rd,2nd,4th,1st,4th,3rd,2nd,1st,2nd,4th,3rd,"Algeria, Iran, Ivory Coast, Norway, Panama, Paraguay, Scotland, Sweden"
 6/11/2026 11:15:30,,Andrew Robinson,Golden bracket,Spain,Kylian mbappe,1st,3rd,2nd,4th,2nd,4th,3rd,1st,1st,2nd,4th,3rd,2nd,1st,4th,3rd,1st,4th,3rd,2nd,1st,2nd,3rd,4th,1st,2nd,3rd,4th,1st,3rd,4th,2nd,1st,2nd,4th,3rd,1st,3rd,2nd,4th,1st,3rd,4th,2nd,1st,2nd,4th,3rd,"Algeria, DR Congo, Iran, Ivory Coast, Norway, Panama, Sweden, Türkiye"</script>
 <script id="seed" type="application/json">{
-  "updated": "2026-06-12T16:17:56.446Z",
+  "updated": "2026-06-12T17:51:03.796Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -529,19 +529,60 @@ function refreshHero(){
 
 /* ----- live load ----- */
 function renderAll(){ renderLeaderboard(); renderScores(); renderInsights(); refreshHero(); }
-let lastRendered=null;
+
+/* ----- live compute straight from the ESPN feed (no server/cron dependency) ----- */
+const ESPN_ALIAS={"South Korea":"Korea Republic","Korea, Republic of":"Korea Republic","United States":"USA","United States of America":"USA","Turkey":"Türkiye","Turkiye":"Türkiye","Czech Republic":"Czechia","Côte d'Ivoire":"Ivory Coast","Cote d'Ivoire":"Ivory Coast","Cabo Verde":"Cape Verde","Congo DR":"DR Congo","Democratic Republic of the Congo":"DR Congo","Bosnia and Herzegovina":"Bosnia-Herzegovina","Curacao":"Curaçao","IR Iran":"Iran"};
+const POOL_TEAMS=GL.flatMap(g=>GROUPS[g]), POOL_SET=new Set(POOL_TEAMS), GROUP_OF={};
+GL.forEach(g=>GROUPS[g].forEach(t=>GROUP_OF[t]=g));
+function normTeam(s){return (s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]/g,"");}
+const NORM_POOL=new Map(POOL_TEAMS.map(t=>[normTeam(t),t]));
+function mapTeam(cands){for(const c of cands){if(!c)continue;if(POOL_SET.has(c))return c;if(ESPN_ALIAS[c])return ESPN_ALIAS[c];}for(const c of cands){if(!c)continue;const h=NORM_POOL.get(normTeam(c));if(h)return h;}return null;}
+function tableFor(teams,ms){
+  const st={};teams.forEach(t=>st[t]={t,P:0,W:0,D:0,L:0,GF:0,GA:0,Pts:0});
+  for(const m of ms){const h=st[m.home],a=st[m.away];if(!h||!a)continue;h.P++;a.P++;h.GF+=m.hs;h.GA+=m.as;a.GF+=m.as;a.GA+=m.hs;if(m.hs>m.as){h.W++;a.L++;h.Pts+=3;}else if(m.hs<m.as){a.W++;h.L++;a.Pts+=3;}else{h.D++;a.D++;h.Pts++;a.Pts++;}}
+  Object.values(st).forEach(e=>e.GD=e.GF-e.GA);
+  const h2h=(x,y)=>{let xp=0,yp=0,xg=0,yg=0;for(const m of ms){if(m.home===x.t&&m.away===y.t){xg+=m.hs-m.as;yg+=m.as-m.hs;if(m.hs>m.as)xp+=3;else if(m.hs<m.as)yp+=3;else{xp++;yp++;}}if(m.home===y.t&&m.away===x.t){yg+=m.hs-m.as;xg+=m.as-m.hs;if(m.hs>m.as)yp+=3;else if(m.hs<m.as)xp+=3;else{xp++;yp++;}}}return (yp-xp)||(yg-xg)||0;};
+  return Object.values(st).sort((x,y)=>y.Pts-x.Pts||y.GD-x.GD||y.GF-x.GF||h2h(x,y)||x.t.localeCompare(y.t));
+}
+async function computeFromESPN(){
+  const j=await (await fetch("https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260630&limit=600",{cache:"no-store"})).json();
+  const matches=[];
+  for(const ev of (j.events||[])){
+    const comp=ev.competitions&&ev.competitions[0]; if(!comp)continue;
+    const state=ev.status&&ev.status.type&&ev.status.type.state; if(state!=="post"&&state!=="in")continue;
+    const cs=comp.competitors||[],home=cs.find(c=>c.homeAway==="home")||cs[0],away=cs.find(c=>c.homeAway==="away")||cs[1]; if(!home||!away)continue;
+    const ht=mapTeam([home.team&&home.team.displayName,home.team&&home.team.shortDisplayName,home.team&&home.team.name]);
+    const at=mapTeam([away.team&&away.team.displayName,away.team&&away.team.shortDisplayName,away.team&&away.team.name]);
+    if(!ht||!at||GROUP_OF[ht]!==GROUP_OF[at])continue;
+    matches.push({group:GROUP_OF[ht],home:ht,away:at,hs:parseInt(home.score,10)||0,as:parseInt(away.score,10)||0,state,detail:(ev.status.type.shortDetail||ev.status.type.detail||""),date:ev.date});
+  }
+  let ov={}; try{ov=await (await fetch("overrides.json?t="+Date.now(),{cache:"no-store"})).json();}catch(e){}
+  const standings={},complete={},scoring={},tableMeta={};
+  for(const g of GL){
+    const gm=matches.filter(m=>m.group===g); if(!gm.length)continue;
+    const tbl=tableFor(GROUPS[g],gm);
+    tableMeta[g]=tbl.map(e=>({team:e.t,P:e.P,W:e.W,D:e.D,L:e.L,GF:e.GF,GA:e.GA,GD:e.GD,Pts:e.Pts}));
+    complete[g]=gm.filter(m=>m.state==="post").length>=6;
+    const pp={};GROUPS[g].forEach(t=>pp[t]=0);gm.forEach(m=>{if(m.state==="post"){pp[m.home]++;pp[m.away]++;}});
+    if(GROUPS[g].every(t=>pp[t]>=1)){scoring[g]=true;standings[g]={};tbl.forEach((e,i)=>standings[g][e.t]=i+1);}
+  }
+  if(ov.standings)for(const g of GL){if(ov.standings[g]&&Object.keys(ov.standings[g]).length){standings[g]={...ov.standings[g]};scoring[g]=true;}}
+  let thirds=ov.thirds&&ov.thirds.length?ov.thirds.slice():[];
+  if(GL.every(g=>complete[g])&&!thirds.length){const th=GL.map(g=>(tableMeta[g]||[])[2]).filter(Boolean);th.sort((x,y)=>y.Pts-x.Pts||y.GD-x.GD||y.GF-x.GF||x.team.localeCompare(y.team));thirds=th.slice(0,8).map(e=>e.team);}
+  return {updated:new Date().toISOString(),standings,complete,scoring,tableMeta,thirds,champion:ov.champion||"",boot:ov.boot||"",eliminated:ov.eliminated||[],matches};
+}
+function dataSig(d){return JSON.stringify([d.standings,d.complete,d.scoring,d.thirds,d.champion,d.boot,d.eliminated,(d.matches||[]).map(m=>[m.group,m.home,m.away,m.hs,m.as,m.state])]);}
+let lastSig=null, lastFetchOK=null;
 async function loadLive(manual){
   const rb=document.getElementById("refreshBtn"); if(rb&&manual){rb.disabled=true;rb.textContent="↻ …";}
   try{
-    const r=await fetch("results.json?t="+Date.now(),{cache:"no-store"});
-    if(r.ok){
-      ingest(await r.json());
-      // only rebuild the board when the data actually changed (keeps expanded rows from
-      // collapsing on every 2-min poll / tab refocus); otherwise just tick the header.
-      if(manual || results.updated!==lastRendered){ lastRendered=results.updated; renderAll(); }
-      else refreshHero();
-    }
-  }catch(e){ /* keep seed data; offline or file:// */ }
+    const d=await computeFromESPN();          // pull + compute straight from ESPN
+    const s=dataSig(d);
+    ingest(d);                                // refresh the timestamp (we just checked, data is current)
+    lastFetchOK=true;
+    if(manual||s!==lastSig){lastSig=s;renderAll();}  // only rebuild the board when scores actually changed
+    else refreshHero();                       // otherwise just tick "Updated ... ago"
+  }catch(e){ /* ESPN unreachable -> keep the seed / last good data, leave display as-is */ }
   finally{ const b=document.getElementById("refreshBtn"); if(b){b.disabled=false;b.textContent="↻ Refresh";} }
 }
 

@@ -64,11 +64,11 @@
       <div id="empty"></div>
       <div class="more" id="more" hidden><button id="moreBtn"></button></div>
     </div>
-    <div class="foot">🎯 = how many of the 37 EMSA brackets picked this player for the Golden Boot. Goals via the public ESPN <code>fifa.world</code> feed, refreshed every 10 minutes · penalties and assists shown where available · own goals excluded.</div>
+    <div class="foot">🎯 = how many of the 37 EMSA brackets picked this player for the Golden Boot. Goals from the public ESPN <code>fifa.world</code> feed, computed in your browser every 2 minutes · penalties and assists shown where available · own goals excluded.</div>
   </div>
 
 <script id="seed" type="application/json">{
-  "updated": "2026-06-12T16:23:56.974Z",
+  "updated": "2026-06-12T17:51:06.331Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 2,
@@ -127,6 +127,34 @@ const POOL_BOOT={yamal:{n:3,name:"Lamine Yamal"},mbappe:{n:19,name:"Kylian Mbapp
 const norm=s=>(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z ]/g,"").trim();
 function backing(name){ const n=norm(name); for(const k in POOL_BOOT){ if(n.includes(k)) return POOL_BOOT[k].n; } return 0; }
 
+/* ----- live compute straight from the ESPN feed (no server/cron dependency) ----- */
+const ESPN_ALIAS={"South Korea":"Korea Republic","Korea, Republic of":"Korea Republic","United States":"USA","United States of America":"USA","Turkey":"Türkiye","Turkiye":"Türkiye","Czech Republic":"Czechia","Côte d'Ivoire":"Ivory Coast","Cote d'Ivoire":"Ivory Coast","Cabo Verde":"Cape Verde","Congo DR":"DR Congo","Democratic Republic of the Congo":"DR Congo","Bosnia and Herzegovina":"Bosnia-Herzegovina","Curacao":"Curaçao","IR Iran":"Iran"};
+const POOL_TEAMS=Object.keys(FLAG), POOL_SET=new Set(POOL_TEAMS);
+function normTeam(s){return (s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]/g,"");}
+const NORM_POOL=new Map(POOL_TEAMS.map(t=>[normTeam(t),t]));
+function mapTeam(cands){for(const c of cands){if(!c)continue;if(POOL_SET.has(c))return c;if(ESPN_ALIAS[c])return ESPN_ALIAS[c];}for(const c of cands){if(!c)continue;const h=NORM_POOL.get(normTeam(c));if(h)return h;}return cands.find(Boolean)||"";}
+async function computeScorersFromESPN(){
+  const j=await (await fetch("https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=1000",{cache:"no-store"})).json();
+  const idToTeam={},tally=new Map();let goals=0,played=0;
+  const rec=(id,name,team,isPen,isAssist)=>{if(!name)return;const key=id||(name+"|"+team);let e=tally.get(key);if(!e){e={name,team,goals:0,pens:0,assists:0};tally.set(key,e);}if(isAssist)e.assists++;else{e.goals++;if(isPen)e.pens++;}};
+  for(const ev of (j.events||[])){
+    const comp=ev.competitions&&ev.competitions[0];if(!comp)continue;
+    const state=ev.status&&ev.status.type&&ev.status.type.state;if(state!=="post"&&state!=="in")continue;
+    if(state==="post")played++;
+    for(const c of (comp.competitors||[])) if(c.team&&c.team.id) idToTeam[c.team.id]=mapTeam([c.team.displayName,c.team.shortDisplayName,c.team.name,c.team.location]);
+    for(const det of (comp.details||[])){
+      if(!det.scoringPlay||det.ownGoal)continue;
+      const team=idToTeam[det.team&&det.team.id]||"";
+      const ath=det.athletesInvolved||[],scorer=ath[0],assist=ath[1];
+      if(scorer){rec(scorer.athlete&&scorer.athlete.id||scorer.id,scorer.displayName,team,!!det.penaltyKick,false);goals++;}
+      if(assist){rec(assist.athlete&&assist.athlete.id||assist.id,assist.displayName,team,false,true);}
+    }
+  }
+  const scorers=[...tally.values()].filter(e=>e.goals>0).sort((a,b)=>b.goals-a.goals||(b.goals-b.pens)-(a.goals-a.pens)||b.assists-a.assists||a.name.localeCompare(b.name));
+  let rank=0,prev=null,seen=0;scorers.forEach(e=>{seen++;if(prev===null||e.goals!==prev){rank=seen;prev=e.goals;}e.rank=rank;});
+  return {updated:new Date().toISOString(),scorers,totalGoals:goals,matchesPlayed:played};
+}
+
 let data={scorers:[],updated:null,totalGoals:0,matchesPlayed:0};
 function ingest(d){ if(d&&Array.isArray(d.scorers)) data={scorers:d.scorers,updated:d.updated,totalGoals:d.totalGoals||0,matchesPlayed:d.matchesPlayed||0}; }
 try{ ingest(JSON.parse(document.getElementById("seed").textContent)); }catch(e){}
@@ -174,8 +202,8 @@ function render(){
 
 async function load(manual){
   const rb=document.getElementById("refreshBtn"); if(rb&&manual){rb.disabled=true;rb.textContent="↻ …";}
-  try{ const r=await fetch("scorers.json?t="+Date.now(),{cache:"no-store"}); if(r.ok){ ingest(await r.json()); render(); } }
-  catch(e){}
+  try{ const d=await computeScorersFromESPN(); ingest(d); render(); }
+  catch(e){ /* ESPN unreachable -> keep seed/last data */ }
   finally{ const b=document.getElementById("refreshBtn"); if(b){b.disabled=false;b.textContent="↻ Refresh";} }
 }
 render(); load(false);
