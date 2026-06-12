@@ -48,6 +48,19 @@
   .empty{padding:40px;text-align:center;color:var(--muted)} .empty b{color:var(--ink)}
   .foot{color:var(--muted);font-size:12px;text-align:center;margin-top:20px}
   .foot code{background:#e9eef3;padding:1px 5px;border-radius:4px}
+  .card.pad{padding:16px 18px}
+  .poolh{margin:2px 0 14px;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .poolh .poolsub{font-weight:500;color:var(--muted);font-size:13px}
+  .pstand{display:flex;flex-direction:column;gap:10px}
+  .prow{display:flex;gap:12px;align-items:flex-start;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .prow.r1{background:#fffdf3;border-color:#f3e2a6}
+  .prank{font-size:22px;width:30px;text-align:center;flex-shrink:0;line-height:1.2}
+  .pmain{flex:1;min-width:0}
+  .pplayer{font-weight:800;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .pplayer .pg{font-weight:900;color:var(--gold-d)}
+  .pplayer .pcount{font-weight:500;color:var(--muted);font-size:12.5px}
+  .pbackers{margin-top:5px;font-size:13px;color:var(--ink);line-height:1.6}
+  .pbackers b{font-weight:700}
 </style>
 </head>
 <body>
@@ -58,6 +71,10 @@
   </div></div>
 
   <div class="wrap">
+    <div class="card pad" id="poolCard" hidden>
+      <h2 class="poolh"><span style="white-space:nowrap">🏅 Pool Golden Boot Standings</span> <span class="poolsub">who's backing the current top scorers</span></h2>
+      <div id="poolStandings"></div>
+    </div>
     <div class="card">
       <div class="leaders" id="leaders"></div>
       <table class="tbl"><thead><tr><th>#</th><th>Player</th><th style="text-align:right">Goals</th></tr></thead><tbody id="rows"></tbody></table>
@@ -116,6 +133,7 @@
     }
   ]
 }</script>
+<script id="brackets" type="application/json">[{"b":"What Good Looks Like","k":"yamal"},{"b":"colombian_dark_horses","k":"mbappe"},{"b":"Mwily Goal Blue","k":"mbappe"},{"b":"li guan","k":"mbappe"},{"b":"Get Moni Get Goals","k":"mbappe"},{"b":"The American dream","k":"kane"},{"b":"Arteta's Army","k":"mbappe"},{"b":"It’s Coming Home","k":"mbappe"},{"b":"Not Brian","k":"vinicius"},{"b":"Master Jedi","k":"dembele"},{"b":"Jordo","k":"mbappe"},{"b":"Tejas' Blaugrana","k":"mbappe"},{"b":"TotalBarcelona90","k":"mbappe"},{"b":"St","k":"ronaldo"},{"b":"AK47","k":"mbappe"},{"b":"Ardisha’s bracket","k":"kane"},{"b":"Ayaub Visa Pending","k":"haaland"},{"b":"Zizou Headbutt Tour 2026","k":"alvarez"},{"b":"🤫🫨🤯","k":"yamal"},{"b":"It’s Called Football","k":"kane"},{"b":"Paul The Octopus","k":"mbappe"},{"b":"Cancelo Culture","k":"kane"},{"b":"Adam Bisignani","k":"haaland"},{"b":"Sonny With a Chance","k":"kane"},{"b":"Oui Will Rock You","k":"kane"},{"b":"Cup of Peace","k":"mbappe"},{"b":"CR74Ever","k":"mbappe"},{"b":"Armchair Managers Club","k":"kane"},{"b":"Ted Lee","k":"bellingham"},{"b":"Schneider FC","k":"haaland"},{"b":"Uzbekistan’s newest fan","k":"mbappe"},{"b":"WorldCup King","k":"mbappe"},{"b":"official sponsor of the fifa world cup","k":"mbappe"},{"b":"James' Bracket","k":"yamal"},{"b":"mcgriddy","k":"mbappe"},{"b":"He’s a winner 🏆","k":"mbappe"},{"b":"Golden bracket","k":"mbappe"}]</script>
 <script>
 (function(){
 "use strict";
@@ -126,6 +144,36 @@ const esc=s=>(s+"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"'
 const POOL_BOOT={yamal:{n:3,name:"Lamine Yamal"},mbappe:{n:19,name:"Kylian Mbappé"},haaland:{n:3,name:"Erling Haaland"},kane:{n:7,name:"Harry Kane"},ronaldo:{n:1,name:"Cristiano Ronaldo"},vinicius:{n:1,name:"Vinícius Jr."},alvarez:{n:1,name:"Julián Álvarez"},bellingham:{n:1,name:"Jude Bellingham"},dembele:{n:1,name:"Ousmane Dembélé"}};
 const norm=s=>(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z ]/g,"").trim();
 function backing(name){ const n=norm(name); for(const k in POOL_BOOT){ if(n.includes(k)) return POOL_BOOT[k].n; } return 0; }
+
+// each bracket's Golden Boot pick (from the pool CSV): [{b:bracket, k:bootKey}, ...]
+const BRACKET_BOOT=(()=>{ try{ return JSON.parse(document.getElementById("brackets").textContent); }catch(e){ return []; } })();
+function scorerKeyOf(name){ const n=norm(name); for(const k in POOL_BOOT){ if(n.includes(k)) return k; } return null; }
+// Standings of pool brackets by how their Golden Boot pick is scoring. Returns null
+// (so the panel hides) until at least one *picked* player has actually scored.
+function poolStandings(){
+  const keyScorer={};                                   // best current scorer per picked player-key
+  for(const s of data.scorers){ const k=scorerKeyOf(s.name); if(k && (!keyScorer[k]||s.goals>keyScorer[k].goals)) keyScorer[k]=s; }
+  const groups={};
+  for(const br of BRACKET_BOOT){ const sc=keyScorer[br.k]; if(sc && sc.goals>0){ (groups[br.k]=groups[br.k]||{scorer:sc,brackets:[]}).brackets.push(br.b); } }
+  const arr=Object.values(groups).sort((a,b)=> b.scorer.goals-a.scorer.goals || b.brackets.length-a.brackets.length || a.scorer.name.localeCompare(b.scorer.name));
+  const topGoals=Math.max(0,...data.scorers.map(s=>s.goals));
+  // hide unless a *picked* player is (tied for) the tournament's top scorer
+  if(!arr.length || arr[0].scorer.goals<topGoals) return null;
+  let rank=0,prev=null,seen=0; arr.forEach(g=>{ seen++; if(prev===null||g.scorer.goals!==prev){rank=seen;prev=g.scorer.goals;} g.rank=rank; });
+  return arr;
+}
+function renderPool(){
+  const card=document.getElementById("poolCard"), wrap=document.getElementById("poolStandings");
+  const arr=poolStandings();
+  if(!arr){ card.hidden=true; wrap.innerHTML=""; return; }
+  card.hidden=false;
+  const med=["🥇","🥈","🥉"];
+  wrap.innerHTML=`<div class="pstand">`+arr.map(g=>{
+    const s=g.scorer, medal=g.rank<=3?med[g.rank-1]:("#"+g.rank);
+    const backers=g.brackets.slice().sort((a,b)=>a.localeCompare(b));
+    return `<div class="prow ${g.rank===1?'r1':''}"><div class="prank">${medal}</div><div class="pmain"><div class="pplayer">${fl(s.team)} ${esc(s.name)} <span class="pg">${s.goals} goal${s.goals>1?"s":""}</span> <span class="pcount">· ${backers.length} bracket${backers.length>1?"s":""}</span></div><div class="pbackers">${backers.map(b=>`<b>${esc(b)}</b>`).join(" · ")}</div></div></div>`;
+  }).join("")+`</div>`;
+}
 
 /* ----- live compute straight from the ESPN feed (no server/cron dependency) ----- */
 const ESPN_ALIAS={"South Korea":"Korea Republic","Korea, Republic of":"Korea Republic","United States":"USA","United States of America":"USA","Turkey":"Türkiye","Turkiye":"Türkiye","Czech Republic":"Czechia","Côte d'Ivoire":"Ivory Coast","Cote d'Ivoire":"Ivory Coast","Cabo Verde":"Cape Verde","Congo DR":"DR Congo","Democratic Republic of the Congo":"DR Congo","Bosnia and Herzegovina":"Bosnia-Herzegovina","Curacao":"Curaçao","IR Iran":"Iran"};
@@ -197,6 +245,7 @@ function render(){
   if(sc.length>10){ more.hidden=false; document.getElementById("moreBtn").textContent=showAll?"Show top 10 only":`Show all ${sc.length} scorers`; }
   else more.hidden=true;
   const mb=document.getElementById("moreBtn"); if(mb) mb.onclick=()=>{ showAll=!showAll; render(); };
+  renderPool();
 }
 
 async function load(manual){
