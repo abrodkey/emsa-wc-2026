@@ -25,7 +25,7 @@
   .rbtn{font:inherit;font-weight:700;font-size:13px;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.18);color:#fff;border-radius:9px;padding:8px 13px;cursor:pointer}
   .rbtn:hover{background:rgba(255,255,255,.3)} .rbtn[disabled]{opacity:.6;cursor:default}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-top:18px}
-  .leaders{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:16px 16px 4px}
+  .leaders{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:16px 16px 4px;align-items:start}
   @media(max-width:620px){.leaders{grid-template-columns:1fr}}
   .ld{border-radius:14px;padding:14px;color:#fff;position:relative;overflow:hidden;min-height:104px;display:flex;flex-direction:column;justify-content:flex-end}
   .ld.g1{background:linear-gradient(160deg,#f7c61e,#d99500)} .ld.g2{background:linear-gradient(160deg,#b9c3cf,#7e8b99)} .ld.g3{background:linear-gradient(160deg,#d98b54,#a85f30)}
@@ -33,6 +33,10 @@
   .ld .tm{font-size:12.5px;opacity:.92;display:flex;align-items:center;gap:5px;margin-top:1px}
   .ld .g{font-size:26px;font-weight:900;margin-top:7px} .ld .g small{font-size:12px;font-weight:600;opacity:.9}
   .ld .back{margin-top:5px;font-size:11.5px;background:rgba(0,0,0,.16);border-radius:999px;padding:2px 8px;align-self:flex-start}
+  .ld .bub{cursor:pointer;border:none;font:inherit;font-size:11.5px;color:#fff;display:inline-flex;align-items:center;gap:5px;transition:background .12s}
+  .ld .bub:hover{background:rgba(0,0,0,.30)} .ld .bub .car{font-size:9px;opacity:.85}
+  .ld-drop{margin-top:8px;background:rgba(0,0,0,.18);border-radius:10px;padding:9px 11px;font-size:12.5px;line-height:1.7;color:#fff;align-self:stretch}
+  .ld-drop span{font-weight:600} .ld-drop span:not(:last-child)::after{content:" · ";opacity:.5;font-weight:400}
   table.tbl{width:100%;border-collapse:separate;border-spacing:0}
   table.tbl th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;padding:12px 14px;border-bottom:1px solid var(--line)}
   table.tbl td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
@@ -48,19 +52,6 @@
   .empty{padding:40px;text-align:center;color:var(--muted)} .empty b{color:var(--ink)}
   .foot{color:var(--muted);font-size:12px;text-align:center;margin-top:20px}
   .foot code{background:#e9eef3;padding:1px 5px;border-radius:4px}
-  .card.pad{padding:16px 18px}
-  .poolh{margin:2px 0 14px;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-  .poolh .poolsub{font-weight:500;color:var(--muted);font-size:13px}
-  .pstand{display:flex;flex-direction:column;gap:10px}
-  .prow{display:flex;gap:12px;align-items:flex-start;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:#fff}
-  .prow.r1{background:#fffdf3;border-color:#f3e2a6}
-  .prank{font-size:22px;width:30px;text-align:center;flex-shrink:0;line-height:1.2}
-  .pmain{flex:1;min-width:0}
-  .pplayer{font-weight:800;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-  .pplayer .pg{font-weight:900;color:var(--gold-d)}
-  .pplayer .pcount{font-weight:500;color:var(--muted);font-size:12.5px}
-  .pbackers{margin-top:5px;font-size:13px;color:var(--ink);line-height:1.6}
-  .pbackers b{font-weight:700}
 </style>
 </head>
 <body>
@@ -71,17 +62,13 @@
   </div></div>
 
   <div class="wrap">
-    <div class="card pad" id="poolCard" hidden>
-      <h2 class="poolh"><span style="white-space:nowrap">🏅 Pool Golden Boot Standings</span> <span class="poolsub">who's backing the current top scorers</span></h2>
-      <div id="poolStandings"></div>
-    </div>
     <div class="card">
       <div class="leaders" id="leaders"></div>
       <table class="tbl"><thead><tr><th>#</th><th>Player</th><th style="text-align:right">Goals</th></tr></thead><tbody id="rows"></tbody></table>
       <div id="empty"></div>
       <div class="more" id="more" hidden><button id="moreBtn"></button></div>
     </div>
-    <div class="foot">🎯 = how many of the 37 EMSA brackets picked this player for the Golden Boot. Goals from the public ESPN <code>fifa.world</code> feed, computed in your browser every 2 minutes · penalties and assists shown where available · own goals excluded.</div>
+    <div class="foot">🎯 = how many of the 37 EMSA brackets picked this player for the Golden Boot — tap a top-3 player's 🎯 to see exactly who. Goals from the public ESPN <code>fifa.world</code> feed, computed in your browser every 2 minutes · penalties and assists shown where available · own goals excluded.</div>
   </div>
 
 <script id="seed" type="application/json">{
@@ -148,33 +135,7 @@ function backing(name){ const n=norm(name); for(const k in POOL_BOOT){ if(n.incl
 // each bracket's Golden Boot pick (from the pool CSV): [{b:bracket, k:bootKey}, ...]
 const BRACKET_BOOT=(()=>{ try{ return JSON.parse(document.getElementById("brackets").textContent); }catch(e){ return []; } })();
 function scorerKeyOf(name){ const n=norm(name); for(const k in POOL_BOOT){ if(n.includes(k)) return k; } return null; }
-// For the top-3 scorers (1st/2nd/3rd in the race), show the brackets that picked them.
-// Unpicked top scorers are simply omitted; returns null (panel hidden) if none of the
-// top 3 were picked by anyone.
-function poolStandings(){
-  const rows=[], seen=new Set();
-  for(const s of data.scorers){                  // sorted by goals desc; s.rank = golden-boot position
-    if((s.rank||99)>3 || s.goals<1) continue;     // only the top-3 scoring positions
-    const k=scorerKeyOf(s.name); if(!k||seen.has(k)) continue;
-    const brackets=BRACKET_BOOT.filter(b=>b.k===k).map(b=>b.b);
-    if(!brackets.length) continue;                // nobody in the pool picked this scorer
-    seen.add(k);
-    rows.push({scorer:s, rank:s.rank, brackets});
-  }
-  return rows.length?rows:null;
-}
-function renderPool(){
-  const card=document.getElementById("poolCard"), wrap=document.getElementById("poolStandings");
-  const arr=poolStandings();
-  if(!arr){ card.hidden=true; wrap.innerHTML=""; return; }
-  card.hidden=false;
-  const med=["🥇","🥈","🥉"];
-  wrap.innerHTML=`<div class="pstand">`+arr.map(g=>{
-    const s=g.scorer, medal=g.rank<=3?med[g.rank-1]:("#"+g.rank);
-    const backers=g.brackets.slice().sort((a,b)=>a.localeCompare(b));
-    return `<div class="prow ${g.rank===1?'r1':''}"><div class="prank">${medal}</div><div class="pmain"><div class="pplayer">${fl(s.team)} ${esc(s.name)} <span class="pg">${s.goals} goal${s.goals>1?"s":""}</span> <span class="pcount">· ${backers.length} bracket${backers.length>1?"s":""}</span></div><div class="pbackers">${backers.map(b=>`<b>${esc(b)}</b>`).join(" · ")}</div></div></div>`;
-  }).join("")+`</div>`;
-}
+function backersOf(name){ const k=scorerKeyOf(name); return k?BRACKET_BOOT.filter(b=>b.k===k).map(b=>b.b).sort((a,b)=>a.localeCompare(b)):[]; }
 
 /* ----- live compute straight from the ESPN feed (no server/cron dependency) ----- */
 const ESPN_ALIAS={"South Korea":"Korea Republic","Korea, Republic of":"Korea Republic","United States":"USA","United States of America":"USA","Turkey":"Türkiye","Turkiye":"Türkiye","Czech Republic":"Czechia","Côte d'Ivoire":"Ivory Coast","Cote d'Ivoire":"Ivory Coast","Cabo Verde":"Cape Verde","Congo DR":"DR Congo","Democratic Republic of the Congo":"DR Congo","Bosnia and Herzegovina":"Bosnia-Herzegovina","Curacao":"Curaçao","IR Iran":"Iran"};
@@ -209,7 +170,7 @@ function ingest(d){ if(d&&Array.isArray(d.scorers)) data={scorers:d.scorers,upda
 try{ ingest(JSON.parse(document.getElementById("seed").textContent)); }catch(e){}
 
 function relTime(iso){ if(!iso)return "—"; const s=(Date.now()-new Date(iso).getTime())/1000; if(s<90)return "just now"; if(s<3600)return Math.round(s/60)+" min ago"; if(s<86400)return Math.round(s/3600)+"h ago"; return Math.round(s/86400)+"d ago"; }
-let showAll=false;
+let showAll=false, openBoot=null;
 function sub(e){ const bits=[]; if(e.pens)bits.push(`${e.pens} pen${e.pens>1?"s":""}`); if(e.assists)bits.push(`${e.assists} ast`); return bits.join(" · "); }
 
 function render(){
@@ -226,9 +187,13 @@ function render(){
   const lead=document.getElementById("leaders");
   if(sc.length){
     const med=["🥇","🥈","🥉"];
-    lead.innerHTML=sc.slice(0,3).map((e,i)=>{ const b=backing(e.name);
-      return `<div class="ld g${i+1}"><span class="medal">${med[i]}</span><div class="nm">${esc(e.name)}</div><div class="tm">${fl(e.team)} ${esc(e.team)}</div><div class="g">${e.goals}<small> goal${e.goals>1?"s":""}</small></div>${b?`<span class="back">🎯 ${b} bracket${b>1?"s":""}</span>`:""}</div>`;
+    lead.innerHTML=sc.slice(0,3).map((e,i)=>{
+      const k=scorerKeyOf(e.name), brackets=backersOf(e.name), n=brackets.length, open=n>0&&openBoot===k;
+      const bubble=n>0?`<button class="back bub${open?' open':''}" data-k="${k}">🎯 ${n} bracket${n>1?"s":""} <span class="car">${open?'▴':'▾'}</span></button>`:"";
+      const drop=open?`<div class="ld-drop">${brackets.map(b=>`<span>${esc(b)}</span>`).join("")}</div>`:"";
+      return `<div class="ld g${i+1}"><span class="medal">${med[i]}</span><div class="nm">${esc(e.name)}</div><div class="tm">${fl(e.team)} ${esc(e.team)}</div><div class="g">${e.goals}<small> goal${e.goals>1?"s":""}</small></div>${bubble}${drop}</div>`;
     }).join("");
+    lead.querySelectorAll(".bub").forEach(btn=>btn.addEventListener("click",()=>{ const k=btn.getAttribute("data-k"); openBoot=(openBoot===k)?null:k; render(); }));
     lead.style.display="grid";
   } else { lead.style.display="none"; lead.innerHTML=""; }
 
@@ -241,12 +206,11 @@ function render(){
     return `<tr><td class="rk ${rc}">${e.rank}</td><td><div class="pl"><span class="fg">${fl(e.team)}</span><span><span class="nm">${esc(e.name)}</span>${bb}<br><span class="tm">${esc(e.team)}</span></span></div></td><td class="gcell"><span class="gnum">${e.goals}</span>${s?`<br><span class="gsub">${s}</span>`:""}<div class="gbar"><span style="width:${Math.round(e.goals/max*100)}%"></span></div></td></tr>`;
   }).join("");
 
-  document.getElementById("empty").innerHTML = sc.length? "" : `<div class="empty">No goals yet — the race is wide open.<br>This board lights up as soon as the first goals go in. Refreshes every 10 minutes.</div>`;
+  document.getElementById("empty").innerHTML = sc.length? "" : `<div class="empty">No goals yet — the race is wide open.<br>This board lights up as soon as the first goals go in. Updates automatically every 2 minutes.</div>`;
   const more=document.getElementById("more");
   if(sc.length>10){ more.hidden=false; document.getElementById("moreBtn").textContent=showAll?"Show top 10 only":`Show all ${sc.length} scorers`; }
   else more.hidden=true;
   const mb=document.getElementById("moreBtn"); if(mb) mb.onclick=()=>{ showAll=!showAll; render(); };
-  renderPool();
 }
 
 async function load(manual){
