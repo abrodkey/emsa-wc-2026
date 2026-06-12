@@ -7,7 +7,7 @@
  * third-place qualifiers once every group is final, merges any manual
  * corrections from overrides.json, and writes results.json.
  *
- * Run hourly by .github/workflows/update-scores.yml. No API key required.
+ * Run every 10 min by .github/workflows/update-scores.yml. No API key required.
  */
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs";

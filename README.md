@@ -1,7 +1,7 @@
 # EMSA World Cup 2026 — League Dashboard
 
 A live leaderboard for the EMSA bracket pool. Open `index.html` (or the hosted
-GitHub Pages link) to see standings; scores update automatically every hour.
+GitHub Pages link) to see standings; scores update automatically every 10 minutes.
 
 ## How it works
 
@@ -15,11 +15,11 @@ ESPN fifa.world feed  ──►  update-scores.mjs  ──►  results.json  ─
   (best-effort), works out the 8 best third-place qualifiers once every group is
   final, merges any manual corrections from `overrides.json`, and writes
   `results.json`.
-- **`.github/workflows/update-scores.yml`** runs that script **every hour** on
+- **`.github/workflows/update-scores.yml`** runs that script **every 10 minutes** on
   GitHub's servers and commits `results.json` when scores change — so the board
   stays current even when nobody has it open.
 - **`index.html`** is a self-contained dashboard. It has every bracket embedded,
-  fetches `results.json` on load (and hourly), and re-scores everyone live.
+  fetches `results.json` on load (and every 10 min), and re-scores everyone live.
   Player email addresses are **not** included in the published page.
 
 ## Scoring (group-stage phase)
@@ -37,7 +37,7 @@ contribution is provisional and moves as games are played.
 ## Making manual corrections
 
 Everything the live feed can't know lives in **`overrides.json`** and is applied
-on top of the auto-computed scores every hour:
+on top of the auto-computed scores every run:
 
 - `champion` — set to a team name once the final is played, e.g. `"Spain"`.
 - `boot` — set to a scorer, e.g. `"Kylian Mbappé"` (matching is last-name based).

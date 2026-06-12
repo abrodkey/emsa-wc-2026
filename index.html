@@ -131,7 +131,7 @@
   <div class="hero">
     <div class="wrap">
       <h1><span class="ball">⚽</span> EMSA World Cup 2026 <span style="opacity:.6;font-weight:600">·</span> League Dashboard</h1>
-      <div class="sub"><span class="phase">📍 Phase 1 of 2 · Group Stage</span>Scores auto-update every hour from the live feed. Standings are provisional until each group is final; knockout-bracket scoring gets layered on once those picks come in.</div>
+      <div class="sub"><span class="phase">📍 Phase 1 of 2 · Group Stage</span>Scores auto-update every 10 minutes from the live feed. Standings are provisional until each group is final; knockout-bracket scoring gets layered on once those picks come in.</div>
       <div class="stripe" id="heroStats"></div>
     </div>
   </div>
@@ -212,7 +212,7 @@
       <div class="foot" id="insFoot"></div>
     </section>
 
-    <div class="foot">Live scores via the public ESPN <code>fifa.world</code> feed · refreshed hourly by a GitHub Action · group tables are computed from match results (FIFA tiebreakers, best-effort).</div>
+    <div class="foot">Live scores via the public ESPN <code>fifa.world</code> feed · refreshed every 10 minutes by a GitHub Action · group tables are computed from match results (FIFA tiebreakers, best-effort).</div>
   </div>
 
 <script id="rawcsv" type="text/plain">Timestamp,Email Address,Full Name,Bracket Name (For Standings Display),Tournament Winner,Golden Boot Winner (Top Scorer in Tournament),Group A [Mexico],Group A [South Africa],Group A [Korea Republic],Group A [Czechia],Group B [Canada],Group B [Bosnia-Herzegovina],Group B [Qatar],Group B [Switzerland],Group C [Brazil],Group C [Morocco],Group C [Haiti],Group C [Scotland],Group D [USA],Group D [Paraguay],Group D [Australia],Group D [Türkiye],Group E [Germany],Group E [Curaçao],Group E [Ivory Coast],Group E [Ecuador],Group F [Netherlands],Group F [Japan],Group F [Sweden],Group F [Tunisia],Group G [Belgium],Group G [Egypt],Group G [Iran],Group G [New Zealand],Group H [Spain],Group H [Cape Verde],Group H [Saudi Arabia],Group H [Uruguay],Group I [France],Group I [Senegal],Group I [Iraq],Group I [Norway],Group J [Argentina],Group J [Algeria],Group J [Austria],Group J [Jordan],Group K [Portugal],Group K [DR Congo],Group K [Uzbekistan],Group K [Colombia],Group L [England],Group L [Croatia],Group L [Ghana],Group L [Panama],Which 8 third-place teams advance to the Round of 32?
@@ -438,7 +438,7 @@ function renderLeaderboard(){
     const bar=s.total?`<div class="bar"><span class="seg-grp" style="width:${w(s.gp)}%"></span><span class="seg-qual" style="width:${w(s.qp)}%"></span><span class="seg-champ" style="width:${w(s.cp)}%"></span><span class="seg-boot" style="width:${w(s.bp)}%"></span></div>`:"";
     return `<tr class="row" data-i="${idx}"><td class="rank ${rc}">${o.rank}</td><td class="who"><div class="bn">${esc(o.p.bracket)}</div><div class="rn">${esc(o.p.name)}</div></td><td>${chip}</td><td class="pts-cell">${s.total}<br><small>${s.exact} spots${s.qh?` · ${s.qh} q`:""}</small>${bar}</td></tr><tr class="detail" data-d="${idx}" hidden><td colspan="4"><div class="detail-inner" id="det-${idx}"></div></td></tr>`;
   }).join("");
-  document.getElementById("lbEmpty").innerHTML=anyResults()?"":`<div class="empty">No matches scored yet — every bracket sits at <b>0</b>.<br>The board comes alive as group games finish. Scores refresh hourly automatically.</div>`;
+  document.getElementById("lbEmpty").innerHTML=anyResults()?"":`<div class="empty">No matches scored yet — every bracket sits at <b>0</b>.<br>The board comes alive as group games finish. Scores refresh every 10 minutes automatically.</div>`;
   body.querySelectorAll("tr.row").forEach(tr=>{tr.addEventListener("click",()=>{const i=tr.getAttribute("data-i");const d=body.querySelector(`tr.detail[data-d="${i}"]`);const open=!d.hasAttribute("hidden");if(open){d.setAttribute("hidden","");tr.classList.remove("open");}else{d.removeAttribute("hidden");tr.classList.add("open");document.getElementById("det-"+i).innerHTML=detailHTML(arr[i]);}});});
 }
 function detailHTML(o){
@@ -500,7 +500,7 @@ function refreshHero(){
     <div class="stat"><div class="k">Groups final</div><div class="v">${groupsDone} / 12</div></div>
     <div class="stat"><div class="k">Current leader</div><div class="v">${leader?esc(leader.p.bracket):"—"}</div></div>
     <div class="stat"><div class="k">Top score</div><div class="v">${leader?leader.s.total+" pts":"—"}</div></div>
-    <div class="refresh"><div class="upd">Updated ${relTime(results.updated)}<br><span style="opacity:.75">auto-refreshes hourly</span></div><button class="rbtn" id="refreshBtn">↻ Refresh</button></div>`;
+    <div class="refresh"><div class="upd">Updated ${relTime(results.updated)}<br><span style="opacity:.75">auto-refreshes every 10 min</span></div><button class="rbtn" id="refreshBtn">↻ Refresh</button></div>`;
   const rb=document.getElementById("refreshBtn"); if(rb) rb.addEventListener("click",()=>loadLive(true));
 }
 
@@ -519,7 +519,7 @@ document.querySelectorAll(".tab").forEach(t=>{t.addEventListener("click",()=>{do
 
 renderAll();
 loadLive(false);
-setInterval(()=>loadLive(false), 3600*1000);
+setInterval(()=>loadLive(false), 600*1000);
 })();
 </script>
 </body>

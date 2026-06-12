@@ -2,7 +2,7 @@ name: Update WC scores
 
 on:
   schedule:
-    - cron: "0 * * * *"        # top of every hour (GitHub may delay a few min)
+    - cron: "*/10 * * * *"     # every 10 minutes (GitHub schedules can lag a few min under load)
   workflow_dispatch: {}          # lets you run it on demand from the Actions tab
   push:
     branches: [main]

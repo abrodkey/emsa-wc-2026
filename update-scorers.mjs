@@ -5,7 +5,7 @@
  * Tallies every goal of the tournament (group stage + knockouts) from ESPN's
  * free fifa.world feed and writes scorers.json: a ranked list of top scorers
  * with goals, penalties, and assists. Own goals are excluded (they don't count
- * toward the Golden Boot). Run hourly by the GitHub Action. No API key.
+ * toward the Golden Boot). Run every 10 min by the GitHub Action. No API key.
  */
 
 import { writeFileSync } from "node:fs";

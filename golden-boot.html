@@ -64,7 +64,7 @@
       <div id="empty"></div>
       <div class="more" id="more" hidden><button id="moreBtn"></button></div>
     </div>
-    <div class="foot">🎯 = how many of the 37 EMSA brackets picked this player for the Golden Boot. Goals via the public ESPN <code>fifa.world</code> feed, refreshed hourly · penalties and assists shown where available · own goals excluded.</div>
+    <div class="foot">🎯 = how many of the 37 EMSA brackets picked this player for the Golden Boot. Goals via the public ESPN <code>fifa.world</code> feed, refreshed every 10 minutes · penalties and assists shown where available · own goals excluded.</div>
   </div>
 
 <script id="seed" type="application/json">{
@@ -144,7 +144,7 @@ function render(){
     <div class="stat"><div class="k">Scorers</div><div class="v">${sc.length}</div></div>
     <div class="stat"><div class="k">Leader</div><div class="v">${sc.length?esc(sc[0].name.split(" ").slice(-1)[0])+" · "+sc[0].goals:"—"}</div></div>
     <div class="stat"><div class="k">Pool favorite</div><div class="v">🎯 ${esc(topBacked.name.split(" ").slice(-1)[0])} (${topBacked.n})</div></div>
-    <div class="refresh"><div class="upd">Updated ${relTime(data.updated)}<br><span style="opacity:.8">auto-refreshes hourly</span></div><button class="rbtn" id="refreshBtn">↻ Refresh</button></div>`;
+    <div class="refresh"><div class="upd">Updated ${relTime(data.updated)}<br><span style="opacity:.8">auto-refreshes every 10 min</span></div><button class="rbtn" id="refreshBtn">↻ Refresh</button></div>`;
   document.getElementById("refreshBtn").addEventListener("click",()=>load(true));
 
   const lead=document.getElementById("leaders");
@@ -165,7 +165,7 @@ function render(){
     return `<tr><td class="rk ${rc}">${e.rank}</td><td><div class="pl"><span class="fg">${fl(e.team)}</span><span><span class="nm">${esc(e.name)}</span>${bb}<br><span class="tm">${esc(e.team)}</span></span></div></td><td class="gcell"><span class="gnum">${e.goals}</span>${s?`<br><span class="gsub">${s}</span>`:""}<div class="gbar"><span style="width:${Math.round(e.goals/max*100)}%"></span></div></td></tr>`;
   }).join("");
 
-  document.getElementById("empty").innerHTML = sc.length? "" : `<div class="empty">No goals yet — the race is wide open.<br>This board lights up as soon as the first goals go in. Refreshes hourly.</div>`;
+  document.getElementById("empty").innerHTML = sc.length? "" : `<div class="empty">No goals yet — the race is wide open.<br>This board lights up as soon as the first goals go in. Refreshes every 10 minutes.</div>`;
   const more=document.getElementById("more");
   if(sc.length>10){ more.hidden=false; document.getElementById("moreBtn").textContent=showAll?"Show top 10 only":`Show all ${sc.length} scorers`; }
   else more.hidden=true;
@@ -178,7 +178,7 @@ async function load(manual){
   catch(e){}
   finally{ const b=document.getElementById("refreshBtn"); if(b){b.disabled=false;b.textContent="↻ Refresh";} }
 }
-render(); load(false); setInterval(()=>load(false), 3600*1000);
+render(); load(false); setInterval(()=>load(false), 600*1000);
 })();
 </script>
 </body>
