@@ -112,6 +112,29 @@
   .fix .st{font-size:11px;color:var(--muted);width:88px;text-align:right}
   .ins-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media(max-width:760px){.ins-grid{grid-template-columns:1fr}.podium{grid-template-columns:1fr}.pod.first{transform:none}}
+  @media(max-width:560px){
+    .wrap{padding:0 12px 60px}
+    .hero{padding:22px 0 20px}
+    .hero h1{font-size:23px;gap:8px}
+    .ball{font-size:22px}
+    .hero .sub{font-size:12.5px;margin-top:6px}
+    .stat{min-width:0;flex:1 1 calc(50% - 7px);padding:8px 11px}
+    .stat .v{font-size:18px}
+    .refresh{margin-left:0;width:100%;justify-content:space-between;margin-top:2px}
+    .tabs{gap:6px}
+    .tab{padding:8px 13px;font-size:13px}
+    .goldlink{margin-left:0;width:100%;text-align:center;margin-top:2px}
+    .legend{font-size:11px;gap:6px 10px}
+    .legend .sc{margin-left:0;width:100%;order:9}
+    .lb th,.lb td{padding:9px 6px}
+    .lb th{font-size:10px}
+    .rank{width:22px;font-size:14px}
+    .who .bn{font-size:13.5px} .who .rn{font-size:11.5px}
+    .champ-chip{font-size:11px;padding:2px 6px;gap:4px}
+    .pts-cell{font-size:16px}
+    .bar{min-width:46px}
+    .grp-grid{grid-template-columns:1fr}
+  }
   .ins h3{margin:0 0 12px;font-size:15px}
   .pop{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13.5px}
   .pop .lab{width:130px;display:flex;align-items:center;gap:6px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -506,11 +529,18 @@ function refreshHero(){
 
 /* ----- live load ----- */
 function renderAll(){ renderLeaderboard(); renderScores(); renderInsights(); refreshHero(); }
+let lastRendered=null;
 async function loadLive(manual){
   const rb=document.getElementById("refreshBtn"); if(rb&&manual){rb.disabled=true;rb.textContent="↻ …";}
   try{
     const r=await fetch("results.json?t="+Date.now(),{cache:"no-store"});
-    if(r.ok){ ingest(await r.json()); renderAll(); }
+    if(r.ok){
+      ingest(await r.json());
+      // only rebuild the board when the data actually changed (keeps expanded rows from
+      // collapsing on every 2-min poll / tab refocus); otherwise just tick the header.
+      if(manual || results.updated!==lastRendered){ lastRendered=results.updated; renderAll(); }
+      else refreshHero();
+    }
   }catch(e){ /* keep seed data; offline or file:// */ }
   finally{ const b=document.getElementById("refreshBtn"); if(b){b.disabled=false;b.textContent="↻ Refresh";} }
 }
