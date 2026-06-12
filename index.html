@@ -153,7 +153,7 @@
           <span><i class="seg-qual"></i>3rd-place qualifiers</span>
           <span><i class="seg-champ"></i>Champion</span>
           <span><i class="seg-boot"></i>Golden Boot</span>
-          <span class="sc">Scoring: exact spot <b>3</b> · qualifier <b>4</b> · champion <b>25</b> · boot <b>15</b></span>
+          <span class="sc">Group: 1st <b>3</b> · 2nd <b>3</b> · 3rd <b>2</b> · 4th <b>1</b> · advancing 3rd <b>2</b> · winner <b>15</b> · boot <b>7</b></span>
         </div>
         <table class="lb">
           <thead><tr><th>#</th><th>Bracket</th><th>Champion pick</th><th style="text-align:right">Points</th></tr></thead>
@@ -166,6 +166,35 @@
     <section id="tab-scores" hidden>
       <div class="card pad">
         <div class="note" id="scoreNote"></div>
+        <details style="margin:0 0 16px;border:1px solid var(--line);border-radius:10px;background:#fff">
+          <summary style="cursor:pointer;padding:11px 14px;font-weight:700">📖 Full scoring system</summary>
+          <div style="padding:0 14px 14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px">
+            <div>
+              <div style="font-weight:800;margin:6px 0 8px">Group stage <span style="font-size:11px;color:var(--green);border:1px solid #bfe9cf;background:#e9f8ef;border-radius:999px;padding:1px 7px;font-weight:700">active now</span></div>
+              <div style="font-size:13.5px;line-height:1.95">
+                <div><b>3</b> — each 1st-place team correct</div>
+                <div><b>3</b> — each 2nd-place team correct</div>
+                <div><b>2</b> — each 3rd-place team correct</div>
+                <div><b>1</b> — each 4th-place team correct</div>
+                <div><b>2</b> — each 3rd-place team you call into the Round of 32</div>
+                <div><b>15</b> — Tournament Winner (picked pre-tournament)</div>
+                <div><b>7</b> — Golden Boot winner</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-weight:800;margin:6px 0 8px">Knockout stage <span style="font-size:11px;color:var(--muted);border:1px solid var(--line);background:#f1f5f9;border-radius:999px;padding:1px 7px;font-weight:700">added with bracket picks</span></div>
+              <div style="font-size:13.5px;line-height:1.95;color:var(--muted)">
+                <div><b>3</b> — each Round of 16 pick correct</div>
+                <div><b>5</b> — each Quarterfinal pick correct</div>
+                <div><b>7</b> — each Semifinal pick correct</div>
+                <div><b>10</b> — Champion correct (25 combined with the pre-tournament guess)</div>
+                <div><b>1</b> — Third-place match winner</div>
+                <div><b>7</b> — Golden Ball winner</div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:0 14px 12px;font-size:12.5px;color:var(--muted)">Tiebreaker: total tournament goals.</div>
+        </details>
         <div class="secthead">📋 Group tables <span style="font-weight:500;color:var(--muted);font-size:13px">— live, computed from match results</span></div>
         <div class="grp-grid" id="grpTables"></div>
         <div class="mleg" style="margin-top:12px"><span><i style="background:#dff3e6"></i>Top 2 → Round of 32</span><span><i style="background:#fff3cf"></i>3rd → qualifier race</span></div>
@@ -321,7 +350,10 @@
 <script>
 (function(){
 "use strict";
-const WEIGHTS={exact:3,qualifier:4,champion:25,boot:15};
+// Official EMSA scoring. Group placings score by position; knockout values are
+// added once the bracket-picks CSV is in.
+const GROUP_PTS={1:3,2:3,3:2,4:1};          // 1st 3, 2nd 3, 3rd 2, 4th 1
+const WEIGHTS={qualifier:2,champion:15,boot:7};  // 3rd-place advancing 2, pre-tournament winner 15, golden boot 7
 const GROUPS={A:["Mexico","South Africa","Korea Republic","Czechia"],B:["Canada","Bosnia-Herzegovina","Qatar","Switzerland"],C:["Brazil","Morocco","Haiti","Scotland"],D:["USA","Paraguay","Australia","Türkiye"],E:["Germany","Curaçao","Ivory Coast","Ecuador"],F:["Netherlands","Japan","Sweden","Tunisia"],G:["Belgium","Egypt","Iran","New Zealand"],H:["Spain","Cape Verde","Saudi Arabia","Uruguay"],I:["France","Senegal","Iraq","Norway"],J:["Argentina","Algeria","Austria","Jordan"],K:["Portugal","DR Congo","Uzbekistan","Colombia"],L:["England","Croatia","Ghana","Panama"]};
 const GL=Object.keys(GROUPS);
 const FLAG={"Mexico":"🇲🇽","South Africa":"🇿🇦","Korea Republic":"🇰🇷","Czechia":"🇨🇿","Canada":"🇨🇦","Bosnia-Herzegovina":"🇧🇦","Qatar":"🇶🇦","Switzerland":"🇨🇭","Brazil":"🇧🇷","Morocco":"🇲🇦","Haiti":"🇭🇹","Scotland":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","USA":"🇺🇸","Paraguay":"🇵🇾","Australia":"🇦🇺","Türkiye":"🇹🇷","Germany":"🇩🇪","Curaçao":"🇨🇼","Ivory Coast":"🇨🇮","Ecuador":"🇪🇨","Netherlands":"🇳🇱","Japan":"🇯🇵","Sweden":"🇸🇪","Tunisia":"🇹🇳","Belgium":"🇧🇪","Egypt":"🇪🇬","Iran":"🇮🇷","New Zealand":"🇳🇿","Spain":"🇪🇸","Cape Verde":"🇨🇻","Saudi Arabia":"🇸🇦","Uruguay":"🇺🇾","France":"🇫🇷","Senegal":"🇸🇳","Iraq":"🇮🇶","Norway":"🇳🇴","Argentina":"🇦🇷","Algeria":"🇩🇿","Austria":"🇦🇹","Jordan":"🇯🇴","Portugal":"🇵🇹","DR Congo":"🇨🇩","Uzbekistan":"🇺🇿","Colombia":"🇨🇴","England":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","Croatia":"🇭🇷","Ghana":"🇬🇭","Panama":"🇵🇦"};
@@ -359,7 +391,7 @@ try{ ingest(JSON.parse(document.getElementById("seed").textContent)); }catch(e){
 function groupComplete(g){ return !!(results.complete && results.complete[g]); }
 function scoreOf(p){
   let gp=0,qp=0,cp=0,bp=0,exact=0,qh=0;
-  GL.forEach(g=>GROUPS[g].forEach(t=>{ const a=results.standings[g][t]; if(a&&p.picks[g][t]===a){gp+=WEIGHTS.exact;exact++;} }));
+  GL.forEach(g=>GROUPS[g].forEach(t=>{ const a=results.standings[g][t]; if(a&&p.picks[g][t]===a){gp+=GROUP_PTS[a];exact++;} }));
   const set=new Set(results.thirds);
   p.thirds.forEach(t=>{ if(set.has(t)){qp+=WEIGHTS.qualifier;qh++;} });
   if(results.champion&&p.champion===results.champion) cp=WEIGHTS.champion;
