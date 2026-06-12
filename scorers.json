@@ -1,13 +1,21 @@
 {
-  "updated": "2026-06-12T19:15:07.463Z",
+  "updated": "2026-06-12T19:32:53.813Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 2,
-  "totalGoals": 5,
+  "totalGoals": 6,
   "scorers": [
     {
       "name": "Hwang In-Beom",
       "team": "Korea Republic",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 1
+    },
+    {
+      "name": "Jovo Lukic",
+      "team": "Bosnia-Herzegovina",
       "goals": 1,
       "pens": 0,
       "assists": 0,
