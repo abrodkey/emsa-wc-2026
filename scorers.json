@@ -1,10 +1,18 @@
 {
-  "updated": "2026-06-12T20:09:09.143Z",
+  "updated": "2026-06-12T21:20:36.632Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 2,
-  "totalGoals": 6,
+  "matchesPlayed": 3,
+  "totalGoals": 7,
   "scorers": [
+    {
+      "name": "Cyle Larin",
+      "team": "Canada",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 1
+    },
     {
       "name": "Hwang In-Beom",
       "team": "Korea Republic",
