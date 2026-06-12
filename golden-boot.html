@@ -145,12 +145,12 @@ const NORM_POOL=new Map(POOL_TEAMS.map(t=>[normTeam(t),t]));
 function mapTeam(cands){for(const c of cands){if(!c)continue;if(POOL_SET.has(c))return c;if(ESPN_ALIAS[c])return ESPN_ALIAS[c];}for(const c of cands){if(!c)continue;const h=NORM_POOL.get(normTeam(c));if(h)return h;}return cands.find(Boolean)||"";}
 async function computeScorersFromESPN(){
   const j=await (await fetch("https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=1000",{cache:"no-store"})).json();
-  const idToTeam={},tally=new Map();let goals=0,played=0;
+  const idToTeam={},tally=new Map();let goals=0,played=0,live=false;
   const rec=(id,name,team,isPen,isAssist)=>{if(!name)return;const key=id||(name+"|"+team);let e=tally.get(key);if(!e){e={name,team,goals:0,pens:0,assists:0};tally.set(key,e);}if(isAssist)e.assists++;else{e.goals++;if(isPen)e.pens++;}};
   for(const ev of (j.events||[])){
     const comp=ev.competitions&&ev.competitions[0];if(!comp)continue;
     const state=ev.status&&ev.status.type&&ev.status.type.state;if(state!=="post"&&state!=="in")continue;
-    if(state==="post")played++;
+    if(state==="post")played++; else live=true;
     for(const c of (comp.competitors||[])) if(c.team&&c.team.id) idToTeam[c.team.id]=mapTeam([c.team.displayName,c.team.shortDisplayName,c.team.name,c.team.location]);
     for(const det of (comp.details||[])){
       if(!det.scoringPlay||det.ownGoal)continue;
@@ -162,11 +162,11 @@ async function computeScorersFromESPN(){
   }
   const scorers=[...tally.values()].filter(e=>e.goals>0).sort((a,b)=>b.goals-a.goals||(b.goals-b.pens)-(a.goals-a.pens)||b.assists-a.assists||a.name.localeCompare(b.name));
   let rank=0,prev=null,seen=0;scorers.forEach(e=>{seen++;if(prev===null||e.goals!==prev){rank=seen;prev=e.goals;}e.rank=rank;});
-  return {updated:new Date().toISOString(),scorers,totalGoals:goals,matchesPlayed:played};
+  return {updated:new Date().toISOString(),scorers,totalGoals:goals,matchesPlayed:played,live};
 }
 
 let data={scorers:[],updated:null,totalGoals:0,matchesPlayed:0};
-function ingest(d){ if(d&&Array.isArray(d.scorers)) data={scorers:d.scorers,updated:d.updated,totalGoals:d.totalGoals||0,matchesPlayed:d.matchesPlayed||0}; }
+function ingest(d){ if(d&&Array.isArray(d.scorers)) data={scorers:d.scorers,updated:d.updated,totalGoals:d.totalGoals||0,matchesPlayed:d.matchesPlayed||0,live:!!d.live}; }
 try{ ingest(JSON.parse(document.getElementById("seed").textContent)); }catch(e){}
 
 function relTime(iso){ if(!iso)return "—"; const s=(Date.now()-new Date(iso).getTime())/1000; if(s<90)return "just now"; if(s<3600)return Math.round(s/60)+" min ago"; if(s<86400)return Math.round(s/3600)+"h ago"; return Math.round(s/86400)+"d ago"; }
@@ -219,11 +219,12 @@ async function load(manual){
   catch(e){ /* ESPN unreachable -> keep seed/last data */ }
   finally{ const b=document.getElementById("refreshBtn"); if(b){b.disabled=false;b.textContent="↻ Refresh";} }
 }
-render(); load(false);
-setInterval(()=>load(false), 120*1000);            // poll the feed every 2 min
+let pollT=null;
+function scheduleNext(){ clearTimeout(pollT); pollT=setTimeout(()=>load(false).then(scheduleNext), data.live?30*1000:120*1000); }
+render(); load(false).then(scheduleNext);
 setInterval(render, 30*1000);                      // keep the "Updated X ago" label ticking live
-document.addEventListener("visibilitychange",()=>{ if(!document.hidden) load(false); });
-window.addEventListener("focus",()=>load(false));
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) load(false).then(scheduleNext); });
+window.addEventListener("focus",()=>load(false).then(scheduleNext));
 })();
 </script>
 </body>

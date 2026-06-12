@@ -490,14 +490,14 @@ function relTime(iso){ if(!iso)return "—"; const d=(Date.now()-new Date(iso).g
 function renderScores(){
   const note=document.getElementById("scoreNote");
   const nMatch=results.matches.length, played=results.matches.filter(m=>m.state==="post").length;
-  note.innerHTML=`Updated <b>${relTime(results.updated)}</b> from the live ESPN feed · ${played} match${played===1?"":"es"} final${nMatch>played?`, ${nMatch-played} live`:""}. A group starts <b>counting</b> once every team has played its first match, scores update live as positions shift, and <b>locks</b> when the group is final.`;
+  note.innerHTML=`Updated <b>${relTime(results.updated)}</b> from the live ESPN feed · ${played} match${played===1?"":"es"} final${nMatch>played?`, ${nMatch-played} live`:""}. Each team's position starts <b>counting</b> the moment its match is decided — final, or live once a goal is scored — so points move with the live score and <b>lock</b> when the group is final.`;
   document.getElementById("grpTables").innerHTML=GL.map(g=>{
     const meta=results.tableMeta&&results.tableMeta[g];
     if(!meta||!meta.length) return `<div class="grp-card"><h4>Group ${g}</h4><div style="color:var(--muted);font-size:13px;padding:6px 2px">No matches played yet.</div></div>`;
     const rows=meta.map((e,i)=>`<tr class="${i<2?'adv':(i===2?'maybe':'')}"><td>${i+1}</td><td>${fl(e.team)} ${esc(e.team)}</td><td>${e.P}</td><td>${e.W}-${e.D}-${e.L}</td><td>${e.GD>0?'+':''}${e.GD}</td><td><b>${e.Pts}</b></td></tr>`).join("");
     const badge = groupComplete(g) ? '<span class="done">● FINAL</span>'
       : (results.scoring&&results.scoring[g]) ? '<span class="live">● LIVE · counting</span>'
-      : '<span style="color:var(--muted);font-weight:800;font-size:11px">○ awaiting full round</span>';
+      : '<span style="color:var(--muted);font-weight:800;font-size:11px">○ not counting yet</span>';
     return `<div class="grp-card"><h4>Group ${g} ${badge}</h4><table class="mini"><thead><tr><th></th><th>Team</th><th>P</th><th>W-D-L</th><th>GD</th><th>Pts</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }).join("");
   const fx=results.matches.slice().sort((a,b)=>new Date(a.date)-new Date(b.date));
@@ -530,7 +530,7 @@ function refreshHero(){
     <div class="stat"><div class="k">Groups final</div><div class="v">${groupsDone} / 12</div></div>
     <div class="stat"><div class="k">Current leader</div><div class="v">${leader?esc(leader.p.bracket):"—"}</div></div>
     <div class="stat"><div class="k">Top score</div><div class="v">${leader?leader.s.total+" pts":"—"}</div></div>
-    <div class="refresh"><div class="upd">Updated ${relTime(results.updated)}<br><span style="opacity:.75">updates automatically every 2 min</span></div></div>`;
+    <div class="refresh"><div class="upd">Updated ${relTime(results.updated)}<br><span style="opacity:.75">${anyLive()?"🔴 live — refreshing every ~30s":"updates automatically every ~2 min"}</span></div></div>`;
 }
 
 /* ----- live load ----- */
@@ -570,13 +570,19 @@ async function computeFromESPN(){
   }
   let ov={}; try{ov=await (await fetch("overrides.json?t="+Date.now(),{cache:"no-store"})).json();}catch(e){}
   const standings={},complete={},scoring={},tableMeta={};
+  // a match is "decided" (counts toward the table) once it's final OR live with a goal scored;
+  // a live 0-0 (or a match not yet kicked off) does not move the table.
+  const decided=m=>m.state==="post"||(m.state==="in"&&(m.hs+m.as)>0);
   for(const g of GL){
-    const gm=matches.filter(m=>m.group===g); if(!gm.length)continue;
-    const tbl=tableFor(GROUPS[g],gm);
+    const all=matches.filter(m=>m.group===g); if(!all.length)continue;
+    const gm=all.filter(decided);                       // only decided matches affect the standings
+    const tbl=tableFor(GROUPS[g],gm);                   // all 4 teams; teams with no decided match sit at 0-0-0
     tableMeta[g]=tbl.map(e=>({team:e.t,P:e.P,W:e.W,D:e.D,L:e.L,GF:e.GF,GA:e.GA,GD:e.GD,Pts:e.Pts}));
-    complete[g]=gm.filter(m=>m.state==="post").length>=6;
-    const pp={};GROUPS[g].forEach(t=>pp[t]=0);gm.forEach(m=>{if(m.state==="post"){pp[m.home]++;pp[m.away]++;}});
-    if(GROUPS[g].every(t=>pp[t]>=1)){scoring[g]=true;standings[g]={};tbl.forEach((e,i)=>standings[g][e.t]=i+1);}
+    complete[g]=all.filter(m=>m.state==="post").length>=6;
+    const played={};GROUPS[g].forEach(t=>played[t]=0);gm.forEach(m=>{played[m.home]++;played[m.away]++;});
+    standings[g]={};
+    tbl.forEach((e,i)=>{ if(played[e.t]>0) standings[g][e.t]=i+1; });   // count a team's position only once its match is decided
+    if(Object.keys(standings[g]).length) scoring[g]=true; else delete standings[g];
   }
   if(ov.standings)for(const g of GL){if(ov.standings[g]&&Object.keys(ov.standings[g]).length){standings[g]={...ov.standings[g]};scoring[g]=true;}}
   let thirds=ov.thirds&&ov.thirds.length?ov.thirds.slice():[];
@@ -605,12 +611,15 @@ async function loadLive(manual){
 
 document.querySelectorAll(".tab").forEach(t=>{t.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");const id=t.getAttribute("data-tab");["leaderboard","scores","insights"].forEach(s=>{document.getElementById("tab-"+s).hidden=(s!==id);});});});
 
+// poll fast (30s) while any match is live, relaxed (2 min) otherwise
+function anyLive(){ return (results.matches||[]).some(m=>m.state==="in"); }
+let pollT=null;
+function scheduleNext(){ clearTimeout(pollT); pollT=setTimeout(()=>loadLive(false).then(scheduleNext), anyLive()?30*1000:120*1000); }
 renderAll();
-loadLive(false);
-setInterval(()=>loadLive(false), 120*1000);            // poll the feed every 2 min
+loadLive(false).then(scheduleNext);
 setInterval(refreshHero, 30*1000);                     // keep the "Updated X ago" label ticking live
-document.addEventListener("visibilitychange",()=>{ if(!document.hidden) loadLive(false); }); // refresh the moment the tab is re-opened
-window.addEventListener("focus",()=>loadLive(false));
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) loadLive(false).then(scheduleNext); }); // refresh the moment the tab is re-opened
+window.addEventListener("focus",()=>loadLive(false).then(scheduleNext));
 })();
 </script>
 </body>
