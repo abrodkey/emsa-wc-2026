@@ -37,6 +37,8 @@
   .tab{border:1px solid var(--line);background:var(--card);color:var(--muted);padding:9px 16px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px;transition:all .15s}
   .tab:hover{color:var(--ink);border-color:#cdd6e0}
   .tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .goldlink{margin-left:auto;align-self:center;text-decoration:none;font-weight:700;font-size:14px;color:var(--gold-d);background:#fdf4d6;border:1px solid #f3e2a6;padding:9px 16px;border-radius:999px;transition:all .15s}
+  .goldlink:hover{background:#fbecbf;border-color:#e9cf78}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
   section[hidden]{display:none}
   .podium{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px}
@@ -139,6 +141,7 @@
       <button class="tab active" data-tab="leaderboard">🏆 Leaderboard</button>
       <button class="tab" data-tab="scores">🥅 Scores &amp; Tables</button>
       <button class="tab" data-tab="insights">📊 League Insights</button>
+      <a class="goldlink" href="golden-boot.html">🥇 Golden Boot Race →</a>
     </div>
 
     <section id="tab-leaderboard">

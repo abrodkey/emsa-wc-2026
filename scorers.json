@@ -1,0 +1,49 @@
+{
+  "updated": "2026-06-12T16:23:56.974Z",
+  "season": "2026 FIFA World Cup",
+  "source": "ESPN fifa.world feed",
+  "matchesPlayed": 2,
+  "totalGoals": 5,
+  "scorers": [
+    {
+      "name": "Hwang In-Beom",
+      "team": "Korea Republic",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 1
+    },
+    {
+      "name": "Julián Quiñones",
+      "team": "Mexico",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 1
+    },
+    {
+      "name": "Ladislav Krejcí",
+      "team": "Czechia",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 1
+    },
+    {
+      "name": "Oh Hyeon-Gyu",
+      "team": "Korea Republic",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 1
+    },
+    {
+      "name": "Raúl Jiménez",
+      "team": "Mexico",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 1
+    }
+  ]
+}
