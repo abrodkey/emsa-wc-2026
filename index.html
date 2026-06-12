@@ -43,7 +43,7 @@
   section[hidden]{display:none}
   .podium{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px}
   .pod{padding:16px;border-radius:16px;color:#fff;position:relative;overflow:hidden;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end}
-  .pod.first{background:linear-gradient(160deg,#f7c61e,#d99500);transform:translateY(-6px)}
+  .pod.first{background:linear-gradient(160deg,#f7c61e,#d99500)}
   .pod.second{background:linear-gradient(160deg,#b9c3cf,#7e8b99)}
   .pod.third{background:linear-gradient(160deg,#d98b54,#a85f30)}
   .pod .medal{position:absolute;top:10px;right:14px;font-size:30px;opacity:.95}
@@ -118,9 +118,11 @@
     .hero h1{font-size:23px;gap:8px}
     .ball{font-size:22px}
     .hero .sub{font-size:12.5px;margin-top:6px}
+    .phase{display:block;width:fit-content;margin:0 0 8px}
     .stat{min-width:0;flex:1 1 calc(50% - 7px);padding:8px 11px}
     .stat .v{font-size:18px}
-    .refresh{margin-left:0;width:100%;justify-content:space-between;margin-top:2px}
+    .refresh{margin-left:0;width:100%;justify-content:flex-start;margin-top:4px}
+    .upd{text-align:left}
     .tabs{gap:6px}
     .tab{padding:8px 13px;font-size:13px}
     .goldlink{margin-left:0;width:100%;text-align:center;margin-top:2px}
@@ -449,7 +451,7 @@ function renderLeaderboard(){
   const maxTotal=Math.max(1,...arr.map(o=>o.s.total));
   const pod=document.getElementById("podium");
   if(anyResults()){
-    const cls=["first","second","third"],pos=["1st","2nd","3rd"],med=["🥇","🥈","🥉"],order=[1,0,2];
+    const cls=["first","second","third"],pos=["1st","2nd","3rd"],med=["🥇","🥈","🥉"],order=[0,1,2];
     pod.style.display="grid";
     pod.innerHTML=order.map(i=>{const o=arr[i];if(!o)return "";return `<div class="pod ${cls[i]}"><span class="medal">${med[i]}</span><div class="pos">${pos[i]} place</div><div class="nm">${esc(o.p.bracket)}</div><div class="who">${esc(o.p.name)}</div><div class="pts">${o.s.total}<small> pts</small></div></div>`;}).join("");
   }else{pod.style.display="none";pod.innerHTML="";}
@@ -523,8 +525,7 @@ function refreshHero(){
     <div class="stat"><div class="k">Groups final</div><div class="v">${groupsDone} / 12</div></div>
     <div class="stat"><div class="k">Current leader</div><div class="v">${leader?esc(leader.p.bracket):"—"}</div></div>
     <div class="stat"><div class="k">Top score</div><div class="v">${leader?leader.s.total+" pts":"—"}</div></div>
-    <div class="refresh"><div class="upd">Updated ${relTime(results.updated)}<br><span style="opacity:.75">checks for new scores every 2 min</span></div><button class="rbtn" id="refreshBtn">↻ Refresh</button></div>`;
-  const rb=document.getElementById("refreshBtn"); if(rb) rb.addEventListener("click",()=>loadLive(true));
+    <div class="refresh"><div class="upd">Updated ${relTime(results.updated)}<br><span style="opacity:.75">updates automatically every 2 min</span></div></div>`;
 }
 
 /* ----- live load ----- */

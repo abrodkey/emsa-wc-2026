@@ -172,8 +172,7 @@ function render(){
     <div class="stat"><div class="k">Scorers</div><div class="v">${sc.length}</div></div>
     <div class="stat"><div class="k">Leader</div><div class="v">${sc.length?esc(sc[0].name.split(" ").slice(-1)[0])+" · "+sc[0].goals:"—"}</div></div>
     <div class="stat"><div class="k">Pool favorite</div><div class="v">🎯 ${esc(topBacked.name.split(" ").slice(-1)[0])} (${topBacked.n})</div></div>
-    <div class="refresh"><div class="upd">Updated ${relTime(data.updated)}<br><span style="opacity:.8">checks for new scores every 2 min</span></div><button class="rbtn" id="refreshBtn">↻ Refresh</button></div>`;
-  document.getElementById("refreshBtn").addEventListener("click",()=>load(true));
+    <div class="refresh"><div class="upd">Updated ${relTime(data.updated)}<br><span style="opacity:.8">updates automatically every 2 min</span></div></div>`;
 
   const lead=document.getElementById("leaders");
   if(sc.length){
