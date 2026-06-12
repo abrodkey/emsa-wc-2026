@@ -144,7 +144,7 @@ function render(){
     <div class="stat"><div class="k">Scorers</div><div class="v">${sc.length}</div></div>
     <div class="stat"><div class="k">Leader</div><div class="v">${sc.length?esc(sc[0].name.split(" ").slice(-1)[0])+" · "+sc[0].goals:"—"}</div></div>
     <div class="stat"><div class="k">Pool favorite</div><div class="v">🎯 ${esc(topBacked.name.split(" ").slice(-1)[0])} (${topBacked.n})</div></div>
-    <div class="refresh"><div class="upd">Updated ${relTime(data.updated)}<br><span style="opacity:.8">auto-refreshes every 10 min</span></div><button class="rbtn" id="refreshBtn">↻ Refresh</button></div>`;
+    <div class="refresh"><div class="upd">Updated ${relTime(data.updated)}<br><span style="opacity:.8">checks for new scores every 2 min</span></div><button class="rbtn" id="refreshBtn">↻ Refresh</button></div>`;
   document.getElementById("refreshBtn").addEventListener("click",()=>load(true));
 
   const lead=document.getElementById("leaders");
@@ -178,7 +178,11 @@ async function load(manual){
   catch(e){}
   finally{ const b=document.getElementById("refreshBtn"); if(b){b.disabled=false;b.textContent="↻ Refresh";} }
 }
-render(); load(false); setInterval(()=>load(false), 600*1000);
+render(); load(false);
+setInterval(()=>load(false), 120*1000);            // poll the feed every 2 min
+setInterval(render, 30*1000);                      // keep the "Updated X ago" label ticking live
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) load(false); });
+window.addEventListener("focus",()=>load(false));
 })();
 </script>
 </body>

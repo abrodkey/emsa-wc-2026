@@ -500,7 +500,7 @@ function refreshHero(){
     <div class="stat"><div class="k">Groups final</div><div class="v">${groupsDone} / 12</div></div>
     <div class="stat"><div class="k">Current leader</div><div class="v">${leader?esc(leader.p.bracket):"—"}</div></div>
     <div class="stat"><div class="k">Top score</div><div class="v">${leader?leader.s.total+" pts":"—"}</div></div>
-    <div class="refresh"><div class="upd">Updated ${relTime(results.updated)}<br><span style="opacity:.75">auto-refreshes every 10 min</span></div><button class="rbtn" id="refreshBtn">↻ Refresh</button></div>`;
+    <div class="refresh"><div class="upd">Updated ${relTime(results.updated)}<br><span style="opacity:.75">checks for new scores every 2 min</span></div><button class="rbtn" id="refreshBtn">↻ Refresh</button></div>`;
   const rb=document.getElementById("refreshBtn"); if(rb) rb.addEventListener("click",()=>loadLive(true));
 }
 
@@ -519,7 +519,10 @@ document.querySelectorAll(".tab").forEach(t=>{t.addEventListener("click",()=>{do
 
 renderAll();
 loadLive(false);
-setInterval(()=>loadLive(false), 600*1000);
+setInterval(()=>loadLive(false), 120*1000);            // poll the feed every 2 min
+setInterval(refreshHero, 30*1000);                     // keep the "Updated X ago" label ticking live
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) loadLive(false); }); // refresh the moment the tab is re-opened
+window.addEventListener("focus",()=>loadLive(false));
 })();
 </script>
 </body>
