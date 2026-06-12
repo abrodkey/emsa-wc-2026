@@ -148,19 +148,20 @@ function backing(name){ const n=norm(name); for(const k in POOL_BOOT){ if(n.incl
 // each bracket's Golden Boot pick (from the pool CSV): [{b:bracket, k:bootKey}, ...]
 const BRACKET_BOOT=(()=>{ try{ return JSON.parse(document.getElementById("brackets").textContent); }catch(e){ return []; } })();
 function scorerKeyOf(name){ const n=norm(name); for(const k in POOL_BOOT){ if(n.includes(k)) return k; } return null; }
-// Standings of pool brackets by how their Golden Boot pick is scoring. Returns null
-// (so the panel hides) until at least one *picked* player has actually scored.
+// For the top-3 scorers (1st/2nd/3rd in the race), show the brackets that picked them.
+// Unpicked top scorers are simply omitted; returns null (panel hidden) if none of the
+// top 3 were picked by anyone.
 function poolStandings(){
-  const keyScorer={};                                   // best current scorer per picked player-key
-  for(const s of data.scorers){ const k=scorerKeyOf(s.name); if(k && (!keyScorer[k]||s.goals>keyScorer[k].goals)) keyScorer[k]=s; }
-  const groups={};
-  for(const br of BRACKET_BOOT){ const sc=keyScorer[br.k]; if(sc && sc.goals>0){ (groups[br.k]=groups[br.k]||{scorer:sc,brackets:[]}).brackets.push(br.b); } }
-  const arr=Object.values(groups).sort((a,b)=> b.scorer.goals-a.scorer.goals || b.brackets.length-a.brackets.length || a.scorer.name.localeCompare(b.scorer.name));
-  const topGoals=Math.max(0,...data.scorers.map(s=>s.goals));
-  // hide unless a *picked* player is (tied for) the tournament's top scorer
-  if(!arr.length || arr[0].scorer.goals<topGoals) return null;
-  let rank=0,prev=null,seen=0; arr.forEach(g=>{ seen++; if(prev===null||g.scorer.goals!==prev){rank=seen;prev=g.scorer.goals;} g.rank=rank; });
-  return arr;
+  const rows=[], seen=new Set();
+  for(const s of data.scorers){                  // sorted by goals desc; s.rank = golden-boot position
+    if((s.rank||99)>3 || s.goals<1) continue;     // only the top-3 scoring positions
+    const k=scorerKeyOf(s.name); if(!k||seen.has(k)) continue;
+    const brackets=BRACKET_BOOT.filter(b=>b.k===k).map(b=>b.b);
+    if(!brackets.length) continue;                // nobody in the pool picked this scorer
+    seen.add(k);
+    rows.push({scorer:s, rank:s.rank, brackets});
+  }
+  return rows.length?rows:null;
 }
 function renderPool(){
   const card=document.getElementById("poolCard"), wrap=document.getElementById("poolStandings");

@@ -397,7 +397,7 @@ const PLAYERS=csv.slice(1).filter(r=>r[2]&&r[2].trim()).map(r=>{const picks={};G
 
 /* ----- live results (from feed) ----- */
 function blankStandings(){const s={};GL.forEach(g=>{s[g]={};GROUPS[g].forEach(t=>s[g][t]=null);});return s;}
-let results={standings:blankStandings(),complete:{},scoring:{},tableMeta:{},thirds:[],champion:"",boot:"",eliminated:[],matches:[],updated:null};
+let results={standings:blankStandings(),complete:{},scoring:{},tableMeta:{},thirds:[],champion:"",boot:"",bootLeaders:[],eliminated:[],matches:[],updated:null};
 function ingest(data){
   if(!data) return;
   const s=blankStandings();
@@ -405,9 +405,15 @@ function ingest(data){
   results={
     standings:s, complete:data.complete||{}, scoring:data.scoring||{}, tableMeta:data.tableMeta||{},
     thirds:Array.isArray(data.thirds)?data.thirds.slice():[],
-    champion:data.champion||"", boot:data.boot||"", eliminated:data.eliminated||[],
+    champion:data.champion||"", boot:data.boot||"", bootLeaders:Array.isArray(data.bootLeaders)?data.bootLeaders.slice():[], eliminated:data.eliminated||[],
     matches:Array.isArray(data.matches)?data.matches.slice():[], updated:data.updated||null
   };
+}
+// A bracket's Golden Boot pick "hits" if it matches the final boot (overrides) or, before
+// that, the player currently atop the scoring chart (provisional — ties for the lead all count).
+function bootHit(p){
+  if(results.boot) return bootKey(p.boot)===bootKey(results.boot);
+  return (results.bootLeaders||[]).includes(bootKey(p.boot));
 }
 try{ ingest(JSON.parse(document.getElementById("seed").textContent)); }catch(e){}
 
@@ -419,7 +425,7 @@ function scoreOf(p){
   const set=new Set(results.thirds);
   p.thirds.forEach(t=>{ if(set.has(t)){qp+=WEIGHTS.qualifier;qh++;} });
   if(results.champion&&p.champion===results.champion) cp=WEIGHTS.champion;
-  if(results.boot&&bootKey(p.boot)===bootKey(results.boot)) bp=WEIGHTS.boot;
+  if(bootHit(p)) bp=WEIGHTS.boot;
   return {gp,qp,cp,bp,exact,qh,total:gp+qp+cp+bp};
 }
 function champStatus(p){
@@ -468,8 +474,8 @@ function renderLeaderboard(){
 function detailHTML(o){
   const p=o.p,s=o.s;
   const champTxt=p.champion?`${fl(p.champion)} ${esc(p.champion)} <span style="color:var(--muted)">(${o.cs==="alive"?"still alive":o.cs==="out"?"eliminated":"TBD"}${results.champion?(p.champion===results.champion?" · ✅ correct":" · ❌"):""})</span>`:"—";
-  const bootOK=results.boot&&bootKey(p.boot)===bootKey(results.boot);
-  const bootTxt=`${esc(p.boot||"—")} ${results.boot?(bootOK?"✅":"❌"):""}`;
+  const bootOK=bootHit(p);
+  const bootTxt=`${esc(p.boot||"—")} ${results.boot?(bootOK?"✅":"❌"):(bootOK?"✅ leading":"")}`;
   const sum=`<div class="dsum"><div><b>${s.total}</b> total pts</div><div><b>${s.exact}</b>/48 exact group spots</div><div><b>${s.qh}</b>/8 qualifiers</div><div>Champion: <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div></div>`;
   const grid=GL.map(g=>{
     const teams=GROUPS[g].slice().sort((a,b)=>(p.picks[g][a]||9)-(p.picks[g][b]||9));
@@ -545,11 +551,17 @@ function tableFor(teams,ms){
   return Object.values(st).sort((x,y)=>y.Pts-x.Pts||y.GD-x.GD||y.GF-x.GF||h2h(x,y)||x.t.localeCompare(y.t));
 }
 async function computeFromESPN(){
-  const j=await (await fetch("https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260630&limit=600",{cache:"no-store"})).json();
-  const matches=[];
+  const j=await (await fetch("https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=20260611-20260719&limit=1000",{cache:"no-store"})).json();
+  const matches=[], goalsByName={};
   for(const ev of (j.events||[])){
     const comp=ev.competitions&&ev.competitions[0]; if(!comp)continue;
     const state=ev.status&&ev.status.type&&ev.status.type.state; if(state!=="post"&&state!=="in")continue;
+    // tally goalscorers across ALL matches (group + knockout) for the live Golden Boot leader
+    for(const det of (comp.details||[])){
+      if(!det.scoringPlay||det.ownGoal)continue;
+      const sc=(det.athletesInvolved||[])[0];
+      if(sc&&sc.displayName) goalsByName[sc.displayName]=(goalsByName[sc.displayName]||0)+1;
+    }
     const cs=comp.competitors||[],home=cs.find(c=>c.homeAway==="home")||cs[0],away=cs.find(c=>c.homeAway==="away")||cs[1]; if(!home||!away)continue;
     const ht=mapTeam([home.team&&home.team.displayName,home.team&&home.team.shortDisplayName,home.team&&home.team.name]);
     const at=mapTeam([away.team&&away.team.displayName,away.team&&away.team.shortDisplayName,away.team&&away.team.name]);
@@ -569,9 +581,14 @@ async function computeFromESPN(){
   if(ov.standings)for(const g of GL){if(ov.standings[g]&&Object.keys(ov.standings[g]).length){standings[g]={...ov.standings[g]};scoring[g]=true;}}
   let thirds=ov.thirds&&ov.thirds.length?ov.thirds.slice():[];
   if(GL.every(g=>complete[g])&&!thirds.length){const th=GL.map(g=>(tableMeta[g]||[])[2]).filter(Boolean);th.sort((x,y)=>y.Pts-x.Pts||y.GD-x.GD||y.GF-x.GF||x.team.localeCompare(y.team));thirds=th.slice(0,8).map(e=>e.team);}
-  return {updated:new Date().toISOString(),standings,complete,scoring,tableMeta,thirds,champion:ov.champion||"",boot:ov.boot||"",eliminated:ov.eliminated||[],matches};
+  // current Golden Boot leader(s): boot-pick keys of the player(s) atop the scoring chart
+  const VALID_BOOT=new Set(BOOT_KEYS.map(b=>b[0]));
+  let maxG=0; for(const n in goalsByName) if(goalsByName[n]>maxG) maxG=goalsByName[n];
+  const bootLeaders=[];
+  if(maxG>0) for(const n in goalsByName){ if(goalsByName[n]===maxG){ const k=bootKey(n); if(VALID_BOOT.has(k)&&!bootLeaders.includes(k)) bootLeaders.push(k); } }
+  return {updated:new Date().toISOString(),standings,complete,scoring,tableMeta,thirds,champion:ov.champion||"",boot:ov.boot||"",bootLeaders,eliminated:ov.eliminated||[],matches};
 }
-function dataSig(d){return JSON.stringify([d.standings,d.complete,d.scoring,d.thirds,d.champion,d.boot,d.eliminated,(d.matches||[]).map(m=>[m.group,m.home,m.away,m.hs,m.as,m.state])]);}
+function dataSig(d){return JSON.stringify([d.standings,d.complete,d.scoring,d.thirds,d.champion,d.boot,d.bootLeaders,d.eliminated,(d.matches||[]).map(m=>[m.group,m.home,m.away,m.hs,m.as,m.state])]);}
 let lastSig=null, lastFetchOK=null;
 async function loadLive(manual){
   const rb=document.getElementById("refreshBtn"); if(rb&&manual){rb.disabled=true;rb.textContent="↻ …";}
