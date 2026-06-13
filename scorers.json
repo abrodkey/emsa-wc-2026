@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-13T19:50:43.059Z",
+  "updated": "2026-06-13T21:09:00.537Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 4,
-  "totalGoals": 12,
+  "matchesPlayed": 5,
+  "totalGoals": 13,
   "scorers": [
     {
       "name": "Folarin Balogun",
@@ -12,6 +12,14 @@
       "pens": 0,
       "assists": 0,
       "rank": 1
+    },
+    {
+      "name": "Boualem Khoukhi",
+      "team": "Qatar",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
     },
     {
       "name": "Cyle Larin",
