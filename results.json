@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T18:01:08.220Z",
+  "updated": "2026-06-13T19:50:41.817Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -68,6 +68,17 @@
     ],
     "B": [
       {
+        "team": "Switzerland",
+        "P": 1,
+        "W": 1,
+        "D": 0,
+        "L": 0,
+        "GF": 1,
+        "GA": 0,
+        "GD": 1,
+        "Pts": 3
+      },
+      {
         "team": "Bosnia-Herzegovina",
         "P": 1,
         "W": 0,
@@ -91,24 +102,13 @@
       },
       {
         "team": "Qatar",
-        "P": 0,
+        "P": 1,
         "W": 0,
         "D": 0,
-        "L": 0,
+        "L": 1,
         "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 0
-      },
-      {
-        "team": "Switzerland",
-        "P": 0,
-        "W": 0,
-        "D": 0,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
+        "GA": 1,
+        "GD": -1,
         "Pts": 0
       }
     ],
@@ -203,6 +203,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-13T01:00Z"
+    },
+    {
+      "group": "B",
+      "home": "Qatar",
+      "away": "Switzerland",
+      "hs": 0,
+      "as": 1,
+      "state": "in",
+      "detail": "45'+1'",
+      "date": "2026-06-13T19:00Z"
     }
   ]
 }

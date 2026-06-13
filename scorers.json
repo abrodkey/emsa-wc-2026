@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-13T18:01:13.276Z",
+  "updated": "2026-06-13T19:50:43.059Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 4,
-  "totalGoals": 11,
+  "totalGoals": 12,
   "scorers": [
     {
       "name": "Folarin Balogun",
@@ -82,6 +82,14 @@
       "team": "Mexico",
       "goals": 1,
       "pens": 0,
+      "assists": 0,
+      "rank": 2
+    },
+    {
+      "name": "Breel Embolo",
+      "team": "Switzerland",
+      "goals": 1,
+      "pens": 1,
       "assists": 0,
       "rank": 2
     }
