@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T21:08:59.532Z",
+  "updated": "2026-06-13T22:19:36.450Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -20,6 +20,7 @@
   "complete": {
     "A": false,
     "B": false,
+    "C": false,
     "D": false
   },
   "scoring": {
@@ -117,6 +118,52 @@
         "GA": 1,
         "GD": 0,
         "Pts": 1
+      }
+    ],
+    "C": [
+      {
+        "team": "Brazil",
+        "P": 1,
+        "W": 0,
+        "D": 1,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 1
+      },
+      {
+        "team": "Morocco",
+        "P": 1,
+        "W": 0,
+        "D": 1,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 1
+      },
+      {
+        "team": "Haiti",
+        "P": 0,
+        "W": 0,
+        "D": 0,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 0
+      },
+      {
+        "team": "Scotland",
+        "P": 0,
+        "W": 0,
+        "D": 0,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 0
       }
     ],
     "D": [
@@ -220,6 +267,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-13T19:00Z"
+    },
+    {
+      "group": "C",
+      "home": "Brazil",
+      "away": "Morocco",
+      "hs": 0,
+      "as": 0,
+      "state": "in",
+      "detail": "15'",
+      "date": "2026-06-13T22:00Z"
     }
   ]
 }
