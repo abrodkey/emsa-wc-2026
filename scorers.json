@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-13T22:19:37.195Z",
+  "updated": "2026-06-13T23:38:12.170Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 5,
-  "totalGoals": 13,
+  "totalGoals": 14,
   "scorers": [
     {
       "name": "Folarin Balogun",
@@ -12,14 +12,6 @@
       "pens": 0,
       "assists": 0,
       "rank": 1
-    },
-    {
-      "name": "Boualem Khoukhi",
-      "team": "Qatar",
-      "goals": 1,
-      "pens": 0,
-      "assists": 0,
-      "rank": 2
     },
     {
       "name": "Cyle Larin",
@@ -40,6 +32,14 @@
     {
       "name": "Hwang In-Beom",
       "team": "Korea Republic",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
+    },
+    {
+      "name": "Ismael Saibari",
+      "team": "Morocco",
       "goals": 1,
       "pens": 0,
       "assists": 0,
@@ -88,6 +88,14 @@
     {
       "name": "Raúl Jiménez",
       "team": "Mexico",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
+    },
+    {
+      "name": "Vinícius Júnior",
+      "team": "Brazil",
       "goals": 1,
       "pens": 0,
       "assists": 0,
