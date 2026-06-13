@@ -1,17 +1,33 @@
 {
-  "updated": "2026-06-13T00:24:14.165Z",
+  "updated": "2026-06-13T05:07:56.244Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 3,
-  "totalGoals": 7,
+  "matchesPlayed": 4,
+  "totalGoals": 11,
   "scorers": [
+    {
+      "name": "Folarin Balogun",
+      "team": "USA",
+      "goals": 2,
+      "pens": 0,
+      "assists": 0,
+      "rank": 1
+    },
     {
       "name": "Cyle Larin",
       "team": "Canada",
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
+    },
+    {
+      "name": "Giovanni Reyna",
+      "team": "USA",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
     },
     {
       "name": "Hwang In-Beom",
@@ -19,7 +35,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Jovo Lukic",
@@ -27,7 +43,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Julián Quiñones",
@@ -35,7 +51,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Ladislav Krejcí",
@@ -43,7 +59,15 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
+    },
+    {
+      "name": "Maurício",
+      "team": "Paraguay",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
     },
     {
       "name": "Oh Hyeon-Gyu",
@@ -51,7 +75,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Raúl Jiménez",
@@ -59,7 +83,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     }
   ]
 }
