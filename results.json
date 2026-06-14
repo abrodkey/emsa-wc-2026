@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T18:05:21.222Z",
+  "updated": "2026-06-14T19:58:01.873Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -234,9 +234,9 @@
         "W": 1,
         "D": 0,
         "L": 0,
-        "GF": 3,
+        "GF": 7,
         "GA": 1,
-        "GD": 2,
+        "GD": 6,
         "Pts": 3
       },
       {
@@ -268,8 +268,8 @@
         "D": 0,
         "L": 1,
         "GF": 1,
-        "GA": 3,
-        "GD": -2,
+        "GA": 7,
+        "GD": -6,
         "Pts": 0
       }
     ]
@@ -363,10 +363,10 @@
       "group": "E",
       "home": "Germany",
       "away": "Curaçao",
-      "hs": 3,
+      "hs": 7,
       "as": 1,
-      "state": "in",
-      "detail": "HT",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-14T17:00Z"
     }
   ]

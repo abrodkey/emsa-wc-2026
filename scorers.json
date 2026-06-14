@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-14T18:05:23.640Z",
+  "updated": "2026-06-14T19:58:03.490Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 8,
-  "totalGoals": 21,
+  "matchesPlayed": 9,
+  "totalGoals": 25,
   "scorers": [
     {
       "name": "Folarin Balogun",
@@ -14,12 +14,20 @@
       "rank": 1
     },
     {
+      "name": "Kai Havertz",
+      "team": "Germany",
+      "goals": 2,
+      "pens": 1,
+      "assists": 0,
+      "rank": 1
+    },
+    {
       "name": "Connor Metcalfe",
       "team": "Australia",
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Cyle Larin",
@@ -27,7 +35,15 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
+    },
+    {
+      "name": "Deniz Undav",
+      "team": "Germany",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 3
     },
     {
       "name": "Felix Nmecha",
@@ -35,7 +51,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Giovanni Reyna",
@@ -43,7 +59,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Hwang In-Beom",
@@ -51,7 +67,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Ismael Saibari",
@@ -59,7 +75,15 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
+    },
+    {
+      "name": "Jamal Musiala",
+      "team": "Germany",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 3
     },
     {
       "name": "John McGinn",
@@ -67,7 +91,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Jovo Lukic",
@@ -75,7 +99,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Julián Quiñones",
@@ -83,7 +107,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Ladislav Krejcí",
@@ -91,7 +115,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Livano Comenencia",
@@ -99,7 +123,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Maurício",
@@ -107,7 +131,15 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
+    },
+    {
+      "name": "Nathaniel Brown",
+      "team": "Germany",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 3
     },
     {
       "name": "Nestory Irankunda",
@@ -115,7 +147,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Nico Schlotterbeck",
@@ -123,7 +155,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Oh Hyeon-Gyu",
@@ -131,7 +163,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Raúl Jiménez",
@@ -139,7 +171,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Vinícius Júnior",
@@ -147,7 +179,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 2
+      "rank": 3
     },
     {
       "name": "Breel Embolo",
@@ -155,15 +187,7 @@
       "goals": 1,
       "pens": 1,
       "assists": 0,
-      "rank": 2
-    },
-    {
-      "name": "Kai Havertz",
-      "team": "Germany",
-      "goals": 1,
-      "pens": 1,
-      "assists": 0,
-      "rank": 2
+      "rank": 3
     }
   ]
 }
