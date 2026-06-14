@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T22:45:25.578Z",
+  "updated": "2026-06-14T23:57:24.121Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -242,25 +242,25 @@
       },
       {
         "team": "Ecuador",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
         "GF": 0,
         "GA": 0,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       },
       {
         "team": "Ivory Coast",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
         "GF": 0,
         "GA": 0,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       },
       {
         "team": "Curaçao",
@@ -425,6 +425,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-14T20:00Z"
+    },
+    {
+      "group": "E",
+      "home": "Ivory Coast",
+      "away": "Ecuador",
+      "hs": 0,
+      "as": 0,
+      "state": "in",
+      "detail": "HT",
+      "date": "2026-06-14T23:00Z"
     }
   ]
 }
