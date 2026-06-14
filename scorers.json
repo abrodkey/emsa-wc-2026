@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-14T21:24:00.261Z",
+  "updated": "2026-06-14T22:45:27.244Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 9,
-  "totalGoals": 28,
+  "matchesPlayed": 10,
+  "totalGoals": 29,
   "scorers": [
     {
       "name": "Folarin Balogun",
@@ -40,6 +40,14 @@
     {
       "name": "Cyle Larin",
       "team": "Canada",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 3
+    },
+    {
+      "name": "Daichi Kamada",
+      "team": "Japan",
       "goals": 1,
       "pens": 0,
       "assists": 0,
