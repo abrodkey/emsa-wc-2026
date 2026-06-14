@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-14T19:58:03.490Z",
+  "updated": "2026-06-14T21:24:00.261Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 9,
-  "totalGoals": 25,
+  "totalGoals": 28,
   "scorers": [
     {
       "name": "Folarin Balogun",
@@ -24,6 +24,14 @@
     {
       "name": "Connor Metcalfe",
       "team": "Australia",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 3
+    },
+    {
+      "name": "Crysencio Summerville",
+      "team": "Netherlands",
       "goals": 1,
       "pens": 0,
       "assists": 0,
@@ -110,6 +118,14 @@
       "rank": 3
     },
     {
+      "name": "Keito Nakamura",
+      "team": "Japan",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 3
+    },
+    {
       "name": "Ladislav Krejcí",
       "team": "Czechia",
       "goals": 1,
@@ -176,6 +192,14 @@
     {
       "name": "Vinícius Júnior",
       "team": "Brazil",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 3
+    },
+    {
+      "name": "Virgil van Dijk",
+      "team": "Netherlands",
       "goals": 1,
       "pens": 0,
       "assists": 0,

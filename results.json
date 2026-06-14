@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T19:58:01.873Z",
+  "updated": "2026-06-14T21:23:59.020Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -34,7 +34,8 @@
     "B": false,
     "C": false,
     "D": false,
-    "E": false
+    "E": false,
+    "F": false
   },
   "scoring": {
     "A": true,
@@ -272,6 +273,52 @@
         "GD": -6,
         "Pts": 0
       }
+    ],
+    "F": [
+      {
+        "team": "Netherlands",
+        "P": 1,
+        "W": 1,
+        "D": 0,
+        "L": 0,
+        "GF": 2,
+        "GA": 1,
+        "GD": 1,
+        "Pts": 3
+      },
+      {
+        "team": "Sweden",
+        "P": 0,
+        "W": 0,
+        "D": 0,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 0
+      },
+      {
+        "team": "Tunisia",
+        "P": 0,
+        "W": 0,
+        "D": 0,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 0
+      },
+      {
+        "team": "Japan",
+        "P": 1,
+        "W": 0,
+        "D": 0,
+        "L": 1,
+        "GF": 1,
+        "GA": 2,
+        "GD": -1,
+        "Pts": 0
+      }
     ]
   },
   "thirds": [],
@@ -368,6 +415,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-14T17:00Z"
+    },
+    {
+      "group": "F",
+      "home": "Netherlands",
+      "away": "Japan",
+      "hs": 2,
+      "as": 1,
+      "state": "in",
+      "detail": "65'",
+      "date": "2026-06-14T20:00Z"
     }
   ]
 }
