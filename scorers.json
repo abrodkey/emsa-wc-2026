@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-13T23:38:12.170Z",
+  "updated": "2026-06-14T02:01:14.576Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 5,
-  "totalGoals": 14,
+  "matchesPlayed": 6,
+  "totalGoals": 15,
   "scorers": [
     {
       "name": "Folarin Balogun",
@@ -40,6 +40,14 @@
     {
       "name": "Ismael Saibari",
       "team": "Morocco",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
+    },
+    {
+      "name": "John McGinn",
+      "team": "Scotland",
       "goals": 1,
       "pens": 0,
       "assists": 0,
