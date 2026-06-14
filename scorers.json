@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-14T02:01:14.576Z",
+  "updated": "2026-06-14T06:55:08.103Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 6,
-  "totalGoals": 15,
+  "matchesPlayed": 8,
+  "totalGoals": 17,
   "scorers": [
     {
       "name": "Folarin Balogun",
@@ -12,6 +12,14 @@
       "pens": 0,
       "assists": 0,
       "rank": 1
+    },
+    {
+      "name": "Connor Metcalfe",
+      "team": "Australia",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
     },
     {
       "name": "Cyle Larin",
@@ -80,6 +88,14 @@
     {
       "name": "Maurício",
       "team": "Paraguay",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
+    },
+    {
+      "name": "Nestory Irankunda",
+      "team": "Australia",
       "goals": 1,
       "pens": 0,
       "assists": 0,
