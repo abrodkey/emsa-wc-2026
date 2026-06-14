@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-14T16:44:00.558Z",
+  "updated": "2026-06-14T18:05:23.640Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 8,
-  "totalGoals": 17,
+  "totalGoals": 21,
   "scorers": [
     {
       "name": "Folarin Balogun",
@@ -24,6 +24,14 @@
     {
       "name": "Cyle Larin",
       "team": "Canada",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
+    },
+    {
+      "name": "Felix Nmecha",
+      "team": "Germany",
       "goals": 1,
       "pens": 0,
       "assists": 0,
@@ -86,6 +94,14 @@
       "rank": 2
     },
     {
+      "name": "Livano Comenencia",
+      "team": "Curaçao",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
+    },
+    {
       "name": "Maurício",
       "team": "Paraguay",
       "goals": 1,
@@ -96,6 +112,14 @@
     {
       "name": "Nestory Irankunda",
       "team": "Australia",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
+    },
+    {
+      "name": "Nico Schlotterbeck",
+      "team": "Germany",
       "goals": 1,
       "pens": 0,
       "assists": 0,
@@ -128,6 +152,14 @@
     {
       "name": "Breel Embolo",
       "team": "Switzerland",
+      "goals": 1,
+      "pens": 1,
+      "assists": 0,
+      "rank": 2
+    },
+    {
+      "name": "Kai Havertz",
+      "team": "Germany",
       "goals": 1,
       "pens": 1,
       "assists": 0,
