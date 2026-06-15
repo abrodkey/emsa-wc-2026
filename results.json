@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T11:29:12.491Z",
+  "updated": "2026-06-15T16:30:41.060Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -47,7 +47,8 @@
     "C": false,
     "D": false,
     "E": false,
-    "F": false
+    "F": false,
+    "H": false
   },
   "scoring": {
     "A": true,
@@ -333,6 +334,52 @@
         "GD": -4,
         "Pts": 0
       }
+    ],
+    "H": [
+      {
+        "team": "Cape Verde",
+        "P": 1,
+        "W": 0,
+        "D": 1,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 1
+      },
+      {
+        "team": "Spain",
+        "P": 1,
+        "W": 0,
+        "D": 1,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 1
+      },
+      {
+        "team": "Saudi Arabia",
+        "P": 0,
+        "W": 0,
+        "D": 0,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 0
+      },
+      {
+        "team": "Uruguay",
+        "P": 0,
+        "W": 0,
+        "D": 0,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 0
+      }
     ]
   },
   "thirds": [],
@@ -459,6 +506,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-15T02:00Z"
+    },
+    {
+      "group": "H",
+      "home": "Spain",
+      "away": "Cape Verde",
+      "hs": 0,
+      "as": 0,
+      "state": "in",
+      "detail": "29'",
+      "date": "2026-06-15T16:00Z"
     }
   ]
 }
