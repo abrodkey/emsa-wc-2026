@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T23:57:24.121Z",
+  "updated": "2026-06-15T05:21:38.251Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -27,6 +27,18 @@
       "Australia": 2,
       "Türkiye": 3,
       "Paraguay": 4
+    },
+    "E": {
+      "Germany": 1,
+      "Ivory Coast": 2,
+      "Ecuador": 3,
+      "Curaçao": 4
+    },
+    "F": {
+      "Sweden": 1,
+      "Japan": 2,
+      "Netherlands": 3,
+      "Tunisia": 4
     }
   },
   "complete": {
@@ -41,7 +53,9 @@
     "A": true,
     "B": true,
     "C": true,
-    "D": true
+    "D": true,
+    "E": true,
+    "F": true
   },
   "tableMeta": {
     "A": [
@@ -241,26 +255,26 @@
         "Pts": 3
       },
       {
+        "team": "Ivory Coast",
+        "P": 1,
+        "W": 1,
+        "D": 0,
+        "L": 0,
+        "GF": 1,
+        "GA": 0,
+        "GD": 1,
+        "Pts": 3
+      },
+      {
         "team": "Ecuador",
         "P": 1,
         "W": 0,
-        "D": 1,
-        "L": 0,
+        "D": 0,
+        "L": 1,
         "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 1
-      },
-      {
-        "team": "Ivory Coast",
-        "P": 1,
-        "W": 0,
-        "D": 1,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 1
+        "GA": 1,
+        "GD": -1,
+        "Pts": 0
       },
       {
         "team": "Curaçao",
@@ -275,6 +289,17 @@
       }
     ],
     "F": [
+      {
+        "team": "Sweden",
+        "P": 1,
+        "W": 1,
+        "D": 0,
+        "L": 0,
+        "GF": 5,
+        "GA": 1,
+        "GD": 4,
+        "Pts": 3
+      },
       {
         "team": "Japan",
         "P": 1,
@@ -298,25 +323,14 @@
         "Pts": 1
       },
       {
-        "team": "Sweden",
-        "P": 0,
-        "W": 0,
-        "D": 0,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 0
-      },
-      {
         "team": "Tunisia",
-        "P": 0,
+        "P": 1,
         "W": 0,
         "D": 0,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
+        "L": 1,
+        "GF": 1,
+        "GA": 5,
+        "GD": -4,
         "Pts": 0
       }
     ]
@@ -430,11 +444,21 @@
       "group": "E",
       "home": "Ivory Coast",
       "away": "Ecuador",
-      "hs": 0,
+      "hs": 1,
       "as": 0,
-      "state": "in",
-      "detail": "HT",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-14T23:00Z"
+    },
+    {
+      "group": "F",
+      "home": "Sweden",
+      "away": "Tunisia",
+      "hs": 5,
+      "as": 1,
+      "state": "post",
+      "detail": "FT",
+      "date": "2026-06-15T02:00Z"
     }
   ]
 }
