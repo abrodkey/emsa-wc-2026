@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-15T16:30:42.517Z",
+  "updated": "2026-06-15T20:06:09.064Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 12,
-  "totalGoals": 36,
+  "matchesPlayed": 13,
+  "totalGoals": 37,
   "scorers": [
     {
       "name": "Folarin Balogun",
@@ -80,6 +80,14 @@
     {
       "name": "Deniz Undav",
       "team": "Germany",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 4
+    },
+    {
+      "name": "Emam Ashour",
+      "team": "Egypt",
       "goals": 1,
       "pens": 0,
       "assists": 0,
