@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T19:23:03.179Z",
+  "updated": "2026-06-16T22:01:44.537Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -447,24 +447,13 @@
       {
         "team": "France",
         "P": 1,
-        "W": 0,
-        "D": 1,
+        "W": 1,
+        "D": 0,
         "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 1
-      },
-      {
-        "team": "Senegal",
-        "P": 1,
-        "W": 0,
-        "D": 1,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 1
+        "GF": 3,
+        "GA": 1,
+        "GD": 2,
+        "Pts": 3
       },
       {
         "team": "Iraq",
@@ -486,6 +475,17 @@
         "GF": 0,
         "GA": 0,
         "GD": 0,
+        "Pts": 0
+      },
+      {
+        "team": "Senegal",
+        "P": 1,
+        "W": 0,
+        "D": 0,
+        "L": 1,
+        "GF": 1,
+        "GA": 3,
+        "GD": -2,
         "Pts": 0
       }
     ]
@@ -659,10 +659,10 @@
       "group": "I",
       "home": "France",
       "away": "Senegal",
-      "hs": 0,
-      "as": 0,
-      "state": "in",
-      "detail": "20'",
+      "hs": 3,
+      "as": 1,
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-16T19:00Z"
     }
   ]

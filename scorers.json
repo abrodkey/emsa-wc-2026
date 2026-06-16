@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-16T19:23:06.345Z",
+  "updated": "2026-06-16T22:01:47.057Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 16,
-  "totalGoals": 43,
+  "matchesPlayed": 17,
+  "totalGoals": 47,
   "scorers": [
     {
       "name": "Elijah Just",
@@ -16,6 +16,14 @@
     {
       "name": "Folarin Balogun",
       "team": "USA",
+      "goals": 2,
+      "pens": 0,
+      "assists": 0,
+      "rank": 1
+    },
+    {
+      "name": "Kylian Mbappé",
+      "team": "France",
       "goals": 2,
       "pens": 0,
       "assists": 0,
@@ -43,7 +51,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Alexander Isak",
@@ -51,7 +59,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Amad Diallo",
@@ -59,7 +67,15 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
+    },
+    {
+      "name": "Bradley Barcola",
+      "team": "France",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 6
     },
     {
       "name": "Connor Metcalfe",
@@ -67,7 +83,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Crysencio Summerville",
@@ -75,7 +91,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Cyle Larin",
@@ -83,7 +99,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Daichi Kamada",
@@ -91,7 +107,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Deniz Undav",
@@ -99,7 +115,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Emam Ashour",
@@ -107,7 +123,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Felix Nmecha",
@@ -115,7 +131,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Giovanni Reyna",
@@ -123,7 +139,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Hwang In-Beom",
@@ -131,7 +147,15 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
+    },
+    {
+      "name": "Ibrahim Mbaye",
+      "team": "Senegal",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 6
     },
     {
       "name": "Ismael Saibari",
@@ -139,7 +163,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Jamal Musiala",
@@ -147,7 +171,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "John McGinn",
@@ -155,7 +179,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Jovo Lukic",
@@ -163,7 +187,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Julián Quiñones",
@@ -171,7 +195,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Keito Nakamura",
@@ -179,7 +203,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Ladislav Krejcí",
@@ -187,7 +211,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Livano Comenencia",
@@ -195,7 +219,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Mattias Svanberg",
@@ -203,7 +227,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Maurício",
@@ -211,7 +235,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Maxi Araújo",
@@ -219,7 +243,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Mohammad Mohebbi",
@@ -227,7 +251,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Nathaniel Brown",
@@ -235,7 +259,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Nestory Irankunda",
@@ -243,7 +267,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Nico Schlotterbeck",
@@ -251,7 +275,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Oh Hyeon-Gyu",
@@ -259,7 +283,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Omar Rekik",
@@ -267,7 +291,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Ramin Rezaeian",
@@ -275,7 +299,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Raúl Jiménez",
@@ -283,7 +307,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Viktor Gyökeres",
@@ -291,7 +315,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Vinícius Júnior",
@@ -299,7 +323,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Virgil van Dijk",
@@ -307,7 +331,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     },
     {
       "name": "Breel Embolo",
@@ -315,7 +339,7 @@
       "goals": 1,
       "pens": 1,
       "assists": 0,
-      "rank": 5
+      "rank": 6
     }
   ]
 }
