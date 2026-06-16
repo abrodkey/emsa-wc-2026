@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T00:15:09.722Z",
+  "updated": "2026-06-16T05:40:37.313Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -40,6 +40,12 @@
       "Netherlands": 3,
       "Tunisia": 4
     },
+    "G": {
+      "Iran": 1,
+      "New Zealand": 2,
+      "Belgium": 3,
+      "Egypt": 4
+    },
     "H": {
       "Saudi Arabia": 1,
       "Uruguay": 2,
@@ -64,6 +70,7 @@
     "D": true,
     "E": true,
     "F": true,
+    "G": true,
     "H": true
   },
   "tableMeta": {
@@ -345,6 +352,28 @@
     ],
     "G": [
       {
+        "team": "Iran",
+        "P": 1,
+        "W": 0,
+        "D": 1,
+        "L": 0,
+        "GF": 2,
+        "GA": 2,
+        "GD": 0,
+        "Pts": 1
+      },
+      {
+        "team": "New Zealand",
+        "P": 1,
+        "W": 0,
+        "D": 1,
+        "L": 0,
+        "GF": 2,
+        "GA": 2,
+        "GD": 0,
+        "Pts": 1
+      },
+      {
         "team": "Belgium",
         "P": 1,
         "W": 0,
@@ -365,28 +394,6 @@
         "GA": 1,
         "GD": 0,
         "Pts": 1
-      },
-      {
-        "team": "Iran",
-        "P": 0,
-        "W": 0,
-        "D": 0,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 0
-      },
-      {
-        "team": "New Zealand",
-        "P": 0,
-        "W": 0,
-        "D": 0,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 0
       }
     ],
     "H": [
@@ -590,6 +597,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-15T22:00Z"
+    },
+    {
+      "group": "G",
+      "home": "Iran",
+      "away": "New Zealand",
+      "hs": 2,
+      "as": 2,
+      "state": "post",
+      "detail": "FT",
+      "date": "2026-06-16T01:00Z"
     }
   ]
 }
