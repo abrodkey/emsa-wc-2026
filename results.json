@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T22:28:47.113Z",
+  "updated": "2026-06-16T00:15:09.722Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -39,6 +39,12 @@
       "Japan": 2,
       "Netherlands": 3,
       "Tunisia": 4
+    },
+    "H": {
+      "Saudi Arabia": 1,
+      "Uruguay": 2,
+      "Cape Verde": 3,
+      "Spain": 4
     }
   },
   "complete": {
@@ -57,7 +63,8 @@
     "C": true,
     "D": true,
     "E": true,
-    "F": true
+    "F": true,
+    "H": true
   },
   "tableMeta": {
     "A": [
@@ -384,6 +391,28 @@
     ],
     "H": [
       {
+        "team": "Saudi Arabia",
+        "P": 1,
+        "W": 0,
+        "D": 1,
+        "L": 0,
+        "GF": 1,
+        "GA": 1,
+        "GD": 0,
+        "Pts": 1
+      },
+      {
+        "team": "Uruguay",
+        "P": 1,
+        "W": 0,
+        "D": 1,
+        "L": 0,
+        "GF": 1,
+        "GA": 1,
+        "GD": 0,
+        "Pts": 1
+      },
+      {
         "team": "Cape Verde",
         "P": 1,
         "W": 0,
@@ -395,29 +424,7 @@
         "Pts": 1
       },
       {
-        "team": "Saudi Arabia",
-        "P": 1,
-        "W": 0,
-        "D": 1,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 1
-      },
-      {
         "team": "Spain",
-        "P": 1,
-        "W": 0,
-        "D": 1,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 1
-      },
-      {
-        "team": "Uruguay",
         "P": 1,
         "W": 0,
         "D": 1,
@@ -578,10 +585,10 @@
       "group": "H",
       "home": "Saudi Arabia",
       "away": "Uruguay",
-      "hs": 0,
-      "as": 0,
-      "state": "in",
-      "detail": "25'",
+      "hs": 1,
+      "as": 1,
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-15T22:00Z"
     }
   ]

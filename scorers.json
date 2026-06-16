@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-15T22:28:48.314Z",
+  "updated": "2026-06-16T00:15:11.398Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 14,
-  "totalGoals": 37,
+  "matchesPlayed": 15,
+  "totalGoals": 39,
   "scorers": [
     {
       "name": "Folarin Balogun",
@@ -28,6 +28,14 @@
       "pens": 1,
       "assists": 0,
       "rank": 1
+    },
+    {
+      "name": "Abdulelah Al-Amri",
+      "team": "Saudi Arabia",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 4
     },
     {
       "name": "Alexander Isak",
@@ -192,6 +200,14 @@
     {
       "name": "Maurício",
       "team": "Paraguay",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 4
+    },
+    {
+      "name": "Maxi Araújo",
+      "team": "Uruguay",
       "goals": 1,
       "pens": 0,
       "assists": 0,
