@@ -430,13 +430,15 @@ function scoreOf(p){
 }
 function champStatus(p){
   const t=p.champion; if(!t) return "unknown";
-  if(results.eliminated.includes(t)) return "out";
+  if(results.eliminated.includes(t)) return "out";                        // manual / knockout elimination
+  const allDone=GL.every(g=>groupComplete(g));
   for(const g of GL){ if(GROUPS[g].includes(t)){
     const pos=results.standings[g][t], done=groupComplete(g);
-    if(pos===4) return "out";
-    if(pos===3) return results.thirds.includes(t)?"alive":(done?"out":"unknown");
-    if(pos===1||pos===2) return "alive";
-    return "unknown";
+    if(done && pos===4) return "out";                                     // 4th in a FINALIZED group
+    if(allDone && pos===3 && !results.thirds.includes(t)) return "out";   // 3rd & missed the R32 cut (all groups final)
+    if(pos===1||pos===2) return "alive";                                  // advancing
+    if(pos===3 && results.thirds.includes(t)) return "alive";            // 3rd but in the qualifying 8
+    return "unknown";                                                     // not yet decided
   }}
   return "unknown";
 }
