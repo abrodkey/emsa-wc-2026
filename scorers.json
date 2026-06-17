@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-17T20:57:18.604Z",
+  "updated": "2026-06-17T22:50:14.563Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 21,
-  "totalGoals": 63,
+  "matchesPlayed": 22,
+  "totalGoals": 65,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -238,6 +238,14 @@
       "rank": 9
     },
     {
+      "name": "Jude Bellingham",
+      "team": "England",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 9
+    },
+    {
       "name": "Julián Quiñones",
       "team": "Mexico",
       "goals": 1,
@@ -272,6 +280,14 @@
     {
       "name": "Livano Comenencia",
       "team": "Curaçao",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 9
+    },
+    {
+      "name": "Marcus Rashford",
+      "team": "England",
       "goals": 1,
       "pens": 0,
       "assists": 0,
