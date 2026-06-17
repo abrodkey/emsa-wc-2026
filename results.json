@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T18:34:25.638Z",
+  "updated": "2026-06-17T20:57:16.488Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -76,7 +76,8 @@
     "H": false,
     "I": false,
     "J": false,
-    "K": false
+    "K": false,
+    "L": false
   },
   "scoring": {
     "A": true,
@@ -596,6 +597,52 @@
         "GD": 0,
         "Pts": 0
       }
+    ],
+    "L": [
+      {
+        "team": "Croatia",
+        "P": 1,
+        "W": 0,
+        "D": 1,
+        "L": 0,
+        "GF": 2,
+        "GA": 2,
+        "GD": 0,
+        "Pts": 1
+      },
+      {
+        "team": "England",
+        "P": 1,
+        "W": 0,
+        "D": 1,
+        "L": 0,
+        "GF": 2,
+        "GA": 2,
+        "GD": 0,
+        "Pts": 1
+      },
+      {
+        "team": "Ghana",
+        "P": 0,
+        "W": 0,
+        "D": 0,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 0
+      },
+      {
+        "team": "Panama",
+        "P": 0,
+        "W": 0,
+        "D": 0,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 0
+      }
     ]
   },
   "thirds": [],
@@ -809,9 +856,19 @@
       "away": "DR Congo",
       "hs": 1,
       "as": 1,
-      "state": "in",
-      "detail": "70'",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-17T17:00Z"
+    },
+    {
+      "group": "L",
+      "home": "England",
+      "away": "Croatia",
+      "hs": 2,
+      "as": 2,
+      "state": "in",
+      "detail": "HT",
+      "date": "2026-06-17T20:00Z"
     }
   ]
 }
