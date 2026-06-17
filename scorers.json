@@ -1,17 +1,25 @@
 {
-  "updated": "2026-06-17T02:09:15.318Z",
+  "updated": "2026-06-17T07:28:53.488Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 18,
-  "totalGoals": 52,
+  "matchesPlayed": 20,
+  "totalGoals": 57,
   "scorers": [
+    {
+      "name": "Lionel Messi",
+      "team": "Argentina",
+      "goals": 3,
+      "pens": 0,
+      "assists": 0,
+      "rank": 1
+    },
     {
       "name": "Elijah Just",
       "team": "New Zealand",
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Erling Haaland",
@@ -19,7 +27,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Folarin Balogun",
@@ -27,7 +35,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Kylian Mbappé",
@@ -35,7 +43,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Yasin Ayari",
@@ -43,7 +51,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Kai Havertz",
@@ -51,7 +59,7 @@
       "goals": 2,
       "pens": 1,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Abdulelah Al-Amri",
@@ -59,7 +67,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Alexander Isak",
@@ -67,7 +75,15 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
+    },
+    {
+      "name": "Ali Olwan",
+      "team": "Jordan",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 8
     },
     {
       "name": "Amad Diallo",
@@ -75,7 +91,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Aymen Hussein",
@@ -83,7 +99,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Bradley Barcola",
@@ -91,7 +107,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Connor Metcalfe",
@@ -99,7 +115,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Crysencio Summerville",
@@ -107,7 +123,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Cyle Larin",
@@ -115,7 +131,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Daichi Kamada",
@@ -123,7 +139,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Deniz Undav",
@@ -131,7 +147,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Emam Ashour",
@@ -139,7 +155,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Felix Nmecha",
@@ -147,7 +163,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Giovanni Reyna",
@@ -155,7 +171,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Hwang In-Beom",
@@ -163,7 +179,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Ibrahim Mbaye",
@@ -171,7 +187,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Ismael Saibari",
@@ -179,7 +195,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Jamal Musiala",
@@ -187,7 +203,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "John McGinn",
@@ -195,7 +211,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Jovo Lukic",
@@ -203,7 +219,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Julián Quiñones",
@@ -211,7 +227,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Keito Nakamura",
@@ -219,7 +235,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Ladislav Krejcí",
@@ -227,7 +243,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Leo Østigard",
@@ -235,15 +251,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
-    },
-    {
-      "name": "Lionel Messi",
-      "team": "Argentina",
-      "goals": 1,
-      "pens": 0,
-      "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Livano Comenencia",
@@ -251,7 +259,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Mattias Svanberg",
@@ -259,7 +267,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Maurício",
@@ -267,7 +275,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Maxi Araújo",
@@ -275,7 +283,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Mohammad Mohebbi",
@@ -283,7 +291,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Nathaniel Brown",
@@ -291,7 +299,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Nestory Irankunda",
@@ -299,7 +307,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Nico Schlotterbeck",
@@ -307,7 +315,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Oh Hyeon-Gyu",
@@ -315,7 +323,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Omar Rekik",
@@ -323,7 +331,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Ramin Rezaeian",
@@ -331,7 +339,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Raúl Jiménez",
@@ -339,7 +347,15 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
+    },
+    {
+      "name": "Romano Schmid",
+      "team": "Austria",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 8
     },
     {
       "name": "Viktor Gyökeres",
@@ -347,7 +363,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Vinícius Júnior",
@@ -355,7 +371,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Virgil van Dijk",
@@ -363,7 +379,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Breel Embolo",
@@ -371,7 +387,15 @@
       "goals": 1,
       "pens": 1,
       "assists": 0,
-      "rank": 7
+      "rank": 8
+    },
+    {
+      "name": "Marko Arnautovic",
+      "team": "Austria",
+      "goals": 1,
+      "pens": 1,
+      "assists": 0,
+      "rank": 8
     }
   ]
 }
