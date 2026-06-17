@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T23:45:37.655Z",
+  "updated": "2026-06-17T02:09:13.233Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -51,6 +51,12 @@
       "Uruguay": 2,
       "Cape Verde": 3,
       "Spain": 4
+    },
+    "I": {
+      "Norway": 1,
+      "France": 2,
+      "Senegal": 3,
+      "Iraq": 4
     }
   },
   "complete": {
@@ -62,7 +68,8 @@
     "F": false,
     "G": false,
     "H": false,
-    "I": false
+    "I": false,
+    "J": false
   },
   "scoring": {
     "A": true,
@@ -72,7 +79,8 @@
     "E": true,
     "F": true,
     "G": true,
-    "H": true
+    "H": true,
+    "I": true
   },
   "tableMeta": {
     "A": [
@@ -445,6 +453,17 @@
     ],
     "I": [
       {
+        "team": "Norway",
+        "P": 1,
+        "W": 1,
+        "D": 0,
+        "L": 0,
+        "GF": 4,
+        "GA": 1,
+        "GD": 3,
+        "Pts": 3
+      },
+      {
         "team": "France",
         "P": 1,
         "W": 1,
@@ -456,18 +475,7 @@
         "Pts": 3
       },
       {
-        "team": "Norway",
-        "P": 1,
-        "W": 1,
-        "D": 0,
-        "L": 0,
-        "GF": 3,
-        "GA": 1,
-        "GD": 2,
-        "Pts": 3
-      },
-      {
-        "team": "Iraq",
+        "team": "Senegal",
         "P": 1,
         "W": 0,
         "D": 0,
@@ -478,14 +486,60 @@
         "Pts": 0
       },
       {
-        "team": "Senegal",
+        "team": "Iraq",
         "P": 1,
         "W": 0,
         "D": 0,
         "L": 1,
         "GF": 1,
-        "GA": 3,
-        "GD": -2,
+        "GA": 4,
+        "GD": -3,
+        "Pts": 0
+      }
+    ],
+    "J": [
+      {
+        "team": "Argentina",
+        "P": 1,
+        "W": 1,
+        "D": 0,
+        "L": 0,
+        "GF": 1,
+        "GA": 0,
+        "GD": 1,
+        "Pts": 3
+      },
+      {
+        "team": "Austria",
+        "P": 0,
+        "W": 0,
+        "D": 0,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 0
+      },
+      {
+        "team": "Jordan",
+        "P": 0,
+        "W": 0,
+        "D": 0,
+        "L": 0,
+        "GF": 0,
+        "GA": 0,
+        "GD": 0,
+        "Pts": 0
+      },
+      {
+        "team": "Algeria",
+        "P": 1,
+        "W": 0,
+        "D": 0,
+        "L": 1,
+        "GF": 0,
+        "GA": 1,
+        "GD": -1,
         "Pts": 0
       }
     ]
@@ -670,10 +724,20 @@
       "home": "Iraq",
       "away": "Norway",
       "hs": 1,
-      "as": 3,
-      "state": "in",
-      "detail": "82'",
+      "as": 4,
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-16T22:00Z"
+    },
+    {
+      "group": "J",
+      "home": "Argentina",
+      "away": "Algeria",
+      "hs": 1,
+      "as": 0,
+      "state": "in",
+      "detail": "46'",
+      "date": "2026-06-17T01:00Z"
     }
   ]
 }

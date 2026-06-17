@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-16T23:45:39.308Z",
+  "updated": "2026-06-17T02:09:15.318Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 17,
-  "totalGoals": 51,
+  "matchesPlayed": 18,
+  "totalGoals": 52,
   "scorers": [
     {
       "name": "Elijah Just",
@@ -232,6 +232,14 @@
     {
       "name": "Leo Østigard",
       "team": "Norway",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 7
+    },
+    {
+      "name": "Lionel Messi",
+      "team": "Argentina",
       "goals": 1,
       "pens": 0,
       "assists": 0,
