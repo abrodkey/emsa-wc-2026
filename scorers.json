@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-18T12:43:32.912Z",
+  "updated": "2026-06-18T16:20:11.589Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 24,
-  "totalGoals": 70,
+  "totalGoals": 71,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -360,6 +360,14 @@
     {
       "name": "Maxi Araújo",
       "team": "Uruguay",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 9
+    },
+    {
+      "name": "Michal Sadílek",
+      "team": "Czechia",
       "goals": 1,
       "pens": 0,
       "assists": 0,
