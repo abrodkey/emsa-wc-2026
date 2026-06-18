@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T22:50:10.559Z",
+  "updated": "2026-06-18T00:11:33.576Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -612,25 +612,25 @@
       },
       {
         "team": "Ghana",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
         "GF": 0,
         "GA": 0,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       },
       {
         "team": "Panama",
-        "P": 0,
+        "P": 1,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 0,
         "GF": 0,
         "GA": 0,
         "GD": 0,
-        "Pts": 0
+        "Pts": 1
       },
       {
         "team": "Croatia",
@@ -869,6 +869,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-17T20:00Z"
+    },
+    {
+      "group": "L",
+      "home": "Ghana",
+      "away": "Panama",
+      "hs": 0,
+      "as": 0,
+      "state": "in",
+      "detail": "49'",
+      "date": "2026-06-17T23:00Z"
     }
   ]
 }
