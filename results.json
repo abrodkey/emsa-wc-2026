@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-18T16:20:10.472Z",
+  "updated": "2026-06-18T18:40:28.520Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -132,24 +132,24 @@
       {
         "team": "Czechia",
         "P": 2,
-        "W": 1,
-        "D": 0,
+        "W": 0,
+        "D": 1,
         "L": 1,
         "GF": 2,
-        "GA": 2,
-        "GD": 0,
-        "Pts": 3
+        "GA": 3,
+        "GD": -1,
+        "Pts": 1
       },
       {
         "team": "South Africa",
         "P": 2,
         "W": 0,
-        "D": 0,
-        "L": 2,
-        "GF": 0,
+        "D": 1,
+        "L": 1,
+        "GF": 1,
         "GA": 3,
-        "GD": -3,
-        "Pts": 0
+        "GD": -2,
+        "Pts": 1
       }
     ],
     "B": [
@@ -909,9 +909,9 @@
       "home": "Czechia",
       "away": "South Africa",
       "hs": 1,
-      "as": 0,
-      "state": "in",
-      "detail": "19'",
+      "as": 1,
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-18T16:00Z"
     }
   ]

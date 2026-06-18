@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-18T16:20:11.589Z",
+  "updated": "2026-06-18T18:40:30.764Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 24,
-  "totalGoals": 71,
+  "matchesPlayed": 25,
+  "totalGoals": 72,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -496,6 +496,14 @@
     {
       "name": "Marko Arnautovic",
       "team": "Austria",
+      "goals": 1,
+      "pens": 1,
+      "assists": 0,
+      "rank": 9
+    },
+    {
+      "name": "Teboho Mokoena",
+      "team": "South Africa",
       "goals": 1,
       "pens": 1,
       "assists": 0,
