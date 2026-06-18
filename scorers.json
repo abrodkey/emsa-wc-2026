@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-18T00:11:36.682Z",
+  "updated": "2026-06-18T05:07:34.859Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 22,
-  "totalGoals": 65,
+  "matchesPlayed": 24,
+  "totalGoals": 70,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -70,6 +70,14 @@
       "rank": 2
     },
     {
+      "name": "Abbosbek Fayzullaev",
+      "team": "Uzbekistan",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 9
+    },
+    {
       "name": "Abdulelah Al-Amri",
       "team": "Saudi Arabia",
       "goals": 1,
@@ -118,6 +126,14 @@
       "rank": 9
     },
     {
+      "name": "Caleb Yirenkyi",
+      "team": "Ghana",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 9
+    },
+    {
       "name": "Connor Metcalfe",
       "team": "Australia",
       "goals": 1,
@@ -144,6 +160,14 @@
     {
       "name": "Daichi Kamada",
       "team": "Japan",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 9
+    },
+    {
+      "name": "Daniel Muñoz",
+      "team": "Colombia",
       "goals": 1,
       "pens": 0,
       "assists": 0,
@@ -208,6 +232,14 @@
     {
       "name": "Jamal Musiala",
       "team": "Germany",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 9
+    },
+    {
+      "name": "Jáminton Campaz",
+      "team": "Colombia",
       "goals": 1,
       "pens": 0,
       "assists": 0,
@@ -280,6 +312,14 @@
     {
       "name": "Livano Comenencia",
       "team": "Curaçao",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 9
+    },
+    {
+      "name": "Luis Díaz",
+      "team": "Colombia",
       "goals": 1,
       "pens": 0,
       "assists": 0,
