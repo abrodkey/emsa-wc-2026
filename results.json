@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-18T18:40:28.520Z",
+  "updated": "2026-06-18T21:14:31.213Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -11,10 +11,10 @@
       "South Africa": 4
     },
     "B": {
-      "Bosnia-Herzegovina": 1,
+      "Switzerland": 1,
       "Canada": 2,
       "Qatar": 3,
-      "Switzerland": 4
+      "Bosnia-Herzegovina": 4
     },
     "C": {
       "Scotland": 1,
@@ -154,15 +154,15 @@
     ],
     "B": [
       {
-        "team": "Bosnia-Herzegovina",
-        "P": 1,
-        "W": 0,
+        "team": "Switzerland",
+        "P": 2,
+        "W": 1,
         "D": 1,
         "L": 0,
-        "GF": 1,
-        "GA": 1,
-        "GD": 0,
-        "Pts": 1
+        "GF": 5,
+        "GA": 2,
+        "GD": 3,
+        "Pts": 4
       },
       {
         "team": "Canada",
@@ -187,14 +187,14 @@
         "Pts": 1
       },
       {
-        "team": "Switzerland",
-        "P": 1,
+        "team": "Bosnia-Herzegovina",
+        "P": 2,
         "W": 0,
         "D": 1,
-        "L": 0,
-        "GF": 1,
-        "GA": 1,
-        "GD": 0,
+        "L": 1,
+        "GF": 2,
+        "GA": 5,
+        "GD": -3,
         "Pts": 1
       }
     ],
@@ -913,6 +913,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-18T16:00Z"
+    },
+    {
+      "group": "B",
+      "home": "Switzerland",
+      "away": "Bosnia-Herzegovina",
+      "hs": 4,
+      "as": 1,
+      "state": "post",
+      "detail": "FT",
+      "date": "2026-06-18T19:00Z"
     }
   ]
 }
