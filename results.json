@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T20:50:18.452Z",
+  "updated": "2026-06-19T21:59:49.636Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -950,8 +950,8 @@
       "away": "Australia",
       "hs": 2,
       "as": 0,
-      "state": "in",
-      "detail": "84'",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-19T19:00Z"
     }
   ]
