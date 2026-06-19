@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T19:17:25.915Z",
+  "updated": "2026-06-19T20:50:18.452Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -251,9 +251,9 @@
         "W": 2,
         "D": 0,
         "L": 0,
-        "GF": 5,
+        "GF": 6,
         "GA": 1,
-        "GD": 4,
+        "GD": 5,
         "Pts": 6
       },
       {
@@ -263,8 +263,8 @@
         "D": 0,
         "L": 1,
         "GF": 2,
-        "GA": 1,
-        "GD": 1,
+        "GA": 2,
+        "GD": 0,
         "Pts": 3
       },
       {
@@ -948,10 +948,10 @@
       "group": "D",
       "home": "USA",
       "away": "Australia",
-      "hs": 1,
+      "hs": 2,
       "as": 0,
       "state": "in",
-      "detail": "17'",
+      "detail": "84'",
       "date": "2026-06-19T19:00Z"
     }
   ]

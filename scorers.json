@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-19T19:17:26.950Z",
+  "updated": "2026-06-19T20:50:19.516Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 28,
-  "totalGoals": 83,
+  "totalGoals": 84,
   "scorers": [
     {
       "name": "Jonathan David",
@@ -104,6 +104,14 @@
     {
       "name": "Abdulelah Al-Amri",
       "team": "Saudi Arabia",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 12
+    },
+    {
+      "name": "Alex Freeman",
+      "team": "USA",
       "goals": 1,
       "pens": 0,
       "assists": 0,
