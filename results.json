@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-18T23:13:44.611Z",
+  "updated": "2026-06-19T02:10:22.151Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -11,8 +11,8 @@
       "South Africa": 4
     },
     "B": {
-      "Switzerland": 1,
-      "Canada": 2,
+      "Canada": 1,
+      "Switzerland": 2,
       "Bosnia-Herzegovina": 3,
       "Qatar": 4
     },
@@ -109,25 +109,25 @@
     "A": [
       {
         "team": "Mexico",
-        "P": 1,
+        "P": 2,
         "W": 1,
-        "D": 0,
+        "D": 1,
         "L": 0,
         "GF": 2,
         "GA": 0,
         "GD": 2,
-        "Pts": 3
+        "Pts": 4
       },
       {
         "team": "Korea Republic",
-        "P": 1,
+        "P": 2,
         "W": 1,
-        "D": 0,
+        "D": 1,
         "L": 0,
         "GF": 2,
         "GA": 1,
         "GD": 1,
-        "Pts": 3
+        "Pts": 4
       },
       {
         "team": "Czechia",
@@ -154,6 +154,17 @@
     ],
     "B": [
       {
+        "team": "Canada",
+        "P": 2,
+        "W": 1,
+        "D": 1,
+        "L": 0,
+        "GF": 7,
+        "GA": 1,
+        "GD": 6,
+        "Pts": 4
+      },
+      {
         "team": "Switzerland",
         "P": 2,
         "W": 1,
@@ -161,17 +172,6 @@
         "L": 0,
         "GF": 5,
         "GA": 2,
-        "GD": 3,
-        "Pts": 4
-      },
-      {
-        "team": "Canada",
-        "P": 2,
-        "W": 1,
-        "D": 1,
-        "L": 0,
-        "GF": 4,
-        "GA": 1,
         "GD": 3,
         "Pts": 4
       },
@@ -193,8 +193,8 @@
         "D": 1,
         "L": 1,
         "GF": 1,
-        "GA": 4,
-        "GD": -3,
+        "GA": 7,
+        "GD": -6,
         "Pts": 1
       }
     ],
@@ -928,11 +928,21 @@
       "group": "B",
       "home": "Canada",
       "away": "Qatar",
-      "hs": 3,
+      "hs": 6,
+      "as": 0,
+      "state": "post",
+      "detail": "FT",
+      "date": "2026-06-18T22:00Z"
+    },
+    {
+      "group": "A",
+      "home": "Mexico",
+      "away": "Korea Republic",
+      "hs": 0,
       "as": 0,
       "state": "in",
-      "detail": "52'",
-      "date": "2026-06-18T22:00Z"
+      "detail": "50'",
+      "date": "2026-06-19T01:00Z"
     }
   ]
 }
