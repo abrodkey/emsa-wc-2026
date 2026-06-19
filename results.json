@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T21:59:49.636Z",
+  "updated": "2026-06-19T23:10:50.536Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -17,9 +17,9 @@
       "Qatar": 4
     },
     "C": {
-      "Scotland": 1,
-      "Brazil": 2,
-      "Morocco": 3,
+      "Morocco": 1,
+      "Scotland": 2,
+      "Brazil": 3,
       "Haiti": 4
     },
     "D": {
@@ -200,29 +200,29 @@
     ],
     "C": [
       {
+        "team": "Morocco",
+        "P": 2,
+        "W": 1,
+        "D": 1,
+        "L": 0,
+        "GF": 2,
+        "GA": 1,
+        "GD": 1,
+        "Pts": 4
+      },
+      {
         "team": "Scotland",
-        "P": 1,
+        "P": 2,
         "W": 1,
         "D": 0,
-        "L": 0,
+        "L": 1,
         "GF": 1,
-        "GA": 0,
-        "GD": 1,
+        "GA": 1,
+        "GD": 0,
         "Pts": 3
       },
       {
         "team": "Brazil",
-        "P": 1,
-        "W": 0,
-        "D": 1,
-        "L": 0,
-        "GF": 1,
-        "GA": 1,
-        "GD": 0,
-        "Pts": 1
-      },
-      {
-        "team": "Morocco",
         "P": 1,
         "W": 0,
         "D": 1,
@@ -953,6 +953,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-19T19:00Z"
+    },
+    {
+      "group": "C",
+      "home": "Scotland",
+      "away": "Morocco",
+      "hs": 0,
+      "as": 1,
+      "state": "in",
+      "detail": "48'",
+      "date": "2026-06-19T22:00Z"
     }
   ]
 }
