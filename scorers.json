@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-20T01:31:42.103Z",
+  "updated": "2026-06-20T06:01:28.437Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 30,
-  "totalGoals": 88,
+  "matchesPlayed": 32,
+  "totalGoals": 89,
   "scorers": [
     {
       "name": "Jonathan David",
@@ -392,6 +392,14 @@
     {
       "name": "Martin Baturina",
       "team": "Croatia",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 15
+    },
+    {
+      "name": "Matías Galarza",
+      "team": "Paraguay",
       "goals": 1,
       "pens": 0,
       "assists": 0,

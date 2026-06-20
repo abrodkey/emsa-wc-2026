@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20T01:31:40.927Z",
+  "updated": "2026-06-20T06:01:27.472Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -25,8 +25,8 @@
     "D": {
       "USA": 1,
       "Australia": 2,
-      "Türkiye": 3,
-      "Paraguay": 4
+      "Paraguay": 3,
+      "Türkiye": 4
     },
     "E": {
       "Germany": 1,
@@ -268,24 +268,24 @@
         "Pts": 3
       },
       {
-        "team": "Türkiye",
-        "P": 1,
-        "W": 0,
+        "team": "Paraguay",
+        "P": 2,
+        "W": 1,
         "D": 0,
         "L": 1,
-        "GF": 0,
-        "GA": 2,
+        "GF": 2,
+        "GA": 4,
         "GD": -2,
-        "Pts": 0
+        "Pts": 3
       },
       {
-        "team": "Paraguay",
-        "P": 1,
+        "team": "Türkiye",
+        "P": 2,
         "W": 0,
         "D": 0,
-        "L": 1,
-        "GF": 1,
-        "GA": 4,
+        "L": 2,
+        "GF": 0,
+        "GA": 3,
         "GD": -3,
         "Pts": 0
       }
@@ -970,9 +970,19 @@
       "away": "Haiti",
       "hs": 3,
       "as": 0,
-      "state": "in",
-      "detail": "HT",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-20T00:30Z"
+    },
+    {
+      "group": "D",
+      "home": "Türkiye",
+      "away": "Paraguay",
+      "hs": 0,
+      "as": 1,
+      "state": "post",
+      "detail": "FT",
+      "date": "2026-06-20T03:00Z"
     }
   ]
 }
