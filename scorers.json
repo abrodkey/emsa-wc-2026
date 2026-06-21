@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-21T14:28:51.241Z",
+  "updated": "2026-06-21T16:17:02.414Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 36,
-  "totalGoals": 102,
+  "totalGoals": 103,
   "scorers": [
     {
       "name": "Deniz Undav",
@@ -392,6 +392,14 @@
     {
       "name": "Ladislav Krejcí",
       "team": "Czechia",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 21
+    },
+    {
+      "name": "Lamine Yamal",
+      "team": "Spain",
       "goals": 1,
       "pens": 0,
       "assists": 0,

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T14:28:46.792Z",
+  "updated": "2026-06-21T16:17:00.946Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -47,10 +47,10 @@
       "Egypt": 4
     },
     "H": {
-      "Saudi Arabia": 1,
+      "Spain": 1,
       "Uruguay": 2,
       "Cape Verde": 3,
-      "Spain": 4
+      "Saudi Arabia": 4
     },
     "I": {
       "Norway": 1,
@@ -430,15 +430,15 @@
     ],
     "H": [
       {
-        "team": "Saudi Arabia",
-        "P": 1,
-        "W": 0,
+        "team": "Spain",
+        "P": 2,
+        "W": 1,
         "D": 1,
         "L": 0,
         "GF": 1,
-        "GA": 1,
-        "GD": 0,
-        "Pts": 1
+        "GA": 0,
+        "GD": 1,
+        "Pts": 4
       },
       {
         "team": "Uruguay",
@@ -463,14 +463,14 @@
         "Pts": 1
       },
       {
-        "team": "Spain",
-        "P": 1,
+        "team": "Saudi Arabia",
+        "P": 2,
         "W": 0,
         "D": 1,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
+        "L": 1,
+        "GF": 1,
+        "GA": 2,
+        "GD": -1,
         "Pts": 1
       }
     ],
@@ -1023,6 +1023,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-21T04:00Z"
+    },
+    {
+      "group": "H",
+      "home": "Spain",
+      "away": "Saudi Arabia",
+      "hs": 1,
+      "as": 0,
+      "state": "in",
+      "detail": "16'",
+      "date": "2026-06-21T16:00Z"
     }
   ]
 }
