@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T19:57:53.926Z",
+  "updated": "2026-06-21T21:24:41.562Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -1040,8 +1040,8 @@
       "away": "Iran",
       "hs": 0,
       "as": 0,
-      "state": "in",
-      "detail": "HT",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-21T19:00Z"
     }
   ]
