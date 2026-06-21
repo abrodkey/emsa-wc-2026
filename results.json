@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T17:59:03.487Z",
+  "updated": "2026-06-21T19:57:53.926Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -42,8 +42,8 @@
     },
     "G": {
       "Iran": 1,
-      "New Zealand": 2,
-      "Belgium": 3,
+      "Belgium": 2,
+      "New Zealand": 3,
       "Egypt": 4
     },
     "H": {
@@ -385,14 +385,25 @@
     "G": [
       {
         "team": "Iran",
-        "P": 1,
+        "P": 2,
         "W": 0,
-        "D": 1,
+        "D": 2,
         "L": 0,
         "GF": 2,
         "GA": 2,
         "GD": 0,
-        "Pts": 1
+        "Pts": 2
+      },
+      {
+        "team": "Belgium",
+        "P": 2,
+        "W": 0,
+        "D": 2,
+        "L": 0,
+        "GF": 1,
+        "GA": 1,
+        "GD": 0,
+        "Pts": 2
       },
       {
         "team": "New Zealand",
@@ -402,17 +413,6 @@
         "L": 0,
         "GF": 2,
         "GA": 2,
-        "GD": 0,
-        "Pts": 1
-      },
-      {
-        "team": "Belgium",
-        "P": 1,
-        "W": 0,
-        "D": 1,
-        "L": 0,
-        "GF": 1,
-        "GA": 1,
         "GD": 0,
         "Pts": 1
       },
@@ -1030,9 +1030,19 @@
       "away": "Saudi Arabia",
       "hs": 4,
       "as": 0,
-      "state": "in",
-      "detail": "90'+5'",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-21T16:00Z"
+    },
+    {
+      "group": "G",
+      "home": "Belgium",
+      "away": "Iran",
+      "hs": 0,
+      "as": 0,
+      "state": "in",
+      "detail": "HT",
+      "date": "2026-06-21T19:00Z"
     }
   ]
 }
