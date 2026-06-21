@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-21T00:02:42.664Z",
+  "updated": "2026-06-21T05:18:22.765Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 34,
-  "totalGoals": 98,
+  "matchesPlayed": 35,
+  "totalGoals": 100,
   "scorers": [
     {
       "name": "Deniz Undav",
@@ -56,6 +56,14 @@
     {
       "name": "Cyle Larin",
       "team": "Canada",
+      "goals": 2,
+      "pens": 0,
+      "assists": 0,
+      "rank": 4
+    },
+    {
+      "name": "Daichi Kamada",
+      "team": "Japan",
       "goals": 2,
       "pens": 0,
       "assists": 0,
@@ -155,7 +163,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Abdulelah Al-Amri",
@@ -163,7 +171,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Alex Freeman",
@@ -171,7 +179,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Alexander Isak",
@@ -179,7 +187,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Ali Olwan",
@@ -187,7 +195,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Amad Diallo",
@@ -195,7 +203,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Anthony Elanga",
@@ -203,7 +211,15 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
+    },
+    {
+      "name": "Ayase Ueda",
+      "team": "Japan",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 20
     },
     {
       "name": "Aymen Hussein",
@@ -211,7 +227,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Bradley Barcola",
@@ -219,7 +235,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Caleb Yirenkyi",
@@ -227,7 +243,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Connor Metcalfe",
@@ -235,15 +251,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
-    },
-    {
-      "name": "Daichi Kamada",
-      "team": "Japan",
-      "goals": 1,
-      "pens": 0,
-      "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Daniel Muñoz",
@@ -251,7 +259,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Emam Ashour",
@@ -259,7 +267,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Ermin Mahmic",
@@ -267,7 +275,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Felix Nmecha",
@@ -275,7 +283,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Franck Kessié",
@@ -283,7 +291,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Giovanni Reyna",
@@ -291,7 +299,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Hwang In-Beom",
@@ -299,7 +307,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Ibrahim Mbaye",
@@ -307,7 +315,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Jamal Musiala",
@@ -315,7 +323,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Jáminton Campaz",
@@ -323,7 +331,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "João Neves",
@@ -331,7 +339,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "John McGinn",
@@ -339,7 +347,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Jovo Lukic",
@@ -347,7 +355,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Jude Bellingham",
@@ -355,7 +363,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Julián Quiñones",
@@ -363,7 +371,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Keito Nakamura",
@@ -371,7 +379,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Ladislav Krejcí",
@@ -379,7 +387,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Leo Østigard",
@@ -387,7 +395,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Livano Comenencia",
@@ -395,7 +403,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Luis Díaz",
@@ -403,7 +411,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Luis Romo",
@@ -411,7 +419,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Marcus Rashford",
@@ -419,7 +427,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Martin Baturina",
@@ -427,7 +435,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Matías Galarza",
@@ -435,7 +443,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Mattias Svanberg",
@@ -443,7 +451,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Maurício",
@@ -451,7 +459,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Maxi Araújo",
@@ -459,7 +467,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Michal Sadílek",
@@ -467,7 +475,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Mohammad Mohebbi",
@@ -475,7 +483,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Nathan Saliba",
@@ -483,7 +491,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Nathaniel Brown",
@@ -491,7 +499,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Nestory Irankunda",
@@ -499,7 +507,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Nico Schlotterbeck",
@@ -507,7 +515,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Oh Hyeon-Gyu",
@@ -515,7 +523,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Omar Rekik",
@@ -523,7 +531,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Petar Musa",
@@ -531,7 +539,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Ramin Rezaeian",
@@ -539,7 +547,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Raúl Jiménez",
@@ -547,7 +555,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Romano Schmid",
@@ -555,7 +563,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Rubén Vargas",
@@ -563,7 +571,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Viktor Gyökeres",
@@ -571,7 +579,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Virgil van Dijk",
@@ -579,7 +587,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Yoane Wissa",
@@ -587,7 +595,7 @@
       "goals": 1,
       "pens": 0,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Breel Embolo",
@@ -595,7 +603,7 @@
       "goals": 1,
       "pens": 1,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Granit Xhaka",
@@ -603,7 +611,7 @@
       "goals": 1,
       "pens": 1,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Marko Arnautovic",
@@ -611,7 +619,7 @@
       "goals": 1,
       "pens": 1,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     },
     {
       "name": "Teboho Mokoena",
@@ -619,7 +627,7 @@
       "goals": 1,
       "pens": 1,
       "assists": 0,
-      "rank": 19
+      "rank": 20
     }
   ]
 }
