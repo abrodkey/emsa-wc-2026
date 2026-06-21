@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T21:24:41.562Z",
+  "updated": "2026-06-21T22:45:50.961Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -442,25 +442,25 @@
       },
       {
         "team": "Uruguay",
-        "P": 1,
+        "P": 2,
         "W": 0,
-        "D": 1,
+        "D": 2,
+        "L": 0,
+        "GF": 2,
+        "GA": 2,
+        "GD": 0,
+        "Pts": 2
+      },
+      {
+        "team": "Cape Verde",
+        "P": 2,
+        "W": 0,
+        "D": 2,
         "L": 0,
         "GF": 1,
         "GA": 1,
         "GD": 0,
-        "Pts": 1
-      },
-      {
-        "team": "Cape Verde",
-        "P": 1,
-        "W": 0,
-        "D": 1,
-        "L": 0,
-        "GF": 0,
-        "GA": 0,
-        "GD": 0,
-        "Pts": 1
+        "Pts": 2
       },
       {
         "team": "Saudi Arabia",
@@ -1043,6 +1043,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-21T19:00Z"
+    },
+    {
+      "group": "H",
+      "home": "Uruguay",
+      "away": "Cape Verde",
+      "hs": 1,
+      "as": 1,
+      "state": "in",
+      "detail": "45'",
+      "date": "2026-06-21T22:00Z"
     }
   ]
 }
