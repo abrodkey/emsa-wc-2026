@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-22T00:00:40.011Z",
+  "updated": "2026-06-22T05:25:53.530Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 38,
-  "totalGoals": 109,
+  "matchesPlayed": 40,
+  "totalGoals": 113,
   "scorers": [
     {
       "name": "Deniz Undav",
@@ -198,7 +198,7 @@
       "rank": 23
     },
     {
-      "name": "Agustín Cano",
+      "name": "Agustín Canobbio",
       "team": "Uruguay",
       "goals": 1,
       "pens": 0,
@@ -304,6 +304,14 @@
     {
       "name": "Felix Nmecha",
       "team": "Germany",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 23
+    },
+    {
+      "name": "Finn Surman",
+      "team": "New Zealand",
       "goals": 1,
       "pens": 0,
       "assists": 0,
@@ -526,8 +534,24 @@
       "rank": 23
     },
     {
+      "name": "Mohamed Salah",
+      "team": "Egypt",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 23
+    },
+    {
       "name": "Mohammad Mohebbi",
       "team": "Iran",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 23
+    },
+    {
+      "name": "Mostafa Zico",
+      "team": "Egypt",
       "goals": 1,
       "pens": 0,
       "assists": 0,
@@ -616,6 +640,14 @@
     {
       "name": "Rubén Vargas",
       "team": "Switzerland",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 23
+    },
+    {
+      "name": "Trézéguet",
+      "team": "Egypt",
       "goals": 1,
       "pens": 0,
       "assists": 0,
