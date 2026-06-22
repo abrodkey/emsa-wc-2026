@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-22T16:07:11.589Z",
+  "updated": "2026-06-22T19:47:10.098Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -523,24 +523,24 @@
     "J": [
       {
         "team": "Argentina",
-        "P": 1,
-        "W": 1,
+        "P": 2,
+        "W": 2,
         "D": 0,
         "L": 0,
-        "GF": 3,
+        "GF": 5,
         "GA": 0,
-        "GD": 3,
-        "Pts": 3
+        "GD": 5,
+        "Pts": 6
       },
       {
         "team": "Austria",
-        "P": 1,
+        "P": 2,
         "W": 1,
         "D": 0,
-        "L": 0,
+        "L": 1,
         "GF": 3,
-        "GA": 1,
-        "GD": 2,
+        "GA": 3,
+        "GD": 0,
         "Pts": 3
       },
       {
@@ -1063,6 +1063,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-22T01:00Z"
+    },
+    {
+      "group": "J",
+      "home": "Argentina",
+      "away": "Austria",
+      "hs": 2,
+      "as": 0,
+      "state": "post",
+      "detail": "FT",
+      "date": "2026-06-22T17:00Z"
     }
   ]
 }

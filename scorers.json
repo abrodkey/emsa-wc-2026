@@ -1,17 +1,25 @@
 {
-  "updated": "2026-06-22T16:07:14.858Z",
+  "updated": "2026-06-22T19:47:11.566Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 40,
-  "totalGoals": 113,
+  "matchesPlayed": 41,
+  "totalGoals": 115,
   "scorers": [
+    {
+      "name": "Lionel Messi",
+      "team": "Argentina",
+      "goals": 5,
+      "pens": 0,
+      "assists": 0,
+      "rank": 1
+    },
     {
       "name": "Deniz Undav",
       "team": "Germany",
       "goals": 3,
       "pens": 0,
       "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Jonathan David",
@@ -19,15 +27,7 @@
       "goals": 3,
       "pens": 0,
       "assists": 0,
-      "rank": 1
-    },
-    {
-      "name": "Lionel Messi",
-      "team": "Argentina",
-      "goals": 3,
-      "pens": 0,
-      "assists": 0,
-      "rank": 1
+      "rank": 2
     },
     {
       "name": "Ayase Ueda",
