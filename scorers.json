@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-21T22:45:51.966Z",
+  "updated": "2026-06-22T00:00:40.011Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 38,
-  "totalGoals": 107,
+  "totalGoals": 109,
   "scorers": [
     {
       "name": "Deniz Undav",
@@ -198,6 +198,14 @@
       "rank": 23
     },
     {
+      "name": "Agustín Cano",
+      "team": "Uruguay",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 23
+    },
+    {
       "name": "Alex Freeman",
       "team": "USA",
       "goals": 1,
@@ -312,6 +320,14 @@
     {
       "name": "Giovanni Reyna",
       "team": "USA",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 23
+    },
+    {
+      "name": "Hélio Varela",
+      "team": "Cape Verde",
       "goals": 1,
       "pens": 0,
       "assists": 0,
