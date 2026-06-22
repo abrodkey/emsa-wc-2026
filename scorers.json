@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-22T19:47:11.566Z",
+  "updated": "2026-06-22T21:52:47.767Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 41,
-  "totalGoals": 115,
+  "totalGoals": 116,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -30,12 +30,20 @@
       "rank": 2
     },
     {
+      "name": "Kylian Mbappé",
+      "team": "France",
+      "goals": 3,
+      "pens": 0,
+      "assists": 0,
+      "rank": 2
+    },
+    {
       "name": "Ayase Ueda",
       "team": "Japan",
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Brian Brobbey",
@@ -43,7 +51,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Cody Gakpo",
@@ -51,7 +59,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Crysencio Summerville",
@@ -59,7 +67,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Cyle Larin",
@@ -67,7 +75,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Daichi Kamada",
@@ -75,7 +83,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Elijah Just",
@@ -83,7 +91,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Erling Haaland",
@@ -91,7 +99,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Folarin Balogun",
@@ -99,7 +107,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Ismael Saibari",
@@ -107,7 +115,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Johan Manzambi",
@@ -115,15 +123,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
-    },
-    {
-      "name": "Kylian Mbappé",
-      "team": "France",
-      "goals": 2,
-      "pens": 0,
-      "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Matheus Cunha",
@@ -131,7 +131,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Maxi Araújo",
@@ -139,7 +139,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Mikel Oyarzabal",
@@ -147,7 +147,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Vinícius Júnior",
@@ -155,7 +155,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Yasin Ayari",
@@ -163,7 +163,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Harry Kane",
@@ -171,7 +171,7 @@
       "goals": 2,
       "pens": 1,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Kai Havertz",
@@ -179,7 +179,7 @@
       "goals": 2,
       "pens": 1,
       "assists": 0,
-      "rank": 4
+      "rank": 5
     },
     {
       "name": "Abbosbek Fayzullaev",

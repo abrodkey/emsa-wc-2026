@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-22T19:47:10.098Z",
+  "updated": "2026-06-22T21:52:45.982Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -53,8 +53,8 @@
       "Saudi Arabia": 4
     },
     "I": {
-      "Norway": 1,
-      "France": 2,
+      "France": 1,
+      "Norway": 2,
       "Senegal": 3,
       "Iraq": 4
     },
@@ -476,6 +476,17 @@
     ],
     "I": [
       {
+        "team": "France",
+        "P": 2,
+        "W": 2,
+        "D": 0,
+        "L": 0,
+        "GF": 4,
+        "GA": 1,
+        "GD": 3,
+        "Pts": 6
+      },
+      {
         "team": "Norway",
         "P": 1,
         "W": 1,
@@ -484,17 +495,6 @@
         "GF": 4,
         "GA": 1,
         "GD": 3,
-        "Pts": 3
-      },
-      {
-        "team": "France",
-        "P": 1,
-        "W": 1,
-        "D": 0,
-        "L": 0,
-        "GF": 3,
-        "GA": 1,
-        "GD": 2,
         "Pts": 3
       },
       {
@@ -510,13 +510,13 @@
       },
       {
         "team": "Iraq",
-        "P": 1,
+        "P": 2,
         "W": 0,
         "D": 0,
-        "L": 1,
+        "L": 2,
         "GF": 1,
-        "GA": 4,
-        "GD": -3,
+        "GA": 5,
+        "GD": -4,
         "Pts": 0
       }
     ],
@@ -1073,6 +1073,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-22T17:00Z"
+    },
+    {
+      "group": "I",
+      "home": "France",
+      "away": "Iraq",
+      "hs": 1,
+      "as": 0,
+      "state": "in",
+      "detail": "HT",
+      "date": "2026-06-22T21:00Z"
     }
   ]
 }
