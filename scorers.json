@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-23T15:42:10.501Z",
+  "updated": "2026-06-23T17:31:31.597Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 44,
-  "totalGoals": 126,
+  "totalGoals": 128,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -288,6 +288,14 @@
     {
       "name": "Connor Metcalfe",
       "team": "Australia",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 24
+    },
+    {
+      "name": "Cristiano Ronaldo",
+      "team": "Portugal",
       "goals": 1,
       "pens": 0,
       "assists": 0,
@@ -624,6 +632,14 @@
     {
       "name": "Nizar Al-Rashdan",
       "team": "Jordan",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 24
+    },
+    {
+      "name": "Nuno Mendes",
+      "team": "Portugal",
       "goals": 1,
       "pens": 0,
       "assists": 0,
