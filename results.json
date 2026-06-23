@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23T21:18:00.934Z",
+  "updated": "2026-06-23T22:46:31.791Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -1120,8 +1120,8 @@
       "away": "Ghana",
       "hs": 0,
       "as": 0,
-      "state": "in",
-      "detail": "54'",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-23T20:00Z"
     }
   ]
