@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-24T21:03:07.362Z",
+  "updated": "2026-06-24T22:40:00.241Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 50,
-  "totalGoals": 138,
+  "totalGoals": 139,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -54,12 +54,20 @@
       "rank": 4
     },
     {
+      "name": "Vinícius Júnior",
+      "team": "Brazil",
+      "goals": 3,
+      "pens": 0,
+      "assists": 0,
+      "rank": 4
+    },
+    {
       "name": "Ayase Ueda",
       "team": "Japan",
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Brian Brobbey",
@@ -67,7 +75,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Cody Gakpo",
@@ -75,7 +83,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Cristiano Ronaldo",
@@ -83,7 +91,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Crysencio Summerville",
@@ -91,7 +99,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Cyle Larin",
@@ -99,7 +107,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Daichi Kamada",
@@ -107,7 +115,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Daniel Muñoz",
@@ -115,7 +123,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Elijah Just",
@@ -123,7 +131,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Ermin Mahmic",
@@ -131,7 +139,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Folarin Balogun",
@@ -139,7 +147,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Ismael Saibari",
@@ -147,7 +155,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Ismaïla Sarr",
@@ -155,7 +163,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Matheus Cunha",
@@ -163,7 +171,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Maxi Araújo",
@@ -171,7 +179,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Mikel Oyarzabal",
@@ -179,7 +187,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Rubén Vargas",
@@ -187,15 +195,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
-    },
-    {
-      "name": "Vinícius Júnior",
-      "team": "Brazil",
-      "goals": 2,
-      "pens": 0,
-      "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Yasin Ayari",
@@ -203,7 +203,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Harry Kane",
@@ -211,7 +211,7 @@
       "goals": 2,
       "pens": 1,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Kai Havertz",
@@ -219,7 +219,7 @@
       "goals": 2,
       "pens": 1,
       "assists": 0,
-      "rank": 7
+      "rank": 8
     },
     {
       "name": "Abbosbek Fayzullaev",
