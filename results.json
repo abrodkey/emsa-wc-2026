@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T17:23:47.457Z",
+  "updated": "2026-06-24T19:14:37.243Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -155,47 +155,47 @@
     "B": [
       {
         "team": "Canada",
-        "P": 2,
+        "P": 3,
         "W": 1,
-        "D": 1,
+        "D": 2,
         "L": 0,
         "GF": 7,
         "GA": 1,
         "GD": 6,
-        "Pts": 4
+        "Pts": 5
       },
       {
         "team": "Switzerland",
-        "P": 2,
+        "P": 3,
         "W": 1,
-        "D": 1,
+        "D": 2,
         "L": 0,
         "GF": 5,
         "GA": 2,
         "GD": 3,
-        "Pts": 4
+        "Pts": 5
       },
       {
         "team": "Bosnia-Herzegovina",
-        "P": 2,
+        "P": 3,
         "W": 0,
-        "D": 1,
+        "D": 2,
         "L": 1,
         "GF": 2,
         "GA": 5,
         "GD": -3,
-        "Pts": 1
+        "Pts": 2
       },
       {
         "team": "Qatar",
-        "P": 2,
+        "P": 3,
         "W": 0,
-        "D": 1,
+        "D": 2,
         "L": 1,
         "GF": 1,
         "GA": 7,
         "GD": -6,
-        "Pts": 1
+        "Pts": 2
       }
     ],
     "C": [
@@ -1143,6 +1143,26 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-24T02:00Z"
+    },
+    {
+      "group": "B",
+      "home": "Bosnia-Herzegovina",
+      "away": "Qatar",
+      "hs": 0,
+      "as": 0,
+      "state": "in",
+      "detail": "14'",
+      "date": "2026-06-24T19:00Z"
+    },
+    {
+      "group": "B",
+      "home": "Switzerland",
+      "away": "Canada",
+      "hs": 0,
+      "as": 0,
+      "state": "in",
+      "detail": "14'",
+      "date": "2026-06-24T19:00Z"
     }
   ]
 }
