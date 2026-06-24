@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-23T23:44:06.337Z",
+  "updated": "2026-06-24T01:49:38.003Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 46,
-  "totalGoals": 130,
+  "matchesPlayed": 47,
+  "totalGoals": 131,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -256,6 +256,14 @@
     {
       "name": "Amine Gouiri",
       "team": "Algeria",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 25
+    },
+    {
+      "name": "Ante Budimir",
+      "team": "Croatia",
       "goals": 1,
       "pens": 0,
       "assists": 0,
