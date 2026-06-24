@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24T01:49:36.077Z",
+  "updated": "2026-06-24T06:00:01.443Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -65,8 +65,8 @@
       "Jordan": 4
     },
     "K": {
-      "Portugal": 1,
-      "Colombia": 2,
+      "Colombia": 1,
+      "Portugal": 2,
       "DR Congo": 3,
       "Uzbekistan": 4
     },
@@ -568,6 +568,17 @@
     ],
     "K": [
       {
+        "team": "Colombia",
+        "P": 2,
+        "W": 2,
+        "D": 0,
+        "L": 0,
+        "GF": 4,
+        "GA": 1,
+        "GD": 3,
+        "Pts": 6
+      },
+      {
         "team": "Portugal",
         "P": 2,
         "W": 1,
@@ -579,25 +590,14 @@
         "Pts": 4
       },
       {
-        "team": "Colombia",
-        "P": 1,
-        "W": 1,
-        "D": 0,
-        "L": 0,
-        "GF": 3,
-        "GA": 1,
-        "GD": 2,
-        "Pts": 3
-      },
-      {
         "team": "DR Congo",
-        "P": 1,
+        "P": 2,
         "W": 0,
         "D": 1,
-        "L": 0,
+        "L": 1,
         "GF": 1,
-        "GA": 1,
-        "GD": 0,
+        "GA": 2,
+        "GD": -1,
         "Pts": 1
       },
       {
@@ -1133,6 +1133,16 @@
       "state": "post",
       "detail": "FT",
       "date": "2026-06-23T23:00Z"
+    },
+    {
+      "group": "K",
+      "home": "Colombia",
+      "away": "DR Congo",
+      "hs": 1,
+      "as": 0,
+      "state": "post",
+      "detail": "FT",
+      "date": "2026-06-24T02:00Z"
     }
   ]
 }
