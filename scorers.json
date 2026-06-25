@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-25T19:30:03.226Z",
+  "updated": "2026-06-25T21:16:18.177Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 54,
-  "totalGoals": 150,
+  "totalGoals": 153,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -542,6 +542,14 @@
       "rank": 29
     },
     {
+      "name": "Leroy Sané",
+      "team": "Germany",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 29
+    },
+    {
       "name": "Livano Comenencia",
       "team": "Curaçao",
       "goals": 1,
@@ -688,6 +696,22 @@
     {
       "name": "Nico Schlotterbeck",
       "team": "Germany",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 29
+    },
+    {
+      "name": "Nicolas Pépé",
+      "team": "Ivory Coast",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 29
+    },
+    {
+      "name": "Nilson Angulo",
+      "team": "Ecuador",
       "goals": 1,
       "pens": 0,
       "assists": 0,
