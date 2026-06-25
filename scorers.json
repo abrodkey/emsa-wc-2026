@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-25T02:49:42.316Z",
+  "updated": "2026-06-25T06:41:45.209Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 52,
-  "totalGoals": 149,
+  "matchesPlayed": 54,
+  "totalGoals": 150,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -280,6 +280,14 @@
     {
       "name": "Ali Olwan",
       "team": "Jordan",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 29
+    },
+    {
+      "name": "Álvaro Fidalgo",
+      "team": "Mexico",
       "goals": 1,
       "pens": 0,
       "assists": 0,

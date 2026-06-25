@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-25T02:49:39.453Z",
+  "updated": "2026-06-25T06:41:43.215Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -78,7 +78,7 @@
     }
   },
   "complete": {
-    "A": false,
+    "A": true,
     "B": true,
     "C": true,
     "D": false,
@@ -113,9 +113,9 @@
         "W": 3,
         "D": 0,
         "L": 0,
-        "GF": 5,
+        "GF": 6,
         "GA": 0,
-        "GD": 5,
+        "GD": 6,
         "Pts": 9
       },
       {
@@ -147,8 +147,8 @@
         "D": 1,
         "L": 2,
         "GF": 2,
-        "GA": 5,
-        "GD": -3,
+        "GA": 6,
+        "GD": -4,
         "Pts": 1
       }
     ],
@@ -1189,9 +1189,9 @@
       "home": "Czechia",
       "away": "Mexico",
       "hs": 0,
-      "as": 2,
-      "state": "in",
-      "detail": "89'",
+      "as": 3,
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-25T01:00Z"
     },
     {
@@ -1200,8 +1200,8 @@
       "away": "Korea Republic",
       "hs": 1,
       "as": 0,
-      "state": "in",
-      "detail": "89'",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-25T01:00Z"
     }
   ]
