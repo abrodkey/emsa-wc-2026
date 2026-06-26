@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-25T22:53:06.640Z",
+  "updated": "2026-06-26T00:19:23.397Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "matchesPlayed": 56,
-  "totalGoals": 155,
+  "totalGoals": 158,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -36,6 +36,14 @@
       "pens": 0,
       "assists": 0,
       "rank": 2
+    },
+    {
+      "name": "Brian Brobbey",
+      "team": "Netherlands",
+      "goals": 3,
+      "pens": 0,
+      "assists": 0,
+      "rank": 5
     },
     {
       "name": "Deniz Undav",
@@ -83,15 +91,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
-    },
-    {
-      "name": "Brian Brobbey",
-      "team": "Netherlands",
-      "goals": 2,
-      "pens": 0,
-      "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Cody Gakpo",
@@ -99,7 +99,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Cristiano Ronaldo",
@@ -107,7 +107,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Crysencio Summerville",
@@ -115,7 +115,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Cyle Larin",
@@ -123,7 +123,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Daichi Kamada",
@@ -131,7 +131,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Daniel Muñoz",
@@ -139,7 +139,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Elijah Just",
@@ -147,7 +147,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Ermin Mahmic",
@@ -155,7 +155,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Folarin Balogun",
@@ -163,7 +163,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Ismaïla Sarr",
@@ -171,7 +171,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Julián Quiñones",
@@ -179,7 +179,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Maxi Araújo",
@@ -187,7 +187,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Mikel Oyarzabal",
@@ -195,7 +195,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Nicolas Pépé",
@@ -203,7 +203,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Rubén Vargas",
@@ -211,7 +211,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Yasin Ayari",
@@ -219,7 +219,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Harry Kane",
@@ -227,7 +227,7 @@
       "goals": 2,
       "pens": 1,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Kai Havertz",
@@ -235,7 +235,7 @@
       "goals": 2,
       "pens": 1,
       "assists": 0,
-      "rank": 10
+      "rank": 11
     },
     {
       "name": "Abbosbek Fayzullaev",
@@ -366,6 +366,14 @@
       "rank": 30
     },
     {
+      "name": "Daizen Maeda",
+      "team": "Japan",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 30
+    },
+    {
       "name": "Emam Ashour",
       "team": "Egypt",
       "goals": 1,
@@ -424,6 +432,14 @@
     {
       "name": "Hassan Al-Haydos",
       "team": "Qatar",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 30
+    },
+    {
+      "name": "Hazem Mastouri",
+      "team": "Tunisia",
       "goals": 1,
       "pens": 0,
       "assists": 0,
