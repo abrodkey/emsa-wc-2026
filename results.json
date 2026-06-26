@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-26T00:19:22.122Z",
+  "updated": "2026-06-26T04:48:03.308Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -81,9 +81,9 @@
     "A": true,
     "B": true,
     "C": true,
-    "D": false,
+    "D": true,
     "E": true,
-    "F": false,
+    "F": true,
     "G": false,
     "H": false,
     "I": false,
@@ -247,47 +247,47 @@
     "D": [
       {
         "team": "USA",
-        "P": 2,
+        "P": 3,
         "W": 2,
         "D": 0,
-        "L": 0,
-        "GF": 6,
-        "GA": 1,
-        "GD": 5,
+        "L": 1,
+        "GF": 8,
+        "GA": 4,
+        "GD": 4,
         "Pts": 6
       },
       {
         "team": "Australia",
-        "P": 2,
+        "P": 3,
         "W": 1,
-        "D": 0,
+        "D": 1,
         "L": 1,
         "GF": 2,
         "GA": 2,
         "GD": 0,
-        "Pts": 3
+        "Pts": 4
       },
       {
         "team": "Paraguay",
-        "P": 2,
+        "P": 3,
         "W": 1,
-        "D": 0,
+        "D": 1,
         "L": 1,
         "GF": 2,
         "GA": 4,
         "GD": -2,
-        "Pts": 3
+        "Pts": 4
       },
       {
         "team": "Türkiye",
-        "P": 2,
-        "W": 0,
+        "P": 3,
+        "W": 1,
         "D": 0,
         "L": 2,
-        "GF": 0,
-        "GA": 3,
-        "GD": -3,
-        "Pts": 0
+        "GF": 3,
+        "GA": 5,
+        "GD": -2,
+        "Pts": 3
       }
     ],
     "E": [
@@ -343,32 +343,32 @@
         "W": 2,
         "D": 1,
         "L": 0,
-        "GF": 9,
+        "GF": 10,
         "GA": 4,
-        "GD": 5,
+        "GD": 6,
         "Pts": 7
       },
       {
         "team": "Japan",
         "P": 3,
-        "W": 2,
-        "D": 1,
+        "W": 1,
+        "D": 2,
         "L": 0,
         "GF": 7,
-        "GA": 2,
-        "GD": 5,
-        "Pts": 7
+        "GA": 3,
+        "GD": 4,
+        "Pts": 5
       },
       {
         "team": "Sweden",
         "P": 3,
         "W": 1,
-        "D": 0,
-        "L": 2,
-        "GF": 6,
+        "D": 1,
+        "L": 1,
+        "GF": 7,
         "GA": 7,
-        "GD": -1,
-        "Pts": 3
+        "GD": 0,
+        "Pts": 4
       },
       {
         "team": "Tunisia",
@@ -377,8 +377,8 @@
         "D": 0,
         "L": 3,
         "GF": 2,
-        "GA": 11,
-        "GD": -9,
+        "GA": 12,
+        "GD": -10,
         "Pts": 0
       }
     ],
@@ -1229,9 +1229,9 @@
       "home": "Japan",
       "away": "Sweden",
       "hs": 1,
-      "as": 0,
-      "state": "in",
-      "detail": "58'",
+      "as": 1,
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-25T23:00Z"
     },
     {
@@ -1239,10 +1239,30 @@
       "home": "Tunisia",
       "away": "Netherlands",
       "hs": 1,
-      "as": 2,
-      "state": "in",
-      "detail": "60'",
+      "as": 3,
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-25T23:00Z"
+    },
+    {
+      "group": "D",
+      "home": "Paraguay",
+      "away": "Australia",
+      "hs": 0,
+      "as": 0,
+      "state": "post",
+      "detail": "FT",
+      "date": "2026-06-26T02:00Z"
+    },
+    {
+      "group": "D",
+      "home": "Türkiye",
+      "away": "USA",
+      "hs": 3,
+      "as": 2,
+      "state": "post",
+      "detail": "FT",
+      "date": "2026-06-26T02:00Z"
     }
   ]
 }
