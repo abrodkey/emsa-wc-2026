@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T21:17:24.386Z",
+  "updated": "2026-06-27T22:33:18.962Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -72,8 +72,8 @@
     },
     "L": {
       "England": 1,
-      "Ghana": 2,
-      "Croatia": 3,
+      "Croatia": 2,
+      "Ghana": 3,
       "Panama": 4
     }
   },
@@ -616,46 +616,46 @@
       {
         "team": "England",
         "P": 3,
-        "W": 1,
-        "D": 2,
+        "W": 2,
+        "D": 1,
         "L": 0,
-        "GF": 4,
+        "GF": 6,
         "GA": 2,
-        "GD": 2,
-        "Pts": 5
+        "GD": 4,
+        "Pts": 7
+      },
+      {
+        "team": "Croatia",
+        "P": 3,
+        "W": 2,
+        "D": 0,
+        "L": 1,
+        "GF": 4,
+        "GA": 4,
+        "GD": 0,
+        "Pts": 6
       },
       {
         "team": "Ghana",
         "P": 3,
         "W": 1,
-        "D": 2,
-        "L": 0,
-        "GF": 1,
-        "GA": 0,
-        "GD": 1,
-        "Pts": 5
-      },
-      {
-        "team": "Croatia",
-        "P": 3,
-        "W": 1,
         "D": 1,
         "L": 1,
-        "GF": 3,
-        "GA": 4,
-        "GD": -1,
+        "GF": 1,
+        "GA": 1,
+        "GD": 0,
         "Pts": 4
       },
       {
         "team": "Panama",
         "P": 3,
         "W": 0,
-        "D": 1,
-        "L": 2,
+        "D": 0,
+        "L": 3,
         "GF": 0,
-        "GA": 2,
-        "GD": -2,
-        "Pts": 1
+        "GA": 4,
+        "GD": -4,
+        "Pts": 0
       }
     ]
   },
@@ -1328,10 +1328,10 @@
       "group": "L",
       "home": "Croatia",
       "away": "Ghana",
-      "hs": 0,
+      "hs": 1,
       "as": 0,
       "state": "in",
-      "detail": "16'",
+      "detail": "72'",
       "date": "2026-06-27T21:00Z"
     },
     {
@@ -1339,9 +1339,9 @@
       "home": "Panama",
       "away": "England",
       "hs": 0,
-      "as": 0,
+      "as": 2,
       "state": "in",
-      "detail": "16'",
+      "detail": "74'",
       "date": "2026-06-27T21:00Z"
     }
   ]
