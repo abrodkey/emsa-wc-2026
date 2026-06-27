@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-27T04:30:26.698Z",
+  "updated": "2026-06-27T07:38:08.707Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 64,
-  "totalGoals": 181,
+  "matchesPlayed": 66,
+  "totalGoals": 184,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -62,6 +62,14 @@
       "rank": 6
     },
     {
+      "name": "Elijah Just",
+      "team": "New Zealand",
+      "goals": 3,
+      "pens": 0,
+      "assists": 0,
+      "rank": 6
+    },
+    {
       "name": "Ismael Saibari",
       "team": "Morocco",
       "goals": 3,
@@ -107,7 +115,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Ayase Ueda",
@@ -115,7 +123,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Cody Gakpo",
@@ -123,7 +131,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Cristiano Ronaldo",
@@ -131,7 +139,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Crysencio Summerville",
@@ -139,7 +147,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Cyle Larin",
@@ -147,7 +155,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Daichi Kamada",
@@ -155,7 +163,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Daniel Muñoz",
@@ -163,15 +171,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
-    },
-    {
-      "name": "Elijah Just",
-      "team": "New Zealand",
-      "goals": 2,
-      "pens": 0,
-      "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Ermin Mahmic",
@@ -179,7 +179,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Folarin Balogun",
@@ -187,7 +187,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Julián Quiñones",
@@ -195,7 +195,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Leandro Trossard",
@@ -203,7 +203,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Maxi Araújo",
@@ -211,7 +211,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Mikel Oyarzabal",
@@ -219,7 +219,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Nicolas Pépé",
@@ -227,7 +227,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Pape Gueye",
@@ -235,7 +235,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Ramin Rezaeian",
@@ -243,7 +243,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Rubén Vargas",
@@ -251,7 +251,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Yasin Ayari",
@@ -259,7 +259,7 @@
       "goals": 2,
       "pens": 0,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Harry Kane",
@@ -267,7 +267,7 @@
       "goals": 2,
       "pens": 1,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Kai Havertz",
@@ -275,7 +275,7 @@
       "goals": 2,
       "pens": 1,
       "assists": 0,
-      "rank": 13
+      "rank": 14
     },
     {
       "name": "Abbosbek Fayzullaev",
@@ -328,6 +328,14 @@
     {
       "name": "Alexander Isak",
       "team": "Sweden",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 35
+    },
+    {
+      "name": "Alexis Saelemaekers",
+      "team": "Belgium",
       "goals": 1,
       "pens": 0,
       "assists": 0,
@@ -928,6 +936,14 @@
     {
       "name": "Romano Schmid",
       "team": "Austria",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 35
+    },
+    {
+      "name": "Romelu Lukaku",
+      "team": "Belgium",
       "goals": 1,
       "pens": 0,
       "assists": 0,
