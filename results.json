@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T00:17:35.340Z",
+  "updated": "2026-06-27T04:30:24.058Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -41,15 +41,15 @@
       "Tunisia": 4
     },
     "G": {
-      "Egypt": 1,
-      "Iran": 2,
-      "Belgium": 3,
+      "Belgium": 1,
+      "Egypt": 2,
+      "Iran": 3,
       "New Zealand": 4
     },
     "H": {
       "Spain": 1,
-      "Uruguay": 2,
-      "Cape Verde": 3,
+      "Cape Verde": 2,
+      "Uruguay": 3,
       "Saudi Arabia": 4
     },
     "I": {
@@ -85,7 +85,7 @@
     "E": true,
     "F": true,
     "G": false,
-    "H": false,
+    "H": true,
     "I": true,
     "J": false,
     "K": false,
@@ -384,64 +384,29 @@
     ],
     "G": [
       {
-        "team": "Egypt",
-        "P": 2,
-        "W": 1,
-        "D": 1,
-        "L": 0,
-        "GF": 4,
-        "GA": 2,
-        "GD": 2,
-        "Pts": 4
-      },
-      {
-        "team": "Iran",
-        "P": 2,
-        "W": 0,
-        "D": 2,
-        "L": 0,
-        "GF": 2,
-        "GA": 2,
-        "GD": 0,
-        "Pts": 2
-      },
-      {
         "team": "Belgium",
-        "P": 2,
-        "W": 0,
-        "D": 2,
-        "L": 0,
-        "GF": 1,
-        "GA": 1,
-        "GD": 0,
-        "Pts": 2
-      },
-      {
-        "team": "New Zealand",
-        "P": 2,
-        "W": 0,
-        "D": 1,
-        "L": 1,
-        "GF": 3,
-        "GA": 5,
-        "GD": -2,
-        "Pts": 1
-      }
-    ],
-    "H": [
-      {
-        "team": "Spain",
         "P": 3,
         "W": 1,
         "D": 2,
         "L": 0,
         "GF": 4,
-        "GA": 0,
-        "GD": 4,
+        "GA": 1,
+        "GD": 3,
         "Pts": 5
       },
       {
-        "team": "Uruguay",
+        "team": "Egypt",
+        "P": 3,
+        "W": 1,
+        "D": 2,
+        "L": 0,
+        "GF": 5,
+        "GA": 3,
+        "GD": 2,
+        "Pts": 5
+      },
+      {
+        "team": "Iran",
         "P": 3,
         "W": 0,
         "D": 3,
@@ -450,6 +415,30 @@
         "GA": 3,
         "GD": 0,
         "Pts": 3
+      },
+      {
+        "team": "New Zealand",
+        "P": 3,
+        "W": 0,
+        "D": 1,
+        "L": 2,
+        "GF": 3,
+        "GA": 8,
+        "GD": -5,
+        "Pts": 1
+      }
+    ],
+    "H": [
+      {
+        "team": "Spain",
+        "P": 3,
+        "W": 2,
+        "D": 1,
+        "L": 0,
+        "GF": 5,
+        "GA": 0,
+        "GD": 5,
+        "Pts": 7
       },
       {
         "team": "Cape Verde",
@@ -461,6 +450,17 @@
         "GA": 2,
         "GD": 0,
         "Pts": 3
+      },
+      {
+        "team": "Uruguay",
+        "P": 3,
+        "W": 0,
+        "D": 2,
+        "L": 1,
+        "GF": 3,
+        "GA": 4,
+        "GD": -1,
+        "Pts": 2
       },
       {
         "team": "Saudi Arabia",
@@ -1290,8 +1290,8 @@
       "away": "Saudi Arabia",
       "hs": 0,
       "as": 0,
-      "state": "in",
-      "detail": "15'",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-27T00:00Z"
     },
     {
@@ -1299,10 +1299,30 @@
       "home": "Uruguay",
       "away": "Spain",
       "hs": 0,
-      "as": 0,
-      "state": "in",
-      "detail": "16'",
+      "as": 1,
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-27T00:00Z"
+    },
+    {
+      "group": "G",
+      "home": "Egypt",
+      "away": "Iran",
+      "hs": 1,
+      "as": 1,
+      "state": "in",
+      "detail": "66'",
+      "date": "2026-06-27T03:00Z"
+    },
+    {
+      "group": "G",
+      "home": "New Zealand",
+      "away": "Belgium",
+      "hs": 0,
+      "as": 3,
+      "state": "in",
+      "detail": "68'",
+      "date": "2026-06-27T03:00Z"
     }
   ]
 }
