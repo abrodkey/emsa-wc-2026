@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T22:33:18.962Z",
+  "updated": "2026-06-27T23:41:27.503Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -89,7 +89,7 @@
     "I": true,
     "J": false,
     "K": false,
-    "L": false
+    "L": true
   },
   "scoring": {
     "A": true,
@@ -569,47 +569,47 @@
     "K": [
       {
         "team": "Colombia",
-        "P": 2,
+        "P": 3,
         "W": 2,
-        "D": 0,
+        "D": 1,
         "L": 0,
         "GF": 4,
         "GA": 1,
         "GD": 3,
-        "Pts": 6
+        "Pts": 7
       },
       {
         "team": "Portugal",
-        "P": 2,
+        "P": 3,
         "W": 1,
-        "D": 1,
+        "D": 2,
         "L": 0,
         "GF": 6,
         "GA": 1,
         "GD": 5,
-        "Pts": 4
+        "Pts": 5
       },
       {
         "team": "DR Congo",
-        "P": 2,
+        "P": 3,
         "W": 0,
-        "D": 1,
+        "D": 2,
         "L": 1,
         "GF": 1,
         "GA": 2,
         "GD": -1,
-        "Pts": 1
+        "Pts": 2
       },
       {
         "team": "Uzbekistan",
-        "P": 2,
+        "P": 3,
         "W": 0,
-        "D": 0,
+        "D": 1,
         "L": 2,
         "GF": 1,
         "GA": 8,
         "GD": -7,
-        "Pts": 0
+        "Pts": 1
       }
     ],
     "L": [
@@ -630,8 +630,8 @@
         "W": 2,
         "D": 0,
         "L": 1,
-        "GF": 4,
-        "GA": 4,
+        "GF": 5,
+        "GA": 5,
         "GD": 0,
         "Pts": 6
       },
@@ -641,8 +641,8 @@
         "W": 1,
         "D": 1,
         "L": 1,
-        "GF": 1,
-        "GA": 1,
+        "GF": 2,
+        "GA": 2,
         "GD": 0,
         "Pts": 4
       },
@@ -1328,10 +1328,10 @@
       "group": "L",
       "home": "Croatia",
       "away": "Ghana",
-      "hs": 1,
-      "as": 0,
-      "state": "in",
-      "detail": "72'",
+      "hs": 2,
+      "as": 1,
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-27T21:00Z"
     },
     {
@@ -1340,9 +1340,29 @@
       "away": "England",
       "hs": 0,
       "as": 2,
-      "state": "in",
-      "detail": "74'",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-27T21:00Z"
+    },
+    {
+      "group": "K",
+      "home": "Colombia",
+      "away": "Portugal",
+      "hs": 0,
+      "as": 0,
+      "state": "in",
+      "detail": "10'",
+      "date": "2026-06-27T23:30Z"
+    },
+    {
+      "group": "K",
+      "home": "DR Congo",
+      "away": "Uzbekistan",
+      "hs": 0,
+      "as": 0,
+      "state": "in",
+      "detail": "10'",
+      "date": "2026-06-27T23:30Z"
     }
   ]
 }

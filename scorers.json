@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-27T22:33:19.715Z",
+  "updated": "2026-06-27T23:41:28.299Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 66,
-  "totalGoals": 187,
+  "matchesPlayed": 68,
+  "totalGoals": 189,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -454,6 +454,14 @@
       "rank": 36
     },
     {
+      "name": "Derrick Luckassen",
+      "team": "Ghana",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 36
+    },
+    {
       "name": "Désiré Doué",
       "team": "France",
       "goals": 1,
@@ -856,6 +864,14 @@
     {
       "name": "Nico Schlotterbeck",
       "team": "Germany",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 36
+    },
+    {
+      "name": "Nikola Vlasic",
+      "team": "Croatia",
       "goals": 1,
       "pens": 0,
       "assists": 0,
