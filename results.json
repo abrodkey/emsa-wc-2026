@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-27T23:41:27.503Z",
+  "updated": "2026-06-28T01:55:12.788Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
   "phase": "group-stage",
@@ -88,7 +88,7 @@
     "H": true,
     "I": true,
     "J": false,
-    "K": false,
+    "K": true,
     "L": true
   },
   "scoring": {
@@ -592,24 +592,24 @@
       {
         "team": "DR Congo",
         "P": 3,
-        "W": 0,
-        "D": 2,
+        "W": 1,
+        "D": 1,
         "L": 1,
-        "GF": 1,
-        "GA": 2,
-        "GD": -1,
-        "Pts": 2
+        "GF": 4,
+        "GA": 3,
+        "GD": 1,
+        "Pts": 4
       },
       {
         "team": "Uzbekistan",
         "P": 3,
         "W": 0,
-        "D": 1,
-        "L": 2,
-        "GF": 1,
-        "GA": 8,
-        "GD": -7,
-        "Pts": 1
+        "D": 0,
+        "L": 3,
+        "GF": 2,
+        "GA": 11,
+        "GD": -9,
+        "Pts": 0
       }
     ],
     "L": [
@@ -1350,18 +1350,18 @@
       "away": "Portugal",
       "hs": 0,
       "as": 0,
-      "state": "in",
-      "detail": "10'",
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-27T23:30Z"
     },
     {
       "group": "K",
       "home": "DR Congo",
       "away": "Uzbekistan",
-      "hs": 0,
-      "as": 0,
-      "state": "in",
-      "detail": "10'",
+      "hs": 3,
+      "as": 1,
+      "state": "post",
+      "detail": "FT",
       "date": "2026-06-27T23:30Z"
     }
   ]
