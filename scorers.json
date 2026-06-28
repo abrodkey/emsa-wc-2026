@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-28T20:20:04.769Z",
+  "updated": "2026-06-28T21:36:07.642Z",
   "season": "2026 FIFA World Cup",
   "source": "ESPN fifa.world feed",
-  "matchesPlayed": 72,
-  "totalGoals": 203,
+  "matchesPlayed": 73,
+  "totalGoals": 204,
   "scorers": [
     {
       "name": "Lionel Messi",
@@ -1064,6 +1064,14 @@
     {
       "name": "Soufiane Rahimi",
       "team": "Morocco",
+      "goals": 1,
+      "pens": 0,
+      "assists": 0,
+      "rank": 39
+    },
+    {
+      "name": "Stephen Eustáquio",
+      "team": "Canada",
       "goals": 1,
       "pens": 0,
       "assists": 0,
