@@ -1820,6 +1820,7 @@ function fl(t){return FLAG[t]||"🏳️";}
 function esc(s){return (s+"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 function norm(s){return (s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z ]/g,"").trim();}
 function bootKey(t){const n=norm(t);for(const[k]of BOOT_KEYS){if(n.includes(k))return k;}return n;}
+function fullName(k,fb){const m=BOOT_KEYS.find(b=>b[0]===k);return m?m[1]:(fb||"");}  // canonical full name from a pick key (e.g. "kane" -> "Harry Kane")
 function normTeam(s){return (s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]/g,"");}
 const NORM_POOL=new Map(POOL.map(t=>[normTeam(t),t]));
 function mapTeam(cands){for(const c of cands){if(!c)continue;if(POOLSET.has(c))return c;if(ESPN_ALIAS[c])return ESPN_ALIAS[c];}for(const c of cands){if(!c)continue;const h=NORM_POOL.get(normTeam(c));if(h)return h;}return null;}
@@ -1955,8 +1956,8 @@ function detailHTML(o){
   const p=o.p,s=o.s;
   const champTxt=p.ko.champion?`${fl(p.ko.champion)} ${esc(p.ko.champion)} ${R.champion?(p.ko.champion===R.champion?"✅":"❌"):(o.cs==="out"?"❌ out":"")}`:"—";
   const box=(title,picks,winset,unit)=>{const rows=picks.map(t=>{let mk='<span class="mk none">·</span>';if(winset.has(t))mk='<span class="mk hit">✓</span>';else if(R.koOut.has(t))mk='<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");return `<div class="kobox"><h5>${title}</h5><div class="r32grid">${rows||'<div style="color:var(--muted);font-size:12px">—</div>'}</div></div>`;};
-  const ballTxt=p.ko.goldenBall?`${esc(p.ko.goldenBall)} ${R.goldenBall?(p.ko.goldenBallKey===R.goldenBall?"✅":"❌"):""}`:"—";
-  const bootTxt=`${esc(p.boot||"—")} ${(R.bootLeaders||[]).includes(bootKey(p.boot))?"✅ leading":""}`;
+  const ballTxt=p.ko.goldenBall?`${esc(fullName(p.ko.goldenBallKey,p.ko.goldenBall))} ${R.goldenBall?(p.ko.goldenBallKey===R.goldenBall?"✅":"❌"):""}`:"—";
+  const bootTxt=`${esc(p.boot?fullName(bootKey(p.boot),p.boot):"—")} ${(R.bootLeaders||[]).includes(bootKey(p.boot))?"✅ leading":""}`;
   const sum=`<div class="dsum"><div><b>${s.total}</b> total</div><div><b>${s.grp}</b> group</div><div><b>${s.knk}</b> knockout</div><div>Champion: <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals</div></div>`;
   const lbl=t=>`<div style="font-weight:800;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:12px 0 6px">${t}</div>`;
   // group-stage breakdown (relevant to the group portion of the score)
