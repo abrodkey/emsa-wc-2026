@@ -2046,9 +2046,12 @@ function renderGB(){
 /* ---------- hero / shell ---------- */
 function relTime(iso){if(!iso)return "—";const s=(Date.now()-new Date(iso).getTime())/1000;if(s<90)return "just now";if(s<3600)return Math.round(s/60)+" min ago";if(s<86400)return Math.round(s/3600)+"h ago";return Math.round(s/86400)+"d ago";}
 function refreshHero(){const arr=standings();const leader=anyPts()?arr[0]:null;
+  const ld=(R.scorers||[]).filter(e=>e.rank===1);
+  const bootLead=ld.length?`${esc(ld.length>1?ld[0].name+" +"+(ld.length-1):ld[0].name)} · ${ld[0].goals}`:"—";
   document.getElementById("heroStats").innerHTML=`
     <div class="stat"><div class="k">Current leader</div><div class="v">${leader?esc(leader.p.bracket):"—"}</div></div>
     <div class="stat"><div class="k">Top score</div><div class="v">${leader?leader.s.total+" pts":"—"}</div></div>
+    <div class="stat"><div class="k">Golden Boot leader</div><div class="v">${bootLead}</div></div>
     <div class="stat"><div class="k">Total goals</div><div class="v">${R.totalGoals}</div></div>`;
 }
 function renderAll(){ renderLeaderboard(); renderBracket(); renderInsights(); renderGB(); refreshHero(); }
