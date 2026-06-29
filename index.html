@@ -1957,7 +1957,7 @@ function detailHTML(o){
   const box=(title,picks,winset,unit)=>{const rows=picks.map(t=>{let mk='<span class="mk none">·</span>';if(winset.has(t))mk='<span class="mk hit">✓</span>';else if(R.koOut.has(t))mk='<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");return `<div class="kobox"><h5>${title}</h5><div class="r32grid">${rows||'<div style="color:var(--muted);font-size:12px">—</div>'}</div></div>`;};
   const ballTxt=p.ko.goldenBall?`${esc(p.ko.goldenBall)} ${R.goldenBall?(p.ko.goldenBallKey===R.goldenBall?"✅":"❌"):""}`:"—";
   const bootTxt=`${esc(p.boot||"—")} ${(R.bootLeaders||[]).includes(bootKey(p.boot))?"✅ leading":""}`;
-  const sum=`<div class="dsum"><div><b>${s.total}</b> total</div><div><b>${s.grp}</b> group</div><div><b>${s.knk}</b> knockout</div><div>Champion: <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals (actual ${R.totalGoals})</div></div>`;
+  const sum=`<div class="dsum"><div><b>${s.total}</b> total</div><div><b>${s.grp}</b> group</div><div><b>${s.knk}</b> knockout</div><div>Champion: <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals</div></div>`;
   const lbl=t=>`<div style="font-weight:800;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:12px 0 6px">${t}</div>`;
   // group-stage breakdown (relevant to the group portion of the score)
   const gboxes=GL.map(g=>{
@@ -2044,7 +2044,8 @@ function relTime(iso){if(!iso)return "—";const s=(Date.now()-new Date(iso).get
 function refreshHero(){const arr=standings();const leader=anyPts()?arr[0]:null;
   document.getElementById("heroStats").innerHTML=`
     <div class="stat"><div class="k">Current leader</div><div class="v">${leader?esc(leader.p.bracket):"—"}</div></div>
-    <div class="stat"><div class="k">Top score</div><div class="v">${leader?leader.s.total+" pts":"—"}</div></div>`;
+    <div class="stat"><div class="k">Top score</div><div class="v">${leader?leader.s.total+" pts":"—"}</div></div>
+    <div class="stat"><div class="k">Total goals</div><div class="v">${R.totalGoals}</div></div>`;
 }
 function renderAll(){ renderLeaderboard(); renderBracket(); renderInsights(); renderGB(); refreshHero(); }
 document.querySelectorAll(".tabs .tab").forEach(t=>t.addEventListener("click",()=>{document.querySelectorAll(".tabs .tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");const id=t.getAttribute("data-tab");["leaderboard","bracket","insights","goldenboot"].forEach(s=>document.getElementById("tab-"+s).hidden=(s!==id));}));
