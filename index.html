@@ -59,8 +59,9 @@
   .dsum{display:flex;gap:16px;flex-wrap:wrap;margin:4px 0 12px;font-size:13.5px} .dsum b{font-size:15px}
   .kogrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
   .kogrid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .kostack{display:grid;gap:10px;grid-template-columns:1fr 1fr;align-items:start}
+  .kostack{display:grid;gap:10px;grid-template-columns:1fr 1fr;align-items:stretch}
   .korow3{display:grid;grid-template-columns:1fr;gap:10px;align-items:start}
+  .r32grid.kc2{grid-template-columns:repeat(2,1fr)} .r32grid.kc4{grid-template-columns:repeat(4,1fr)}
   details.gs{margin-top:14px}
   details.gs>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:12px;color:var(--ink);background:#f1f5f9;border:1px solid var(--line);border-radius:8px;padding:6px 12px;user-select:none;text-transform:uppercase;letter-spacing:.03em}
   details.gs>summary::-webkit-details-marker{display:none}
@@ -145,6 +146,7 @@
     .kogrid3{grid-template-columns:1fr}
     .kostack{grid-template-columns:1fr}
     .korow3{grid-template-columns:1fr}
+    .r32grid.kc2,.r32grid.kc4{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
     .col-champ{display:none}
   }
 </style>
@@ -1961,7 +1963,7 @@ function detailHTML(o){
   const p=o.p,s=o.s;
   const champTxt=p.ko.champion?`${fl(p.ko.champion)} ${esc(p.ko.champion)} ${R.champion?(p.ko.champion===R.champion?"✅":"❌"):(o.cs==="out"?"❌ out":"")}`:"—";
   const champG=p.champion?`${fl(p.champion)} ${esc(p.champion)} ${R.champion?(p.champion===R.champion?"✅":"❌"):""}`:"—";
-  const box=(title,picks,winset,unit)=>{const rows=picks.map(t=>{let mk='<span class="mk none">·</span>';if(winset.has(t))mk='<span class="mk hit">✓</span>';else if(R.koOut.has(t))mk='<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");return `<div class="kobox"><h5>${title}</h5><div class="r32grid">${rows||'<div style="color:var(--muted);font-size:12px">—</div>'}</div></div>`;};
+  const box=(title,picks,winset,cols)=>{const rows=picks.map(t=>{let mk='<span class="mk none">·</span>';if(winset.has(t))mk='<span class="mk hit">✓</span>';else if(R.koOut.has(t))mk='<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");return `<div class="kobox"><h5>${title}</h5><div class="r32grid${cols?' kc'+cols:''}">${rows||'<div style="color:var(--muted);font-size:12px">—</div>'}</div></div>`;};
   const ballTxt=p.ko.goldenBall?`${esc(fullName(p.ko.goldenBallKey,p.ko.goldenBall))} ${R.goldenBall?(p.ko.goldenBallKey===R.goldenBall?"✅":"❌"):""}`:"—";
   const bootTxt=`${esc(p.boot?fullName(bootKey(p.boot),p.boot):"—")} ${(R.bootLeaders||[]).includes(bootKey(p.boot))?"✅ leading":""}`;
   const sum=`<div class="dsum"><div>Champion (Group Stage): <b>${champG}</b></div><div>Champion (Knockout Stage): <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals</div></div>`;
@@ -1974,7 +1976,7 @@ function detailHTML(o){
   }).join("");
   const qrows=p.thirds.map(t=>{let mk='<span class="mk none">·</span>';if(R.thirds.length)mk=R.thirds.includes(t)?'<span class="mk hit">✓</span>':'<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");
   return sum
-    +lbl("Knockout picks")+`<div class="kostack">${box("Round of 16",p.ko.r32,R.winR.R32)}<div class="korow3">${box("Quarterfinals",p.ko.r16,R.winR.R16)}${box("Semifinals",p.ko.qf,R.winR.QF)}${box("Finals",p.ko.sf,R.winR.SF)}</div></div>`
+    +lbl("Knockout picks")+`<div class="kostack">${box("Round of 16",p.ko.r32,R.winR.R32,2)}<div class="korow3">${box("Quarterfinals",p.ko.r16,R.winR.R16,4)}${box("Semifinals",p.ko.qf,R.winR.QF,2)}${box("Finals",p.ko.sf,R.winR.SF,2)}</div></div>`
     +`<details class="gs"><summary>Group stage picks</summary><div class="kogrid">${gboxes}</div><div class="gslbl">3rd → Round of 32</div><div class="kobox"><div class="r32grid">${qrows}</div></div></details>`;
 }
 
