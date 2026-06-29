@@ -123,17 +123,17 @@
 </head>
 <body>
   <div class="hero"><div class="wrap">
-    <h1><span class="ball">⚽</span> EMSA World Cup 2026 <span style="opacity:.6;font-weight:600">·</span> League Dashboard</h1>
-    <div><span class="phase">📍 Phase 2 of 2 · Knockouts</span></div>
+    <h1>EMSA World Cup 2026 <span style="opacity:.6;font-weight:600">·</span> League Dashboard</h1>
+    <div><span class="phase">Phase 2 of 2 · Knockouts</span></div>
     <div class="stripe" id="heroStats"></div>
   </div></div>
 
   <div class="wrap">
     <div class="tabs">
-      <button class="tab active" data-tab="leaderboard">🏆 Leaderboard</button>
-      <button class="tab" data-tab="bracket">🗺️ Bracket</button>
-      <button class="tab" data-tab="insights">📊 League Insights</button>
-      <button class="tab" data-tab="goldenboot">🥇 Golden Boot Race</button>
+      <button class="tab active" data-tab="leaderboard">Leaderboard</button>
+      <button class="tab" data-tab="bracket">Bracket</button>
+      <button class="tab" data-tab="insights">League Insights</button>
+      <button class="tab" data-tab="goldenboot">Golden Boot Race</button>
     </div>
 
     <section id="tab-leaderboard">
@@ -173,7 +173,6 @@
 
     <section id="tab-goldenboot" hidden>
       <div class="card pad">
-        <div class="note">🥇 Live top scorers of the tournament (group + knockout). 🎯 = how many EMSA brackets picked this player for the Golden Boot — tap a top-3 player's 🎯 to see who.</div>
         <div class="leaders" id="gbLeaders"></div>
         <table class="tbl"><thead><tr><th>#</th><th>Player</th><th style="text-align:right">Goals</th></tr></thead><tbody id="gbRows"></tbody></table>
         <div id="gbEmpty"></div>
@@ -1921,7 +1920,9 @@ function renderLeaderboard(){
     return `<tr class="row" data-i="${idx}"><td class="rank ${rc}">${o.rank}</td><td class="who"><div class="bn">${esc(o.p.bracket)}</div><div class="rn">${esc(o.p.name)}</div></td><td>${chip}</td><td class="pts-cell">${s.total}<br><small>${s.knk?s.knk+" KO · ":""}${s.grp} grp</small>${bar}</td></tr><tr class="detail" data-d="${idx}" hidden><td colspan="4"><div class="detail-inner" id="det-${idx}"></div></td></tr>`;
   }).join("");
   document.getElementById("lbEmpty").innerHTML=anyPts()?"":`<div class="empty">Knockouts are underway — points appear as matches finish.</div>`;
-  body.querySelectorAll("tr.row").forEach(tr=>tr.addEventListener("click",()=>{const i=tr.getAttribute("data-i");const d=body.querySelector(`tr.detail[data-d="${i}"]`);const open=!d.hasAttribute("hidden");if(open){d.setAttribute("hidden","");tr.classList.remove("open");}else{d.removeAttribute("hidden");tr.classList.add("open");document.getElementById("det-"+i).innerHTML=detailHTML(arr[i]);}}));
+  body.querySelectorAll("tr.row").forEach(tr=>tr.addEventListener("click",()=>{const i=tr.getAttribute("data-i");const d=body.querySelector(`tr.detail[data-d="${i}"]`);const wasOpen=!d.hasAttribute("hidden");
+    body.querySelectorAll("tr.detail").forEach(x=>x.setAttribute("hidden",""));body.querySelectorAll("tr.row").forEach(x=>x.classList.remove("open"));
+    if(!wasOpen){d.removeAttribute("hidden");tr.classList.add("open");document.getElementById("det-"+i).innerHTML=detailHTML(arr[i]);}}));
 }
 function detailHTML(o){
   const p=o.p,s=o.s;
