@@ -58,6 +58,7 @@
   .dsum{display:flex;gap:16px;flex-wrap:wrap;margin:4px 0 12px;font-size:13.5px} .dsum b{font-size:15px}
   .kogrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
   .kogrid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .kostack{display:grid;gap:10px}
   .r32grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0 14px}
   .kobox{border:1px solid var(--line);border-radius:10px;padding:9px 10px;background:#fff}
   .kobox h5{margin:0 0 6px;font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
@@ -1855,18 +1856,19 @@ async function compute(){
   // ---- knockout rounds (classify by per-team match count) ----
   const koSorted=koMatches.slice().sort((a,b)=>new Date(a.date)-new Date(b.date));
   const cnt={}, rnd={R32:[],R16:[],QF:[],SF:[],F5:[]};
-  const winR={R16:new Set(),QF:new Set(),SF:new Set()}; let koChampion="";
+  const winR={R32:new Set(),R16:new Set(),QF:new Set(),SF:new Set()}, koOut=new Set(); let koChampion="";  // winR.R32 = teams that REACHED the R16 (won R32); koOut = eliminated teams
   for(const m of koSorted){
     const rNum=Math.max(cnt[m.home]||0,cnt[m.away]||0)+1; m.round=rNum;
     if(m.state==="post"){cnt[m.home]=(cnt[m.home]||0)+1;cnt[m.away]=(cnt[m.away]||0)+1;}
     if(rNum===2)rnd.R16.push(m); else if(rNum===3)rnd.QF.push(m); else if(rNum===4)rnd.SF.push(m); else if(rNum===5)rnd.F5.push(m); else rnd.R32.push(m);
-    if(m.state==="post"&&m.winner){ if(rNum===2)winR.R16.add(m.winner); else if(rNum===3)winR.QF.add(m.winner); else if(rNum===4)winR.SF.add(m.winner); else if(rNum===5&&winR.SF.has(m.home)&&winR.SF.has(m.away))koChampion=m.winner; }
+    if(m.state==="post"&&m.winner){ koOut.add(m.winner===m.home?m.away:m.home);  // loser is eliminated
+      if(rNum===1)winR.R32.add(m.winner); else if(rNum===2)winR.R16.add(m.winner); else if(rNum===3)winR.QF.add(m.winner); else if(rNum===4)winR.SF.add(m.winner); else if(rNum===5&&winR.SF.has(m.home)&&winR.SF.has(m.away))koChampion=m.winner; }
   }
   R={ standings, complete, thirds, tableMeta,
     champion: ov.champion || koChampion || "",
     koChampion,
     bootLeaders, goldenBall: ov.goldenBall? bootKey(ov.goldenBall):"",
-    winR, rnd, koMatches:koSorted, scorers, totalGoals, updated:new Date().toISOString(), anyLive };
+    winR, koOut, rnd, koMatches:koSorted, scorers, totalGoals, updated:new Date().toISOString(), anyLive };
 }
 
 /* ---------- scoring ---------- */
@@ -1878,10 +1880,10 @@ function scoreOf(p){
   const champ=R.champion;
   const c1=(champ&&p.champion===champ)?CHAMP1:0;
   const c2=(champ&&p.ko.champion===champ)?CHAMP2:0;
-  const r16=p.ko.r16.filter(t=>R.winR.R16.has(t)).length*R16PT;
-  const qf=p.ko.qf.filter(t=>R.winR.QF.has(t)).length*QFPT;
-  const sf=p.ko.sf.filter(t=>R.winR.SF.has(t)).length*SFPT;
-  const knk=r16+qf+sf;
+  const r16=p.ko.r32.filter(t=>R.winR.R32.has(t)).length*R16PT;  // reached R16 (3 ea, 16 picks)
+  const qf=p.ko.r16.filter(t=>R.winR.R16.has(t)).length*QFPT;    // reached QF (5 ea, 8 picks)
+  const sf=p.ko.qf.filter(t=>R.winR.QF.has(t)).length*SFPT;      // reached SF (7 ea, 4 picks)
+  const knk=r16+qf+sf;  // the 2 Final picks (p.ko.sf) are shown but not scored; champion scores via c2
   const boot=(R.bootLeaders||[]).includes(bootKey(p.boot))?BOOTPT:0;
   const ball=(R.goldenBall&&p.ko.goldenBallKey===R.goldenBall)?BALLPT:0;
   return {grp,knk,c1,c2,boot,ball,r16:r16/R16PT,qf:qf/QFPT,sf:sf/SFPT,exact,qh,total:grp+knk+c1+c2+boot+ball};
@@ -1927,7 +1929,7 @@ function renderLeaderboard(){
 function detailHTML(o){
   const p=o.p,s=o.s;
   const champTxt=p.ko.champion?`${fl(p.ko.champion)} ${esc(p.ko.champion)} ${R.champion?(p.ko.champion===R.champion?"✅":"❌"):(o.cs==="out"?"❌ out":"")}`:"—";
-  const box=(title,picks,winset,unit)=>{const rows=picks.map(t=>{let mk='<span class="mk none">·</span>';if(winset.size){mk=winset.has(t)?'<span class="mk hit">✓</span>':'<span class="mk miss">✕</span>';}return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");return `<div class="kobox"><h5>${title}</h5><div class="r32grid">${rows||'<div style="color:var(--muted);font-size:12px">—</div>'}</div></div>`;};
+  const box=(title,picks,winset,unit)=>{const rows=picks.map(t=>{let mk='<span class="mk none">·</span>';if(winset.has(t))mk='<span class="mk hit">✓</span>';else if(R.koOut.has(t))mk='<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");return `<div class="kobox"><h5>${title}</h5><div class="r32grid">${rows||'<div style="color:var(--muted);font-size:12px">—</div>'}</div></div>`;};
   const ballTxt=p.ko.goldenBall?`${esc(p.ko.goldenBall)} ${R.goldenBall?(p.ko.goldenBallKey===R.goldenBall?"✅":"❌"):""}`:"—";
   const bootTxt=`${esc(p.boot||"—")} ${(R.bootLeaders||[]).includes(bootKey(p.boot))?"✅ leading":""}`;
   const sum=`<div class="dsum"><div><b>${s.total}</b> total</div><div><b>${s.grp}</b> group</div><div><b>${s.knk}</b> knockout</div><div>Champion: <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals (actual ${R.totalGoals})</div></div>`;
@@ -1940,7 +1942,7 @@ function detailHTML(o){
   }).join("");
   const qrows=p.thirds.map(t=>{let mk='<span class="mk none">·</span>';if(R.thirds.length)mk=R.thirds.includes(t)?'<span class="mk hit">✓</span>':'<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");
   return sum
-    +lbl("Knockout picks")+`<div class="kogrid3">${box("Round of 16",p.ko.r16,R.winR.R16)}${box("Quarterfinals",p.ko.qf,R.winR.QF)}${box("Semifinals",p.ko.sf,R.winR.SF)}</div>`
+    +lbl("Knockout picks")+`<div class="kostack">${box("Round of 16 (reached)",p.ko.r32,R.winR.R32)}${box("Quarterfinals (reached)",p.ko.r16,R.winR.R16)}${box("Semifinals (reached)",p.ko.qf,R.winR.QF)}${box("Finalists (reached)",p.ko.sf,R.winR.SF)}</div>`
     +lbl("Group stage")+`<div class="kogrid">${gboxes}</div>`
     +lbl("3rd → Round of 32")+`<div class="kobox"><div class="r32grid">${qrows}</div></div>`;
 }
@@ -2013,7 +2015,7 @@ function renderAll(){ renderLeaderboard(); renderBracket(); renderInsights(); re
 document.querySelectorAll(".tabs .tab").forEach(t=>t.addEventListener("click",()=>{document.querySelectorAll(".tabs .tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");const id=t.getAttribute("data-tab");["leaderboard","bracket","insights","goldenboot"].forEach(s=>document.getElementById("tab-"+s).hidden=(s!==id));}));
 
 let lastSig=null;
-function sig(){return JSON.stringify([R.standings,R.thirds,R.champion,R.bootLeaders,R.goldenBall,[...R.winR.R16],[...R.winR.QF],[...R.winR.SF],R.koMatches.map(m=>[m.home,m.away,m.hs,m.as,m.state]),R.scorers.map(s=>[s.name,s.goals])]);}
+function sig(){return JSON.stringify([R.standings,R.thirds,R.champion,R.bootLeaders,R.goldenBall,[...R.winR.R32],[...R.winR.R16],[...R.winR.QF],[...R.winR.SF],R.koMatches.map(m=>[m.home,m.away,m.hs,m.as,m.state]),R.scorers.map(s=>[s.name,s.goals])]);}
 async function load(){ try{ await compute(); const s=sig(); if(s!==lastSig){lastSig=s;renderAll();}else refreshHero(); }catch(e){ refreshHero(); } scheduleNext(); }
 let pollT=null; function scheduleNext(){ clearTimeout(pollT); pollT=setTimeout(load, R.anyLive?30*1000:120*1000); }
 load();
