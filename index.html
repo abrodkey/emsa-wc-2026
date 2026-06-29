@@ -42,7 +42,7 @@
   .lb{width:100%;border-collapse:separate;border-spacing:0}
   .lb th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--card)}
   .lb td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
-  .lb tr.row{cursor:pointer;transition:background .12s} .lb tr.row:hover{background:#f8fafc} .lb tr.row.open{background:#f5f9ff}
+  .lb tr.row{cursor:pointer;transition:background .12s;scroll-margin-top:10px} .lb tr.row:hover{background:#f8fafc} .lb tr.row.open{background:#f5f9ff}
   .rank{font-weight:800;font-size:16px;width:46px;color:var(--muted)} .rank.top1{color:var(--gold-d)} .rank.top2{color:#6b7785} .rank.top3{color:var(--bronze)}
   .who .bn{font-weight:700} .who .rn{color:var(--muted);font-size:12.5px}
   .champ-chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:3px 9px;border-radius:999px;background:var(--chip);border:1px solid var(--line);white-space:nowrap}
@@ -1937,7 +1937,7 @@ function renderLeaderboard(){
   document.getElementById("lbEmpty").innerHTML=anyPts()?"":`<div class="empty">Knockouts are underway — points appear as matches finish.</div>`;
   body.querySelectorAll("tr.row").forEach(tr=>tr.addEventListener("click",()=>{const i=tr.getAttribute("data-i");const d=body.querySelector(`tr.detail[data-d="${i}"]`);const wasOpen=!d.hasAttribute("hidden");
     body.querySelectorAll("tr.detail").forEach(x=>x.setAttribute("hidden",""));body.querySelectorAll("tr.row").forEach(x=>x.classList.remove("open"));
-    if(!wasOpen){d.removeAttribute("hidden");tr.classList.add("open");document.getElementById("det-"+i).innerHTML=detailHTML(arr[i]);}}));
+    if(!wasOpen){d.removeAttribute("hidden");tr.classList.add("open");document.getElementById("det-"+i).innerHTML=detailHTML(arr[i]);tr.scrollIntoView({block:"start"});}}));
 }
 function detailHTML(o){
   const p=o.p,s=o.s;
