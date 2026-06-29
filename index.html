@@ -93,6 +93,7 @@
   .ld .tm{font-size:12.5px;opacity:.92;margin-top:1px} .ld .g{font-size:26px;font-weight:900;margin-top:7px} .ld .g small{font-size:12px;font-weight:600;opacity:.9}
   .ld .bub{margin-top:7px;cursor:pointer;border:none;font:inherit;font-size:11.5px;color:#fff;background:rgba(0,0,0,.16);border-radius:999px;padding:3px 9px;align-self:flex-start;display:inline-flex;align-items:center;gap:5px}
   .ld .bub:hover{background:rgba(0,0,0,.3)} .ld .bub .car{font-size:9px;opacity:.85}
+  .ld .bub0{cursor:default;opacity:.6} .ld .bub0:hover{background:rgba(0,0,0,.16)}
   .ld-drop{margin-top:8px;background:rgba(0,0,0,.18);border-radius:10px;padding:9px 11px;font-size:12.5px;line-height:1.7;align-self:stretch}
   .ld-drop b{font-weight:600} .ld-drop b:not(:last-child)::after{content:" · ";opacity:.5;font-weight:400}
   table.tbl{width:100%;border-collapse:separate;border-spacing:0;margin-top:14px}
@@ -143,7 +144,7 @@
           <span><i class="s-c2"></i>champion (2)</span>
           <span><i class="s-boot"></i>golden boot</span>
           <span><i class="s-ball"></i>golden ball</span>
-          <span class="sc">Knockout: R16 <b>3</b> · QF <b>5</b> · SF <b>7</b> · Champion <b>10</b> (25 combined) · Golden Boot <b>7</b> · Golden Ball <b>7</b></span>
+          <span class="sc">Knockout Scoring: R16 <b>3</b> · QF <b>5</b> · SF <b>7</b> · Champion <b>10</b> (25 combined) · Golden Boot <b>7</b> · Golden Ball <b>7</b></span>
         </div>
         <table class="lb"><thead><tr><th>#</th><th>Bracket</th><th>Champion pick</th><th style="text-align:right">Points</th></tr></thead><tbody id="lbBody"></tbody></table>
         <div id="lbEmpty"></div>
@@ -1925,7 +1926,7 @@ function detailHTML(o){
   const box=(title,picks,winset,unit)=>{const rows=picks.map(t=>{let mk='<span class="mk none">·</span>';if(winset.size){mk=winset.has(t)?'<span class="mk hit">✓</span>':'<span class="mk miss">✕</span>';}return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");return `<div class="kobox"><h5>${title}</h5>${rows||'<div style="color:var(--muted);font-size:12px">—</div>'}</div>`;};
   const ballTxt=p.ko.goldenBall?`${esc(p.ko.goldenBall)} ${R.goldenBall?(p.ko.goldenBallKey===R.goldenBall?"✅":"❌"):""}`:"—";
   const bootTxt=`${esc(p.boot||"—")} ${(R.bootLeaders||[]).includes(bootKey(p.boot))?"✅ leading":""}`;
-  const sum=`<div class="dsum"><div><b>${s.total}</b> total</div><div><b>${s.grp}</b> group</div><div><b>${s.knk}</b> knockout (${s.r16}·${s.qf}·${s.sf})</div><div>Champion: <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals (actual ${R.totalGoals})</div></div>`;
+  const sum=`<div class="dsum"><div><b>${s.total}</b> total</div><div><b>${s.grp}</b> group</div><div><b>${s.knk}</b> knockout</div><div>Champion: <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals (actual ${R.totalGoals})</div></div>`;
   return sum+`<div class="kogrid">${box("Round of 16",p.ko.r16,R.winR.R16)}${box("Quarterfinals",p.ko.qf,R.winR.QF)}${box("Semifinals",p.ko.sf,R.winR.SF)}</div>`;
 }
 
@@ -1969,11 +1970,11 @@ function renderGB(){
   if(sc.length){
     lead.style.display="grid";
     lead.innerHTML=sc.slice(0,3).map((e,i)=>{const k=bootKey(e.name);const b=POOL_BOOT[k];const n=b?b.n:0;const open=n>0&&gbOpen===k;
-      const bub=n>0?`<button class="bub" data-k="${k}">🎯 ${n} bracket${n>1?"s":""} <span class="car">${open?'▴':'▾'}</span></button>`:"";
+      const bub=n>0?`<button class="bub" data-k="${k}">🎯 ${n} bracket${n>1?"s":""} <span class="car">${open?'▴':'▾'}</span></button>`:`<span class="bub bub0">🎯 0 brackets</span>`;
       const drop=open?`<div class="ld-drop">${b.brackets.slice().sort((a,b)=>a.localeCompare(b)).map(x=>`<b>${esc(x)}</b>`).join("")}</div>`:"";
       return `<div class="ld g${i+1}"><span class="medal">${med[i]}</span><div class="nm">${esc(e.name)}</div><div class="g">${e.goals}<small> goal${e.goals>1?"s":""}</small></div>${bub}${drop}</div>`;
     }).join("");
-    lead.querySelectorAll(".bub").forEach(btn=>btn.addEventListener("click",()=>{const k=btn.getAttribute("data-k");gbOpen=(gbOpen===k)?null:k;renderGB();}));
+    lead.querySelectorAll(".bub[data-k]").forEach(btn=>btn.addEventListener("click",()=>{const k=btn.getAttribute("data-k");gbOpen=(gbOpen===k)?null:k;renderGB();}));
   } else { lead.style.display="none"; lead.innerHTML=""; }
   const limit=gbShowAll?sc.length:10;
   document.getElementById("gbRows").innerHTML=sc.slice(0,limit).map(e=>{const rc=e.rank===1?"t1":e.rank===2?"t2":e.rank===3?"t3":"";const b=POOL_BOOT[bootKey(e.name)];const bb=b?`<span class="back-badge">🎯 ${b.n}</span>`:"";const sub=[e.pens?`${e.pens} pen${e.pens>1?"s":""}`:"",e.assists?`${e.assists} ast`:""].filter(Boolean).join(" · ");
