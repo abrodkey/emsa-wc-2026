@@ -142,6 +142,7 @@
     .mgrid{grid-template-columns:1fr}
     .kogrid3{grid-template-columns:1fr}
     .korow3{grid-template-columns:1fr}
+    .col-champ{display:none}
   }
 </style>
 </head>
@@ -173,7 +174,7 @@
           <span class="sc">Group Scoring: 1st <b>3</b> · 2nd <b>3</b> · 3rd <b>2</b> · 4th <b>1</b> · advancing 3rd <b>2</b> · Champion <b>15</b> · Golden Boot <b>7</b></span>
           <span class="sc">Knockout Scoring: R16 <b>3</b> · QF <b>5</b> · SF <b>7</b> · Champion <b>10</b> · Golden Ball <b>7</b></span>
         </div>
-        <table class="lb"><thead><tr><th>#</th><th>Bracket</th><th>Champion pick</th><th style="text-align:right">Points</th></tr></thead><tbody id="lbBody"></tbody></table>
+        <table class="lb"><thead><tr><th>#</th><th>Bracket</th><th class="col-champ">Champion (Group Stage)</th><th class="col-champ">Champion (Knockout Stage)</th><th style="text-align:right">Points</th></tr></thead><tbody id="lbBody"></tbody></table>
         <div id="lbEmpty"></div>
       </div>
     </section>
@@ -1941,9 +1942,10 @@ function renderLeaderboard(){
   const body=document.getElementById("lbBody");
   body.innerHTML=arr.map((o,idx)=>{const s=o.s,w=t=>maxT?(t/maxT*100):0;
     const rc=o.rank===1?"top1":o.rank===2?"top2":o.rank===3?"top3":"";
-    const chip=o.p.ko.champion?`<span class="champ-chip ${o.cs}">${fl(o.p.ko.champion)} ${esc(o.p.ko.champion)}</span>`:`<span class="champ-chip">—</span>`;
+    const chipG=o.p.champion?`<span class="champ-chip">${fl(o.p.champion)} ${esc(o.p.champion)}</span>`:`<span class="champ-chip">—</span>`;
+    const chipK=o.p.ko.champion?`<span class="champ-chip ${o.cs}">${fl(o.p.ko.champion)} ${esc(o.p.ko.champion)}</span>`:`<span class="champ-chip">—</span>`;
     const bar=s.total?`<div class="bar"><span class="s-grp" style="width:${w(s.grp)}%"></span><span class="s-knk" style="width:${w(s.knk)}%"></span><span class="s-c1" style="width:${w(s.c1)}%"></span><span class="s-c2" style="width:${w(s.c2)}%"></span><span class="s-boot" style="width:${w(s.boot)}%"></span><span class="s-ball" style="width:${w(s.ball)}%"></span></div>`:"";
-    return `<tr class="row" data-i="${idx}"><td class="rank ${rc}">${o.rank}</td><td class="who"><div class="bn">${esc(o.p.bracket)}</div><div class="rn">${esc(o.p.name)}</div></td><td>${chip}</td><td class="pts-cell">${s.total}<br><small>${s.knk?s.knk+" KO · ":""}${s.grp} grp</small>${bar}</td></tr><tr class="detail" data-d="${idx}" hidden><td colspan="4"><div class="detail-inner" id="det-${idx}"></div></td></tr>`;
+    return `<tr class="row" data-i="${idx}"><td class="rank ${rc}">${o.rank}</td><td class="who"><div class="bn">${esc(o.p.bracket)}</div><div class="rn">${esc(o.p.name)}</div></td><td class="col-champ">${chipG}</td><td class="col-champ">${chipK}</td><td class="pts-cell">${s.total}<br><small>${s.knk?s.knk+" KO · ":""}${s.grp} grp</small>${bar}</td></tr><tr class="detail" data-d="${idx}" hidden><td colspan="5"><div class="detail-inner" id="det-${idx}"></div></td></tr>`;
   }).join("");
   document.getElementById("lbEmpty").innerHTML=anyPts()?"":`<div class="empty">Knockouts are underway — points appear as matches finish.</div>`;
   const openRow=(i,toggle)=>{const tr=body.querySelector(`tr.row[data-i="${i}"]`),d=body.querySelector(`tr.detail[data-d="${i}"]`);if(!tr||!d)return;const wasOpen=!d.hasAttribute("hidden");
@@ -1955,10 +1957,11 @@ function renderLeaderboard(){
 function detailHTML(o){
   const p=o.p,s=o.s;
   const champTxt=p.ko.champion?`${fl(p.ko.champion)} ${esc(p.ko.champion)} ${R.champion?(p.ko.champion===R.champion?"✅":"❌"):(o.cs==="out"?"❌ out":"")}`:"—";
+  const champG=p.champion?`${fl(p.champion)} ${esc(p.champion)} ${R.champion?(p.champion===R.champion?"✅":"❌"):""}`:"—";
   const box=(title,picks,winset,unit)=>{const rows=picks.map(t=>{let mk='<span class="mk none">·</span>';if(winset.has(t))mk='<span class="mk hit">✓</span>';else if(R.koOut.has(t))mk='<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");return `<div class="kobox"><h5>${title}</h5><div class="r32grid">${rows||'<div style="color:var(--muted);font-size:12px">—</div>'}</div></div>`;};
   const ballTxt=p.ko.goldenBall?`${esc(fullName(p.ko.goldenBallKey,p.ko.goldenBall))} ${R.goldenBall?(p.ko.goldenBallKey===R.goldenBall?"✅":"❌"):""}`:"—";
   const bootTxt=`${esc(p.boot?fullName(bootKey(p.boot),p.boot):"—")} ${(R.bootLeaders||[]).includes(bootKey(p.boot))?"✅ leading":""}`;
-  const sum=`<div class="dsum"><div><b>${s.total}</b> total</div><div><b>${s.grp}</b> group</div><div><b>${s.knk}</b> knockout</div><div>Champion: <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals</div></div>`;
+  const sum=`<div class="dsum"><div>Champion (Group Stage): <b>${champG}</b></div><div>Champion (Knockout Stage): <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals</div></div>`;
   const lbl=t=>`<div style="font-weight:800;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:12px 0 6px">${t}</div>`;
   // group-stage breakdown (relevant to the group portion of the score)
   const gboxes=GL.map(g=>{
