@@ -1991,7 +1991,7 @@ function detailHTML(o){
 function renderBracket(){
   const note=document.getElementById("brNote");
   const played=R.koMatches.filter(m=>m.state==="post").length;
-  note.innerHTML=`Live knockout bracket from the ESPN feed · <b>${played}</b> knockout match${played===1?"":"es"} played${R.koChampion?` · 🏆 Champion: <b>${fl(R.koChampion)} ${esc(R.koChampion)}</b>`:""}.`;
+  note.innerHTML=`Live knockout bracket from the ESPN feed · <span style="white-space:nowrap"><b>${played}</b> knockout match${played===1?"":"es"} played</span>${R.koChampion?` · 🏆 Champion: <b>${fl(R.koChampion)} ${esc(R.koChampion)}</b>`:""}.`;
   const labels=[["R32","Round of 32"],["R16","Round of 16"],["QF","Quarterfinals"],["SF","Semifinals"],["F5","Final"]];
   const html=labels.map(([k,lab])=>{const ms=R.rnd[k]||[];if(!ms.length)return "";
     const cards=ms.map(m=>{const live=m.state==="in";const homeWin=m.winner===m.home,awayWin=m.winner===m.away;
