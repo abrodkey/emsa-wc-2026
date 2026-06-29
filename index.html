@@ -57,6 +57,7 @@
   .legend .sc{width:100%;margin-top:2px}
   .detail td{background:#fbfdff;padding:0 14px 16px} .detail-inner{padding:8px 0 2px}
   .dsum{display:flex;gap:16px;flex-wrap:wrap;margin:4px 0 12px;font-size:13.5px} .dsum b{font-size:15px}
+  .dchamp{display:none}  /* champions are columns in the table on desktop; only shown in the card on mobile */
   .kogrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
   .kogrid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
   .kostack{display:grid;gap:10px;grid-template-columns:1fr 1fr;align-items:stretch}
@@ -140,7 +141,8 @@
     .tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 16px}
     .tab{padding:14px 10px;font-size:15px;text-align:center}
     .legend{display:none}
-    .lb th,.lb td{padding:9px 6px} .lb th{font-size:10px} .rank{width:22px;font-size:14px}
+    .lb th,.lb td{padding:11px 14px} .lb th{font-size:10px} .rank{width:22px;font-size:14px}
+    .dchamp{display:block}
     .who .bn{font-size:13.5px} .who .rn{font-size:11.5px} .champ-chip{font-size:11px;padding:2px 6px} .pts-cell{font-size:16px} .bar{min-width:46px}
     .mgrid{grid-template-columns:1fr}
     .kogrid3{grid-template-columns:1fr}
@@ -178,7 +180,7 @@
           <span><i class="s-ball"></i>Golden Ball</span>
           <span class="sc">Scoring: Group (1st <b>3</b> · 2nd <b>3</b> · 3rd <b>2</b> · 4th <b>1</b> · advancing 3rd <b>2</b> · Champion <b>15</b>) · KO (R16 <b>3</b> · QF <b>5</b> · SF <b>7</b> · Champion <b>10</b>) · Golden Ball <b>7</b> · Golden Boot <b>7</b></span>
         </div>
-        <table class="lb"><thead><tr><th>#</th><th>Bracket</th><th class="col-champ">Champion (Group Stage)</th><th class="col-champ">Champion (Knockout Stage)</th><th style="text-align:right">Points</th></tr></thead><tbody id="lbBody"></tbody></table>
+        <table class="lb"><thead><tr><th>#</th><th>Bracket</th><th class="col-champ">Champion (Group Stage)</th><th class="col-champ">Champion (KO Stage)</th><th style="text-align:right">Points</th></tr></thead><tbody id="lbBody"></tbody></table>
         <div id="lbEmpty"></div>
       </div>
     </section>
@@ -1928,8 +1930,9 @@ function champStatus(p){ // for the champion-pick chip (knockout champion pick)
 /* ---------- leaderboard ---------- */
 function standings(){
   const arr=PLAYERS.map(p=>({p,s:scoreOf(p),cs:champStatus(p)}));
-  arr.sort((a,b)=>b.s.total-a.s.total||b.s.knk-a.s.knk||b.s.exact-a.s.exact||tieBreak(a.p)-tieBreak(b.p)||a.p.bracket.localeCompare(b.p.bracket));
-  let rank=0,prev=null,seen=0; arr.forEach(o=>{seen++;if(prev===null||o.s.total!==prev){rank=seen;prev=o.s.total;}o.rank=rank;});
+  arr.sort((a,b)=>b.s.total-a.s.total||tieBreak(a.p)-tieBreak(b.p)||a.p.bracket.localeCompare(b.p.bracket));
+  // ranks tie only when both total points AND the goals-tiebreak distance match
+  let rank=0,pT=null,pB=null,seen=0; arr.forEach(o=>{seen++;const tb=tieBreak(o.p);if(pT===null||o.s.total!==pT||tb!==pB){rank=seen;pT=o.s.total;pB=tb;}o.rank=rank;});
   return arr;
 }
 function tieBreak(p){ return Math.abs((p.ko.tiebreak||0)-R.totalGoals); } // closest to actual total goals wins
@@ -1966,7 +1969,7 @@ function detailHTML(o){
   const box=(title,picks,winset,cols)=>{const rows=picks.map(t=>{let mk='<span class="mk none">·</span>';if(winset.has(t))mk='<span class="mk hit">✓</span>';else if(R.koOut.has(t))mk='<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");return `<div class="kobox"><h5>${title}</h5><div class="r32grid${cols?' kc'+cols:''}">${rows||'<div style="color:var(--muted);font-size:12px">—</div>'}</div></div>`;};
   const ballTxt=p.ko.goldenBall?`${esc(fullName(p.ko.goldenBallKey,p.ko.goldenBall))} ${R.goldenBall?(p.ko.goldenBallKey===R.goldenBall?"✅":"❌"):""}`:"—";
   const bootTxt=`${esc(p.boot?fullName(bootKey(p.boot),p.boot):"—")} ${(R.bootLeaders||[]).includes(bootKey(p.boot))?"✅ leading":""}`;
-  const sum=`<div class="dsum"><div>Champion (Group Stage): <b>${champG}</b></div><div>Champion (Knockout Stage): <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals</div></div>`;
+  const sum=`<div class="dsum"><div class="dchamp">Champion (Group Stage): <b>${champG}</b></div><div class="dchamp">Champion (KO Stage): <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals</div></div>`;
   const lbl=t=>`<div style="font-weight:800;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:12px 0 6px">${t}</div>`;
   // group-stage breakdown (relevant to the group portion of the score)
   const gboxes=GL.map(g=>{
