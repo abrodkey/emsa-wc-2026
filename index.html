@@ -82,7 +82,8 @@
   .pop{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13.5px}
   .pop .lab{width:140px;display:flex;align-items:center;gap:6px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .pop .track{flex:1;background:#eef2f6;border-radius:6px;height:18px;overflow:hidden}
-  .pop .fill{height:100%;background:linear-gradient(90deg,var(--green),#34b06f);border-radius:6px;display:flex;align-items:center;justify-content:flex-end;color:#fff;font-size:11px;font-weight:700;padding-right:6px}
+  .pop .fill{height:100%;background:linear-gradient(90deg,var(--green),#34b06f);border-radius:6px;min-width:6px}
+  .pop .cnt{width:26px;text-align:right;font-weight:700;color:var(--ink);font-size:13px;flex-shrink:0}
   .pop .fill.gold{background:linear-gradient(90deg,var(--gold-d),var(--gold))} .pop .fill.purple{background:linear-gradient(90deg,#7c3aed,#a78bfa)} .pop .fill.blue{background:linear-gradient(90deg,#1e4fd0,#5b8def)}
   /* golden boot race */
   .leaders{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:6px;align-items:start}
@@ -1949,13 +1950,13 @@ function tally(arr){const m={};arr.forEach(x=>{if(x)m[x]=(m[x]||0)+1;});return O
 function renderInsights(){
   const n=PLAYERS.length;
   const champG=tally(PLAYERS.map(p=>p.champion));
-  document.getElementById("popChampG").innerHTML=champG.map(([t,c])=>`<div class="pop"><span class="lab">${fl(t)} ${esc(t)}</span><div class="track"><div class="fill" style="width:${pct(c,n)}%">${c}</div></div></div>`).join("");
+  document.getElementById("popChampG").innerHTML=champG.map(([t,c])=>`<div class="pop"><span class="lab">${fl(t)} ${esc(t)}</span><div class="track"><div class="fill" style="width:${pct(c,n)}%"></div></div><span class="cnt">${c}</span></div>`).join("");
   const champK=tally(PLAYERS.map(p=>p.ko.champion));
-  document.getElementById("popChampK").innerHTML=champK.map(([t,c])=>`<div class="pop"><span class="lab">${fl(t)} ${esc(t)}</span><div class="track"><div class="fill blue" style="width:${pct(c,n)}%">${c}</div></div></div>`).join("");
+  document.getElementById("popChampK").innerHTML=champK.map(([t,c])=>`<div class="pop"><span class="lab">${fl(t)} ${esc(t)}</span><div class="track"><div class="fill blue" style="width:${pct(c,n)}%"></div></div><span class="cnt">${c}</span></div>`).join("");
   const boot={};PLAYERS.forEach(p=>{const k=bootKey(p.boot);const nm=(BOOT_KEYS.find(b=>b[0]===k)||[null,p.boot])[1];boot[nm]=(boot[nm]||0)+1;});
-  document.getElementById("popBoot").innerHTML=Object.entries(boot).sort((a,b)=>b[1]-a[1]).map(([t,c])=>`<div class="pop"><span class="lab">${esc(t)}</span><div class="track"><div class="fill gold" style="width:${pct(c,n)}%">${c}</div></div></div>`).join("");
+  document.getElementById("popBoot").innerHTML=Object.entries(boot).sort((a,b)=>b[1]-a[1]).map(([t,c])=>`<div class="pop"><span class="lab">${esc(t)}</span><div class="track"><div class="fill gold" style="width:${pct(c,n)}%"></div></div><span class="cnt">${c}</span></div>`).join("");
   const ball={};PLAYERS.forEach(p=>{const k=p.ko.goldenBallKey;const nm=(BOOT_KEYS.find(b=>b[0]===k)||[null,p.ko.goldenBall])[1];ball[nm]=(ball[nm]||0)+1;});
-  document.getElementById("popBall").innerHTML=Object.entries(ball).sort((a,b)=>b[1]-a[1]).map(([t,c])=>`<div class="pop"><span class="lab">${esc(t)}</span><div class="track"><div class="fill purple" style="width:${pct(c,n)}%">${c}</div></div></div>`).join("");
+  document.getElementById("popBall").innerHTML=Object.entries(ball).sort((a,b)=>b[1]-a[1]).map(([t,c])=>`<div class="pop"><span class="lab">${esc(t)}</span><div class="track"><div class="fill purple" style="width:${pct(c,n)}%"></div></div><span class="cnt">${c}</span></div>`).join("");
   document.getElementById("insFoot").textContent=`${n} brackets · group + knockout selections`;
 }
 
