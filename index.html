@@ -18,7 +18,7 @@
   .wrap{max-width:1120px;margin:0 auto;padding:0 18px 70px}
   .hero{background:radial-gradient(1200px 320px at 80% -40%, rgba(255,203,5,.22), transparent 60%),linear-gradient(135deg,#00274c,#0b3c6b);color:#fff;padding:30px 0 26px;border-bottom:5px solid #ffcb05}
   .hero .wrap{padding-bottom:0}
-  .hero h1{margin:0;font-size:30px;letter-spacing:-.02em;font-weight:800;display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:#ffcb05}
+  .hero h1{margin:0;font-size:27px;letter-spacing:-.02em;font-weight:800;display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:#ffcb05}
   .ball{font-size:26px}
   .phase{display:inline-block;background:var(--gold);color:#3a2a00;font-weight:800;font-size:12px;letter-spacing:.02em;padding:4px 11px;border-radius:999px;margin-top:10px}
   .stripe{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px;align-items:center}
@@ -136,7 +136,7 @@
   @media(max-width:760px){.ins-grid{grid-template-columns:1fr}.podium{grid-template-columns:1fr}.leaders{grid-template-columns:1fr}}
   @media(max-width:930px){
     .wrap{padding:0 12px 60px}
-    .hero{padding:22px 0 20px} .hero h1{font-size:9vw;gap:8px;justify-content:center;text-align:center;width:100%} .ball{font-size:22px}
+    .hero{padding:22px 0 20px} .hero h1{font-size:8vw;gap:8px;justify-content:center;text-align:center;width:100%} .ball{font-size:22px}
     .stat{min-width:0;flex:1 1 calc(50% - 7px);padding:8px 11px} .stat .v{font-size:18px}
     .refresh{margin-left:0;width:100%;margin-top:4px} .upd{text-align:left}
     .tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 16px}
@@ -2067,7 +2067,7 @@ function refreshHero(){const arr=standings();const leader=anyPts()?arr[0]:null;
   const ld=(R.scorers||[]).filter(e=>e.rank===1);
   const bootLead=ld.length?`${esc(ld.length>1?ld[0].name+" +"+(ld.length-1):ld[0].name)} · ${ld[0].goals}`:"—";
   document.getElementById("heroStats").innerHTML=`
-    <div class="stat"><div class="k">Current leader</div><div class="v">${leader?esc(leader.p.bracket):"—"}</div></div>
+    <div class="stat"><div class="k">Current leader</div><div class="v">${leader?esc(leader.p.name):"—"}</div></div>
     <div class="stat"><div class="k">Top score</div><div class="v">${leader?leader.s.total+" pts":"—"}</div></div>
     <div class="stat"><div class="k">Golden Boot leader</div><div class="v">${bootLead}</div></div>
     <div class="stat"><div class="k">Total goals</div><div class="v">${R.totalGoals}</div></div>`;
