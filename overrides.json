@@ -1,8 +1,6 @@
 {
-  "_comment": "Manual corrections applied on top of the auto-computed scores every hour. Edit this file to set the Champion / Golden Boot once known, fix a rare tiebreaker, or mark knockout eliminations. Anything left blank is ignored.",
+  "_comment": "Manual results the live feed can't know. Set champion + goldenBall once decided (FIFA Golden Ball is a manual award). thirds optionally overrides the 8 R32 qualifiers. Blank = ignored.",
   "champion": "",
-  "boot": "",
-  "eliminated": [],
-  "thirds": [],
-  "standings": {}
+  "goldenBall": "",
+  "thirds": []
 }

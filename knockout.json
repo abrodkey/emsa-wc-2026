@@ -1,0 +1,1559 @@
+{
+  "generated": "2026-06-29T01:02:47.923Z",
+  "season": "2026 FIFA World Cup",
+  "source": "ESPN gambit knockout-bracket-challenge",
+  "count": 33,
+  "entries": [
+    {
+      "name": "Aaron Brodkey",
+      "bracket": "🤫🫨🤯",
+      "entryId": "a01a9790-7230-11f1-9bb3-1105f5497701",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Norway",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "United States",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "England"
+      ],
+      "champion": "England",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Algeria",
+        "Colombia"
+      ],
+      "goldenBall": "Dembele",
+      "goldenBallKey": "dembele",
+      "tiebreak": 321
+    },
+    {
+      "name": "Adam Bisignani",
+      "bracket": "Adam Bisignani",
+      "entryId": "b34da240-730b-11f1-bc95-ddf167e46342",
+      "r16": [
+        "Germany",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Brazil",
+        "Mexico",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "Netherlands",
+        "Spain",
+        "Brazil",
+        "Argentina"
+      ],
+      "sf": [
+        "Spain",
+        "Brazil"
+      ],
+      "champion": "Spain",
+      "r32": [
+        "Germany",
+        "Sweden",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Ivory Coast",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Australia",
+        "Algeria",
+        "Colombia"
+      ],
+      "goldenBall": "Messi",
+      "goldenBallKey": "messi",
+      "tiebreak": 64
+    },
+    {
+      "name": "Amogh Kabra",
+      "bracket": "AK47",
+      "entryId": "a22bc8a0-7312-11f1-9bb3-1105f5497701",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Argentina"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Kylian Mbappe",
+      "goldenBallKey": "mbappe",
+      "tiebreak": 299
+    },
+    {
+      "name": "Ardisha Hadiyan",
+      "bracket": "Ardisha’s bracket",
+      "entryId": "252c6a80-7303-11f1-b7d7-9ff1f03456d2",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Portugal",
+        "United States",
+        "Norway",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "Netherlands",
+        "Portugal",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "Portugal",
+        "England"
+      ],
+      "champion": "Portugal",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Algeria",
+        "Colombia"
+      ],
+      "goldenBall": "Harry kane",
+      "goldenBallKey": "kane",
+      "tiebreak": 310
+    },
+    {
+      "name": "Jessica Latham",
+      "bracket": "Armchair Managers Club",
+      "entryId": "f8ab90a0-7305-11f1-b7d7-9ff1f03456d2",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "United States",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "England"
+      ],
+      "champion": "England",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Ivory Coast",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Australia",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Harry Kane",
+      "goldenBallKey": "kane",
+      "tiebreak": 285
+    },
+    {
+      "name": "Joshua Ogbeifun",
+      "bracket": "Arteta's Army",
+      "entryId": "24b44e90-72a6-11f1-bc95-ddf167e46342",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "England"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Jude Bellingham",
+      "goldenBallKey": "bellingham",
+      "tiebreak": 295
+    },
+    {
+      "name": "Michael Ayaub",
+      "bracket": "Ayaub Visa Pending",
+      "entryId": "5d06bfa0-728b-11f1-b737-afe15b1d72bc",
+      "r16": [
+        "Germany",
+        "Morocco",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "Germany",
+        "United States",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "United States",
+        "England"
+      ],
+      "champion": "England",
+      "r32": [
+        "Germany",
+        "France",
+        "South Africa",
+        "Morocco",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Harry Kane",
+      "goldenBallKey": "kane",
+      "tiebreak": 294
+    },
+    {
+      "name": "Soham Bhatia",
+      "bracket": "Cancelo Culture",
+      "entryId": "2ff03540-7269-11f1-b737-afe15b1d72bc",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Norway",
+        "England",
+        "Argentina",
+        "Switzerland"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "England"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Croatia",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Ghana"
+      ],
+      "goldenBall": "Kane",
+      "goldenBallKey": "kane",
+      "tiebreak": 280
+    },
+    {
+      "name": "Adrian Velasquez",
+      "bracket": "colombian_dark_horses",
+      "entryId": "c451d600-72e9-11f1-b737-afe15b1d72bc",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "England",
+        "Colombia"
+      ],
+      "sf": [
+        "France",
+        "England"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Ecuador",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Kylian Mbappe",
+      "goldenBallKey": "mbappe",
+      "tiebreak": 312
+    },
+    {
+      "name": "CJ Jones",
+      "bracket": "CR74Ever",
+      "entryId": "14448ed0-7319-11f1-bf2e-d586c924e2b3",
+      "r16": [
+        "France",
+        "Morocco",
+        "Spain",
+        "Senegal",
+        "Brazil",
+        "Ecuador",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "Brazil",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Argentina"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Morocco",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Ivory Coast",
+        "Ecuador",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Messi",
+      "goldenBallKey": "messi",
+      "tiebreak": 300
+    },
+    {
+      "name": "Michael Ryan",
+      "bracket": "Cup of Peace",
+      "entryId": "852b6390-7241-11f1-9bb3-1105f5497701",
+      "r16": [
+        "France",
+        "Morocco",
+        "Spain",
+        "United States",
+        "Brazil",
+        "Mexico",
+        "Argentina",
+        "Ghana"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "Brazil",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Argentina"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Morocco",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Ghana"
+      ],
+      "goldenBall": "Mbappe",
+      "goldenBallKey": "mbappe",
+      "tiebreak": 230
+    },
+    {
+      "name": "Monica Dick",
+      "bracket": "Get Moni Get Goals",
+      "entryId": "f16502d0-72fc-11f1-bc95-ddf167e46342",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "Brazil",
+        "Argentina"
+      ],
+      "sf": [
+        "Spain",
+        "Argentina"
+      ],
+      "champion": "Spain",
+      "r32": [
+        "Germany",
+        "France",
+        "South Africa",
+        "Netherlands",
+        "Croatia",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Ivory Coast",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Messi",
+      "goldenBallKey": "messi",
+      "tiebreak": 363
+    },
+    {
+      "name": "Kameron Akbarzadeh",
+      "bracket": "He’s a winner 🏆",
+      "entryId": "4fe5c270-730e-11f1-9bb3-1105f5497701",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Portugal",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Portugal",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Argentina"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Australia",
+        "Algeria",
+        "Colombia"
+      ],
+      "goldenBall": "Kylian Mbappe",
+      "goldenBallKey": "mbappe",
+      "tiebreak": 100
+    },
+    {
+      "name": "Ajay Yeleswaram",
+      "bracket": "It’s Called Football",
+      "entryId": "1acc4ab0-6593-11f1-ab09-b5042ebdb619",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "Netherlands",
+        "United States",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "Netherlands",
+        "England"
+      ],
+      "champion": "Netherlands",
+      "r32": [
+        "Germany",
+        "France",
+        "South Africa",
+        "Netherlands",
+        "Croatia",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Australia",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Harry Kane",
+      "goldenBallKey": "kane",
+      "tiebreak": 272
+    },
+    {
+      "name": "Andrew Quinn",
+      "bracket": "It’s Coming Home",
+      "entryId": "7bc8f440-7230-11f1-bf2e-d586c924e2b3",
+      "r16": [
+        "France",
+        "Morocco",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Switzerland"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "England"
+      ],
+      "champion": "England",
+      "r32": [
+        "Germany",
+        "France",
+        "South Africa",
+        "Morocco",
+        "Croatia",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Australia",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Mbappe",
+      "goldenBallKey": "mbappe",
+      "tiebreak": 320
+    },
+    {
+      "name": "James Noyes",
+      "bracket": "James' Bracket",
+      "entryId": "5999cbb0-7244-11f1-bc95-ddf167e46342",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "Belgium",
+        "Norway",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "England"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "South Africa",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Dembele",
+      "goldenBallKey": "dembele",
+      "tiebreak": 265
+    },
+    {
+      "name": "Jordan Mitchell",
+      "bracket": "Jordo",
+      "entryId": "af2ee050-730d-11f1-bc95-ddf167e46342",
+      "r16": [
+        "France",
+        "Canada",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "Brazil",
+        "Argentina"
+      ],
+      "sf": [
+        "Spain",
+        "Argentina"
+      ],
+      "champion": "Spain",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Ivory Coast",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Australia",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Mbappe",
+      "goldenBallKey": "mbappe",
+      "tiebreak": 320
+    },
+    {
+      "name": "EMMANUEL ETUK",
+      "bracket": "Master Jedi",
+      "entryId": "e2bafea0-7311-11f1-bbc9-fd120f9d5af3",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "Senegal",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Switzerland"
+      ],
+      "qf": [
+        "France",
+        "Senegal",
+        "Brazil",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Brazil"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Ivory Coast",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Ghana"
+      ],
+      "goldenBall": "Lionel Messi",
+      "goldenBallKey": "messi",
+      "tiebreak": 343
+    },
+    {
+      "name": "Vishu Namburi",
+      "bracket": "mcgriddy",
+      "entryId": "29b57750-724e-11f1-bc95-ddf167e46342",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Argentina"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Lionel Messi",
+      "goldenBallKey": "messi",
+      "tiebreak": 298
+    },
+    {
+      "name": "Michael Wilyard",
+      "bracket": "Mwily Goal Blue",
+      "entryId": "f792d3d0-72e8-11f1-bf2e-d586c924e2b3",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Argentina"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Lionel Messi",
+      "goldenBallKey": "messi",
+      "tiebreak": 293
+    },
+    {
+      "name": "Brian Lim",
+      "bracket": "Not Brian",
+      "entryId": "c44711b0-7317-11f1-9bb3-1105f5497701",
+      "r16": [
+        "France",
+        "Morocco",
+        "Spain",
+        "United States",
+        "Japan",
+        "Mexico",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "Japan",
+        "Argentina"
+      ],
+      "sf": [
+        "Spain",
+        "Argentina"
+      ],
+      "champion": "Spain",
+      "r32": [
+        "Germany",
+        "France",
+        "South Africa",
+        "Morocco",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Japan",
+        "Ivory Coast",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Messi",
+      "goldenBallKey": "messi",
+      "tiebreak": 295
+    },
+    {
+      "name": "Naina Gupta",
+      "bracket": "official sponsor of the fifa world cup",
+      "entryId": "82345150-730a-11f1-bc95-ddf167e46342",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "Senegal",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "Brazil",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Argentina"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Lionel Messi",
+      "goldenBallKey": "messi",
+      "tiebreak": 313
+    },
+    {
+      "name": "Kenneth Browne",
+      "bracket": "Oui Will Rock You",
+      "entryId": "3794be20-730d-11f1-9bb3-1105f5497701",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Portugal",
+        "Senegal",
+        "Norway",
+        "Mexico",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Portugal",
+        "Norway",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Argentina"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "South Africa",
+        "Netherlands",
+        "Portugal",
+        "Austria",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Kylian Mbappe",
+      "goldenBallKey": "mbappe",
+      "tiebreak": 294
+    },
+    {
+      "name": "Mayank Thapar",
+      "bracket": "Paul The Octopus",
+      "entryId": "69750560-730a-11f1-bbc9-fd120f9d5af3",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Portugal",
+        "United States",
+        "Norway",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Portugal",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "Portugal",
+        "Argentina"
+      ],
+      "champion": "Portugal",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Kylian Mbappe",
+      "goldenBallKey": "mbappe",
+      "tiebreak": 300
+    },
+    {
+      "name": "Josh Schneider",
+      "bracket": "Schneider FC",
+      "entryId": "7bf8b8f0-7303-11f1-b737-afe15b1d72bc",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Norway",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "Norway",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Argentina"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Ousmane Dembélé",
+      "goldenBallKey": "dembele",
+      "tiebreak": 300
+    },
+    {
+      "name": "Keshav Muralitharan",
+      "bracket": "Sonny With a Chance",
+      "entryId": "389e51d0-7300-11f1-bf2e-d586c924e2b3",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "United States",
+        "Japan",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "Netherlands",
+        "Spain",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "Netherlands",
+        "Argentina"
+      ],
+      "champion": "Netherlands",
+      "r32": [
+        "Germany",
+        "France",
+        "South Africa",
+        "Netherlands",
+        "Croatia",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Japan",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Mbappe",
+      "goldenBallKey": "mbappe",
+      "tiebreak": 45
+    },
+    {
+      "name": "Aravind St",
+      "bracket": "St",
+      "entryId": "20360910-730c-11f1-bc95-ddf167e46342",
+      "r16": [
+        "Germany",
+        "Netherlands",
+        "Spain",
+        "Senegal",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Switzerland"
+      ],
+      "qf": [
+        "Netherlands",
+        "Spain",
+        "England",
+        "Switzerland"
+      ],
+      "sf": [
+        "Netherlands",
+        "England"
+      ],
+      "champion": "Netherlands",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Jude bellingham",
+      "goldenBallKey": "bellingham",
+      "tiebreak": 300
+    },
+    {
+      "name": "Tejas Khandekar",
+      "bracket": "Tejas' Blaugrana",
+      "entryId": "0e57fa70-730a-11f1-b737-afe15b1d72bc",
+      "r16": [
+        "France",
+        "Morocco",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "England",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Argentina"
+      ],
+      "champion": "Argentina",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Morocco",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Australia",
+        "Algeria",
+        "Colombia"
+      ],
+      "goldenBall": "Kylian Mbappe",
+      "goldenBallKey": "mbappe",
+      "tiebreak": 315
+    },
+    {
+      "name": "Danny Murray",
+      "bracket": "The American dream",
+      "entryId": "5e1f6e20-7234-11f1-bc95-ddf167e46342",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Portugal",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "Netherlands",
+        "United States",
+        "Brazil",
+        "Argentina"
+      ],
+      "sf": [
+        "United States",
+        "Argentina"
+      ],
+      "champion": "United States",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Messi",
+      "goldenBallKey": "messi",
+      "tiebreak": 255
+    },
+    {
+      "name": "Gerardo (Jerry) Tinajero",
+      "bracket": "TotalBarcelona90",
+      "entryId": "77546e20-7317-11f1-b737-afe15b1d72bc",
+      "r16": [
+        "France",
+        "Netherlands",
+        "Spain",
+        "Belgium",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "Brazil",
+        "Argentina"
+      ],
+      "sf": [
+        "Spain",
+        "Argentina"
+      ],
+      "champion": "Spain",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Leo Messi",
+      "goldenBallKey": "messi",
+      "tiebreak": 300
+    },
+    {
+      "name": "Rachel Connors",
+      "bracket": "Uzbekistan’s newest fan",
+      "entryId": "9958a000-730c-11f1-b737-afe15b1d72bc",
+      "r16": [
+        "France",
+        "Canada",
+        "Portugal",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Ghana"
+      ],
+      "qf": [
+        "France",
+        "United States",
+        "Brazil",
+        "Argentina"
+      ],
+      "sf": [
+        "United States",
+        "Argentina"
+      ],
+      "champion": "United States",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Netherlands",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Ghana"
+      ],
+      "goldenBall": "Christian Pulisic",
+      "goldenBallKey": "pulisic",
+      "tiebreak": 302
+    },
+    {
+      "name": "Henry Smith",
+      "bracket": "What Good Looks Like",
+      "entryId": "d1c25620-728f-11f1-9bb3-1105f5497701",
+      "r16": [
+        "France",
+        "Morocco",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Switzerland"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "England",
+        "Switzerland"
+      ],
+      "sf": [
+        "France",
+        "England"
+      ],
+      "champion": "France",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Morocco",
+        "Portugal",
+        "Spain",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Egypt",
+        "Switzerland",
+        "Ghana"
+      ],
+      "goldenBall": "Messi",
+      "goldenBallKey": "messi",
+      "tiebreak": 305
+    },
+    {
+      "name": "Nick Rasdal",
+      "bracket": "Zizou Headbutt Tour 2026",
+      "entryId": "86e50230-7017-11f1-9bb3-1105f5497701",
+      "r16": [
+        "France",
+        "Morocco",
+        "Spain",
+        "United States",
+        "Brazil",
+        "England",
+        "Argentina",
+        "Colombia"
+      ],
+      "qf": [
+        "France",
+        "Spain",
+        "Brazil",
+        "Argentina"
+      ],
+      "sf": [
+        "France",
+        "Brazil"
+      ],
+      "champion": "Brazil",
+      "r32": [
+        "Germany",
+        "France",
+        "Canada",
+        "Morocco",
+        "Croatia",
+        "Spain",
+        "United States",
+        "Senegal",
+        "Brazil",
+        "Norway",
+        "Mexico",
+        "England",
+        "Argentina",
+        "Australia",
+        "Switzerland",
+        "Colombia"
+      ],
+      "goldenBall": "Vinicius Junior",
+      "goldenBallKey": "vinicius",
+      "tiebreak": 311
+    }
+  ]
+}

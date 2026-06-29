@@ -1,57 +1,46 @@
 # EMSA World Cup 2026 — League Dashboard
 
-A live leaderboard for the EMSA bracket pool. Open `index.html` (or the hosted
-GitHub Pages link) to see standings; scores update automatically every 10 minutes.
+Live combined leaderboard for the EMSA bracket pool (group + knockout). Hosted on
+GitHub Pages: https://abrodkey.github.io/emsa-wc-2026/
 
 ## How it works
 
+`index.html` is a single self-contained page. It embeds every player's picks and
+computes everything **live in the browser** from public ESPN feeds — no server,
+no cron, no API key:
+
+- **Group + knockout results** come from the public `fifa.world` scoreboard feed
+  (`site.api.espn.com/.../scoreboard`), recomputed every ~30s while a match is live
+  (≈2 min otherwise, instant on tab focus). Group tables use FIFA tiebreakers;
+  knockout rounds are classified by counting each team's knockout matches, and
+  winners use the feed's winner flag (penalties included).
+- **Picks** are embedded: Phase-1 group picks from the Google-Form CSV (emails
+  stripped), and Phase-2 knockout picks in `knockout.json` (built from the public
+  ESPN gambit bracket-challenge API — see `build-knockout.mjs`).
+- **`overrides.json`** holds the few results no feed can know: `champion` (final
+  override), `goldenBall` (FIFA's subjective award — set manually), and optional
+  `thirds`.
+
+## Scoring
+
+**Group stage** (locked): 1st 3 · 2nd 3 · 3rd 2 · 4th 1 · advancing-3rd qualifier 2 ·
+pre-tournament Winner 15 · Golden Boot 7.
+**Knockout:** Round of 16 pick 3 · Quarterfinal 5 · Semifinal 7 · Champion 10
+(→ **25 combined** with the group Winner guess) · Golden Ball 7.
+**Tiebreaker:** closest guess to total tournament goals.
+
+The leaderboard total combines both; the per-row bar breaks points into group stage,
+knockout stage, champion (stage 1 / stage 2), golden boot, and golden ball.
+
+## Rebuilding knockout picks
+
+Picks lock when the knockouts begin. To (re)generate `knockout.json` from the form
+links + ESPN gambit API:
+
 ```
-ESPN fifa.world feed  ──►  update-scores.mjs  ──►  results.json  ──►  index.html
-   (live match scores)      (computes tables)      (published)        (leaderboard)
+node build-knockout.mjs     # reads the two CSVs in ~/Downloads, writes knockout.json
 ```
 
-- **`update-scores.mjs`** pulls group-stage results from ESPN's free `fifa.world`
-  feed (no API key), computes each group's table with FIFA tiebreakers
-  (best-effort), works out the 8 best third-place qualifiers once every group is
-  final, merges any manual corrections from `overrides.json`, and writes
-  `results.json`.
-- **`.github/workflows/update-scores.yml`** runs that script **every 10 minutes** on
-  GitHub's servers and commits `results.json` when scores change — so the board
-  stays current even when nobody has it open.
-- **`index.html`** is a self-contained dashboard. It has every bracket embedded,
-  fetches `results.json` on load (and every 10 min), and re-scores everyone live.
-  Player email addresses are **not** included in the published page.
+Then re-embed it into `index.html` (the `<script id="koseed">` block) and commit.
 
-## Scoring (group-stage phase)
-
-| Event | Points |
-|---|---|
-| Exact group placement (per team) | 3 |
-| Correct 3rd-place qualifier (per team) | 4 |
-| Tournament champion | 25 |
-| Golden Boot | 15 |
-
-Points from a group **lock** once that group is final; before that the group's
-contribution is provisional and moves as games are played.
-
-## Making manual corrections
-
-Everything the live feed can't know lives in **`overrides.json`** and is applied
-on top of the auto-computed scores every run:
-
-- `champion` — set to a team name once the final is played, e.g. `"Spain"`.
-- `boot` — set to a scorer, e.g. `"Kylian Mbappé"` (matching is last-name based).
-- `eliminated` — array of team names knocked out in the knockouts (flips a
-  bracket's champion pick to "eliminated").
-- `standings` — `{ "C": { "Brazil": 1, "Morocco": 2, ... } }` to override a
-  group if the auto tiebreaker ever gets an edge case wrong.
-- `thirds` — array of 8 team names to override the qualifier set.
-
-Edit the file (GitHub web UI works), commit, and the next run picks it up. You
-can also trigger a run immediately from the **Actions** tab → *Update WC scores*
-→ *Run workflow*.
-
-## Coming later
-
-Knockout-bracket scoring (Round of 32 → Final) will be layered on once those
-picks are collected.
+Player **emails are never published** — only names and bracket names appear.
