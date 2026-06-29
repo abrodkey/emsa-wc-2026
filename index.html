@@ -59,6 +59,14 @@
   .kogrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
   .kogrid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
   .kostack{display:grid;gap:10px}
+  details.gs{margin-top:14px}
+  details.gs>summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:12px;color:var(--ink);background:#f1f5f9;border:1px solid var(--line);border-radius:8px;padding:6px 12px;user-select:none;text-transform:uppercase;letter-spacing:.03em}
+  details.gs>summary::-webkit-details-marker{display:none}
+  details.gs>summary::before{content:"▸";font-size:11px;color:var(--muted);transition:transform .15s}
+  details.gs[open]>summary::before{transform:rotate(90deg)}
+  details.gs>summary:hover{background:#e7edf3}
+  details.gs .kogrid{margin-top:10px}
+  .gslbl{font-weight:800;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:12px 0 6px}
   .r32grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0 14px}
   .kobox{border:1px solid var(--line);border-radius:10px;padding:9px 10px;background:#fff}
   .kobox h5{margin:0 0 6px;font-size:11px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
@@ -1958,8 +1966,7 @@ function detailHTML(o){
   const qrows=p.thirds.map(t=>{let mk='<span class="mk none">·</span>';if(R.thirds.length)mk=R.thirds.includes(t)?'<span class="mk hit">✓</span>':'<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");
   return sum
     +lbl("Knockout picks")+`<div class="kostack">${box("Round of 16 (reached)",p.ko.r32,R.winR.R32)}${box("Quarterfinals (reached)",p.ko.r16,R.winR.R16)}${box("Semifinals (reached)",p.ko.qf,R.winR.QF)}${box("Finalists (reached)",p.ko.sf,R.winR.SF)}</div>`
-    +lbl("Group stage")+`<div class="kogrid">${gboxes}</div>`
-    +lbl("3rd → Round of 32")+`<div class="kobox"><div class="r32grid">${qrows}</div></div>`;
+    +`<details class="gs"><summary>Group stage picks</summary><div class="kogrid">${gboxes}</div><div class="gslbl">3rd → Round of 32</div><div class="kobox"><div class="r32grid">${qrows}</div></div></details>`;
 }
 
 /* ---------- bracket tab ---------- */
