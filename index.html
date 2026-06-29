@@ -32,6 +32,7 @@
   .tab:hover{color:var(--ink);border-color:#cdd6e0}
   .tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+  #tab-leaderboard>.card{overflow:hidden}  /* clip table's square top corners to the card's rounded ones (esp. mobile, where the legend is hidden) */
   section[hidden]{display:none}
   .podium{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px}
   .pod{padding:16px;border-radius:16px;color:#fff;position:relative;overflow:hidden;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;transition:transform .1s} .pod:hover{transform:translateY(-2px)}
@@ -166,13 +167,13 @@
       <div class="podium" id="podium"></div>
       <div class="card">
         <div class="legend">
-          Points from:
-          <span><i class="s-grp"></i>group</span>
-          <span><i class="s-knk"></i>knockout</span>
-          <span><i class="s-c1"></i>champion (1)</span>
-          <span><i class="s-c2"></i>champion (2)</span>
-          <span><i class="s-boot"></i>golden boot</span>
-          <span><i class="s-ball"></i>golden ball</span>
+          Points:
+          <span><i class="s-grp"></i>Group</span>
+          <span><i class="s-knk"></i>KO</span>
+          <span><i class="s-c1"></i>Champ (Group)</span>
+          <span><i class="s-c2"></i>Champ (KO)</span>
+          <span><i class="s-boot"></i>Golden Boot</span>
+          <span><i class="s-ball"></i>Golden Ball</span>
           <span class="sc">Group Scoring: 1st <b>3</b> · 2nd <b>3</b> · 3rd <b>2</b> · 4th <b>1</b> · advancing 3rd <b>2</b> · Champion <b>15</b> · Golden Boot <b>7</b></span>
           <span class="sc">Knockout Scoring: R16 <b>3</b> · QF <b>5</b> · SF <b>7</b> · Champion <b>10</b> · Golden Ball <b>7</b></span>
         </div>
@@ -1947,7 +1948,8 @@ function renderLeaderboard(){
     const chipG=o.p.champion?`<span class="champ-chip">${fl(o.p.champion)} ${esc(o.p.champion)}</span>`:`<span class="champ-chip">—</span>`;
     const chipK=o.p.ko.champion?`<span class="champ-chip ${o.cs}">${fl(o.p.ko.champion)} ${esc(o.p.ko.champion)}</span>`:`<span class="champ-chip">—</span>`;
     const bar=s.total?`<div class="bar"><span class="s-grp" style="width:${w(s.grp)}%"></span><span class="s-knk" style="width:${w(s.knk)}%"></span><span class="s-c1" style="width:${w(s.c1)}%"></span><span class="s-c2" style="width:${w(s.c2)}%"></span><span class="s-boot" style="width:${w(s.boot)}%"></span><span class="s-ball" style="width:${w(s.ball)}%"></span></div>`:"";
-    return `<tr class="row" data-i="${idx}"><td class="rank ${rc}">${o.rank}</td><td class="who"><div class="bn">${esc(o.p.bracket)}</div><div class="rn">${esc(o.p.name)}</div></td><td class="col-champ">${chipG}</td><td class="col-champ">${chipK}</td><td class="pts-cell">${s.total}<br><small>${s.knk?s.knk+" KO · ":""}${s.grp} grp</small>${bar}</td></tr><tr class="detail" data-d="${idx}" hidden><td colspan="5"><div class="detail-inner" id="det-${idx}"></div></td></tr>`;
+    const sub=[[s.grp,"GRP"],[s.knk,"KO"],[s.c1,"CHAMP (GRP)"],[s.c2,"CHAMP (KO)"],[s.boot,"BOOT"],[s.ball,"BALL"]].filter(x=>x[0]).map(x=>`${x[0]} ${x[1]}`).join(" · ");
+    return `<tr class="row" data-i="${idx}"><td class="rank ${rc}">${o.rank}</td><td class="who"><div class="bn">${esc(o.p.bracket)}</div><div class="rn">${esc(o.p.name)}</div></td><td class="col-champ">${chipG}</td><td class="col-champ">${chipK}</td><td class="pts-cell">${s.total}<br><small>${sub}</small>${bar}</td></tr><tr class="detail" data-d="${idx}" hidden><td colspan="5"><div class="detail-inner" id="det-${idx}"></div></td></tr>`;
   }).join("");
   document.getElementById("lbEmpty").innerHTML=anyPts()?"":`<div class="empty">Knockouts are underway — points appear as matches finish.</div>`;
   const openRow=(i,toggle)=>{const tr=body.querySelector(`tr.row[data-i="${i}"]`),d=body.querySelector(`tr.detail[data-d="${i}"]`);if(!tr||!d)return;const wasOpen=!d.hasAttribute("hidden");
