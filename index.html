@@ -1821,7 +1821,7 @@ async function compute(){
   const grpMatches=[], koMatches=[], goalsByName={}; let anyLive=false;
   for(const ev of (j.events||[])){
     const comp=ev.competitions&&ev.competitions[0]; if(!comp)continue;
-    const state=ev.status&&ev.status.type&&ev.status.type.state; if(state!=="post"&&state!=="in")continue;
+    const state=ev.status&&ev.status.type&&ev.status.type.state; if(state!=="post"&&state!=="in"&&state!=="pre")continue;
     if(state==="in")anyLive=true;
     for(const det of (comp.details||[])){ if(!det.scoringPlay||det.ownGoal)continue; const sc=(det.athletesInvolved||[])[0]; const tmId=det.team&&det.team.id;
       if(sc&&sc.displayName){ const k=sc.displayName; goalsByName[k]=goalsByName[k]||{name:k,goals:0,pens:0,assists:0,teamId:tmId}; goalsByName[k].goals++; if(det.penaltyKick)goalsByName[k].pens++; }
@@ -1927,7 +1927,17 @@ function detailHTML(o){
   const ballTxt=p.ko.goldenBall?`${esc(p.ko.goldenBall)} ${R.goldenBall?(p.ko.goldenBallKey===R.goldenBall?"✅":"❌"):""}`:"—";
   const bootTxt=`${esc(p.boot||"—")} ${(R.bootLeaders||[]).includes(bootKey(p.boot))?"✅ leading":""}`;
   const sum=`<div class="dsum"><div><b>${s.total}</b> total</div><div><b>${s.grp}</b> group</div><div><b>${s.knk}</b> knockout</div><div>Champion: <b>${champTxt}</b></div><div>Golden Boot: <b>${bootTxt}</b></div><div>Golden Ball: <b>${ballTxt}</b></div><div>Tiebreak: <b>${p.ko.tiebreak}</b> goals (actual ${R.totalGoals})</div></div>`;
-  return sum+`<div class="kogrid">${box("Round of 16",p.ko.r16,R.winR.R16)}${box("Quarterfinals",p.ko.qf,R.winR.QF)}${box("Semifinals",p.ko.sf,R.winR.SF)}</div>`;
+  const lbl=t=>`<div style="font-weight:800;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:12px 0 6px">${t}</div>`;
+  // group-stage breakdown (relevant to the group portion of the score)
+  const gboxes=GL.map(g=>{
+    const teams=GROUPS[g].slice().sort((a,b)=>(p.picks[g][a]||9)-(p.picks[g][b]||9));
+    const rows=teams.map(t=>{const pp=p.picks[g][t],a=R.standings[g][t];let mk='<span class="mk none">·</span>';if(a)mk=(pp===a)?'<span class="mk hit">✓</span>':'<span class="mk miss">✕</span>';const badge=a?`<span style="color:var(--muted);font-size:11px">→${a}</span>`:"";return `<div class="kpick"><span style="width:14px;color:var(--muted);font-weight:700;text-align:center;flex-shrink:0">${pp||'–'}</span><span class="tn">${fl(t)} ${esc(t)}</span>${badge}${mk}</div>`;}).join("");
+    return `<div class="kobox"><h5>Group ${g}</h5>${rows}</div>`;
+  }).join("");
+  const qbox=`<div class="kobox"><h5>3rd → Round of 32</h5>${p.thirds.map(t=>{let mk='<span class="mk none">·</span>';if(R.thirds.length)mk=R.thirds.includes(t)?'<span class="mk hit">✓</span>':'<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("")}</div>`;
+  return sum
+    +lbl("Knockout picks")+`<div class="kogrid">${box("Round of 16",p.ko.r16,R.winR.R16)}${box("Quarterfinals",p.ko.qf,R.winR.QF)}${box("Semifinals",p.ko.sf,R.winR.SF)}</div>`
+    +lbl("Group stage")+`<div class="kogrid">${gboxes}${qbox}</div>`;
 }
 
 /* ---------- bracket tab ---------- */
@@ -1939,7 +1949,7 @@ function renderBracket(){
   const html=labels.map(([k,lab])=>{const ms=R.rnd[k]||[];if(!ms.length)return "";
     const cards=ms.map(m=>{const live=m.state==="in";const homeWin=m.winner===m.home,awayWin=m.winner===m.away;
       const score=(m.state==="pre")?"":`<span class="sc">${m.hs}–${m.as}</span>`;
-      return `<div class="match"><div class="mt ${homeWin?'win':(m.winner?'lose':'')}"><span>${fl(m.home)}</span><span class="tn">${esc(m.home)}</span>${m.state!=="pre"?`<span class="sc">${m.hs}</span>`:""}</div><div class="mt ${awayWin?'win':(m.winner?'lose':'')}"><span>${fl(m.away)}</span><span class="tn">${esc(m.away)}</span>${m.state!=="pre"?`<span class="sc">${m.as}</span>`:""}</div><div class="st ${live?'live':''}">${live?'🔴 '+esc(m.detail||'LIVE'):(m.state==='post'?esc(m.detail||'FT'):'')}</div></div>`;
+      return `<div class="match"><div class="mt ${homeWin?'win':(m.winner?'lose':'')}"><span>${fl(m.home)}</span><span class="tn">${esc(m.home)}</span>${m.state!=="pre"?`<span class="sc">${m.hs}</span>`:""}</div><div class="mt ${awayWin?'win':(m.winner?'lose':'')}"><span>${fl(m.away)}</span><span class="tn">${esc(m.away)}</span>${m.state!=="pre"?`<span class="sc">${m.as}</span>`:""}</div><div class="st ${live?'live':''}">${live?'🔴 '+esc(m.detail||'LIVE'):(m.state==='post'?esc(m.detail||'FT'):new Date(m.date).toLocaleDateString('en-US',{month:'short',day:'numeric'}))}</div></div>`;
     }).join("");
     return `<div class="rnd"><h4>${lab} <span class="b">${ms.filter(m=>m.state==='post').length}/${ms.length}</span></h4><div class="mgrid">${cards}</div></div>`;
   }).join("");
