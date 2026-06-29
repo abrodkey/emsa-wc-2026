@@ -72,6 +72,18 @@
   /* bracket tab */
   .rnd{margin-bottom:18px} .rnd h4{margin:0 0 10px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:8px}
   .rnd h4 .b{background:#eef2f6;border-radius:999px;padding:1px 8px;font-size:11px;color:var(--ink)}
+  .gtables{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+  .gt{border:1px solid var(--line);border-radius:10px;padding:8px 11px;background:#fff}
+  .gt h5{margin:0 0 4px;font-size:13px;font-weight:800;display:flex;align-items:center;gap:7px}
+  .gt h5 .b{background:#eef2f6;border-radius:999px;padding:1px 7px;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+  .gt table{width:100%;border-collapse:collapse;font-size:12px}
+  .gt th{font-size:10px;color:var(--muted);text-transform:uppercase;text-align:center;padding:3px 2px;font-weight:700}
+  .gt td{padding:3px 2px;text-align:center;border-top:1px solid var(--line)}
+  .gt td.p{width:16px;color:var(--muted);font-weight:700}
+  .gt td.tm{text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:138px}
+  .gt td.pts{font-weight:800}
+  .gt tr.q td.p{color:var(--green)} .gt tr.q3 td.p{color:#d97706}
+  .gt tr.q td.tm,.gt tr.q3 td.tm{font-weight:600}
   .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
   .match{border:1px solid var(--line);border-radius:10px;padding:8px 11px;background:#fff;font-size:14px}
   .mt{display:flex;align-items:center;gap:8px;padding:2px 0} .mt .tn{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -125,14 +137,13 @@
 <body>
   <div class="hero"><div class="wrap">
     <h1>EMSA World Cup 2026 <span style="opacity:.6;font-weight:600">·</span> League Dashboard</h1>
-    <div><span class="phase">Phase 2 of 2 · Knockouts</span></div>
     <div class="stripe" id="heroStats"></div>
   </div></div>
 
   <div class="wrap">
     <div class="tabs">
       <button class="tab active" data-tab="leaderboard">Leaderboard</button>
-      <button class="tab" data-tab="bracket">Bracket</button>
+      <button class="tab" data-tab="bracket">Match Results</button>
       <button class="tab" data-tab="insights">League Insights</button>
       <button class="tab" data-tab="goldenboot">Golden Boot Race</button>
     </div>
@@ -148,6 +159,7 @@
           <span><i class="s-c2"></i>champion (2)</span>
           <span><i class="s-boot"></i>golden boot</span>
           <span><i class="s-ball"></i>golden ball</span>
+          <span class="sc">Group Scoring: 1st <b>3</b> · 2nd <b>3</b> · 3rd <b>2</b> · 4th <b>1</b> · advancing 3rd <b>+2</b> · pre-tournament Champion <b>15</b></span>
           <span class="sc">Knockout Scoring: R16 <b>3</b> · QF <b>5</b> · SF <b>7</b> · Champion <b>10</b> (25 combined) · Golden Boot <b>7</b> · Golden Ball <b>7</b></span>
         </div>
         <table class="lb"><thead><tr><th>#</th><th>Bracket</th><th>Champion pick</th><th style="text-align:right">Points</th></tr></thead><tbody id="lbBody"></tbody></table>
@@ -1960,7 +1972,19 @@ function renderBracket(){
     }).join("");
     return `<div class="rnd"><h4>${lab} <span class="b">${ms.filter(m=>m.state==='post').length}/${ms.length}</span></h4><div class="mgrid">${cards}</div></div>`;
   }).join("");
-  document.getElementById("bracket").innerHTML=html||`<div class="empty">Knockout matches will appear here as they're played.</div>`;
+  const out=html+groupTablesHTML();
+  document.getElementById("bracket").innerHTML=out||`<div class="empty">Matches will appear here as they're played.</div>`;
+}
+function groupTablesHTML(){
+  const tables=GL.map(g=>{
+    const tbl=R.tableMeta[g]||[]; if(!tbl.length) return "";
+    const live=tbl.some(e=>e.P>0); const fin=R.complete[g];
+    const rows=tbl.map((e,i)=>{const pos=i+1;const cls=pos<=2?'q':(pos===3?'q3':'');
+      return `<tr class="${cls}"><td class="p">${pos}</td><td class="tm">${fl(e.t)} ${esc(e.t)}</td><td>${e.P}</td><td>${e.W}</td><td>${e.D}</td><td>${e.L}</td><td>${e.GD>0?'+':''}${e.GD}</td><td class="pts">${e.Pts}</td></tr>`;}).join("");
+    return `<div class="gt"><h5>Group ${g}${fin?'<span class="b">final</span>':(live?'<span class="b">live</span>':'')}</h5><table><thead><tr><th></th><th style="text-align:left">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>Pts</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }).join("");
+  if(!tables) return "";
+  return `<div class="rnd"><h4>Group Stage — Standings</h4><div class="gtables">${tables}</div></div>`;
 }
 
 /* ---------- insights ---------- */
