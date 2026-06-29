@@ -1965,7 +1965,7 @@ function detailHTML(o){
   }).join("");
   const qrows=p.thirds.map(t=>{let mk='<span class="mk none">·</span>';if(R.thirds.length)mk=R.thirds.includes(t)?'<span class="mk hit">✓</span>':'<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");
   return sum
-    +lbl("Knockout picks")+`<div class="kostack">${box("Round of 16 (reached)",p.ko.r32,R.winR.R32)}${box("Quarterfinals (reached)",p.ko.r16,R.winR.R16)}${box("Semifinals (reached)",p.ko.qf,R.winR.QF)}${box("Finalists (reached)",p.ko.sf,R.winR.SF)}</div>`
+    +lbl("Knockout picks")+`<div class="kostack">${box("Round of 16",p.ko.r32,R.winR.R32)}${box("Quarterfinals",p.ko.r16,R.winR.R16)}${box("Semifinals",p.ko.qf,R.winR.QF)}${box("Finalists",p.ko.sf,R.winR.SF)}</div>`
     +`<details class="gs"><summary>Group stage picks</summary><div class="kogrid">${gboxes}</div><div class="gslbl">3rd → Round of 32</div><div class="kobox"><div class="r32grid">${qrows}</div></div></details>`;
 }
 
