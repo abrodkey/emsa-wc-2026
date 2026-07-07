@@ -2057,7 +2057,7 @@ function renderGB(){
     lead.querySelectorAll(".bub[data-k]").forEach(btn=>btn.addEventListener("click",()=>{const k=btn.getAttribute("data-k");gbOpen=(gbOpen===k)?null:k;renderGB();}));
   } else { lead.style.display="none"; lead.innerHTML=""; }
   const limit=gbShowAll?sc.length:10;
-  document.getElementById("gbRows").innerHTML=sc.slice(0,limit).map(e=>{const rc=e.rank===1?"t1":e.rank===2?"t2":e.rank===3?"t3":"";const b=POOL_BOOT[bootKey(e.name)];const bb=b?`<span class="back-badge">🎯 ${b.n}</span>`:"";const sub=[e.pens?`${e.pens} pen${e.pens>1?"s":""}`:"",e.assists?`${e.assists} ast`:""].filter(Boolean).join(" · ");
+  document.getElementById("gbRows").innerHTML=sc.slice(0,limit).map(e=>{const rc=e.rank===1?"t1":e.rank===2?"t2":e.rank===3?"t3":"";const b=POOL_BOOT[bootKey(e.name)];const bb=b?`<span class="back-badge">🎯 ${b.n}</span>`:"";const sub=e.assists?`${e.assists} ast`:"";
     return `<tr><td class="rk ${rc}">${e.rank}</td><td><div class="pl"><span class="nm">${esc(e.name)}</span>${bb}</div></td><td class="gcell"><span class="gnum">${e.goals}</span>${sub?`<br><span class="gsub">${sub}</span>`:""}</td></tr>`;
   }).join("");
   document.getElementById("gbEmpty").innerHTML=sc.length?"":`<div class="empty">No goals yet.</div>`;
