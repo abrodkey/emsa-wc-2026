@@ -1843,6 +1843,9 @@ const header=csv[0],gcols=[]; let thirdIdx=-1;
 header.forEach((h,idx)=>{const m=h.match(/^Group ([A-L]) \[(.+)\]$/);if(m)gcols.push({idx,group:m[1],team:m[2].trim()});if(/third-place/i.test(h))thirdIdx=idx;});
 const P1=csv.slice(1).filter(r=>r[2]&&r[2].trim()).map(r=>{const picks={};GL.forEach(g=>picks[g]={});gcols.forEach(c=>picks[c.group][c.team]=POSNUM[(r[c.idx]||"").trim()]||null);const thirds=(r[thirdIdx]||"").split(",").map(s=>s.trim()).filter(Boolean);return{name:(r[2]||"").trim(),bracket:((r[3]||"").trim())||((r[2]||"").trim()),champion:(r[4]||"").trim(),boot:(r[5]||"").trim(),picks,thirds};});
 const KO=JSON.parse(document.getElementById("koseed").textContent);
+// normalize gambit team names to pool canonical names (e.g. "United States" -> "USA") so picks match feed results + flags
+const normPick=t=>t?(mapTeam([t])||t):t;
+KO.entries.forEach(e=>{["r32","r16","qf","sf"].forEach(k=>{if(Array.isArray(e[k]))e[k]=e[k].map(normPick);});e.champion=normPick(e.champion);});
 const koByName=new Map(KO.entries.map(e=>[e.name,e]));
 // players = only those with a knockout bracket (drops the 4 non-submitters)
 const PLAYERS=P1.filter(p=>koByName.has(p.name)).map(p=>({...p,ko:koByName.get(p.name)}));
