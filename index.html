@@ -182,7 +182,7 @@
           <span><i class="s-c2"></i>Champ (KO)</span>
           <span><i class="s-boot"></i>Golden Boot</span>
           <span><i class="s-ball"></i>Golden Ball</span>
-          <span class="sc">Scoring: Group (1st <b>3</b> · 2nd <b>3</b> · 3rd <b>2</b> · 4th <b>1</b> · advancing 3rd <b>2</b> · Champion <b>15</b>) · KO (R16 <b>3</b> · QF <b>5</b> · SF <b>7</b> · Champion <b>10</b>) · Golden Ball <b>7</b> · Golden Boot <b>7</b></span>
+          <span class="sc">Scoring: Group (1st <b>3</b> · 2nd <b>3</b> · 3rd <b>2</b> · 4th <b>1</b> · advancing 3rd <b>2</b> · Champion <b>15</b>) · KO (R16 <b>3</b> · QF <b>5</b> · SF <b>7</b> · Finalist <b>8</b> · Champion <b>10</b>) · Golden Ball <b>7</b> · Golden Boot <b>7</b></span>
         </div>
         <table class="lb"><thead><tr><th>#</th><th>Bracket</th><th class="col-champ">Champion (Group Stage)</th><th class="col-champ">Champion (KO Stage)</th><th style="text-align:right">Points</th></tr></thead><tbody id="lbBody"></tbody></table>
         <div id="lbEmpty"></div>
@@ -1823,7 +1823,7 @@ const GROUPS={A:["Mexico","South Africa","Korea Republic","Czechia"],B:["Canada"
 const GL=Object.keys(GROUPS);
 const FLAG={"Mexico":"🇲🇽","South Africa":"🇿🇦","Korea Republic":"🇰🇷","Czechia":"🇨🇿","Canada":"🇨🇦","Bosnia-Herzegovina":"🇧🇦","Qatar":"🇶🇦","Switzerland":"🇨🇭","Brazil":"🇧🇷","Morocco":"🇲🇦","Haiti":"🇭🇹","Scotland":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","USA":"🇺🇸","Paraguay":"🇵🇾","Australia":"🇦🇺","Türkiye":"🇹🇷","Germany":"🇩🇪","Curaçao":"🇨🇼","Ivory Coast":"🇨🇮","Ecuador":"🇪🇨","Netherlands":"🇳🇱","Japan":"🇯🇵","Sweden":"🇸🇪","Tunisia":"🇹🇳","Belgium":"🇧🇪","Egypt":"🇪🇬","Iran":"🇮🇷","New Zealand":"🇳🇿","Spain":"🇪🇸","Cape Verde":"🇨🇻","Saudi Arabia":"🇸🇦","Uruguay":"🇺🇾","France":"🇫🇷","Senegal":"🇸🇳","Iraq":"🇮🇶","Norway":"🇳🇴","Argentina":"🇦🇷","Algeria":"🇩🇿","Austria":"🇦🇹","Jordan":"🇯🇴","Portugal":"🇵🇹","DR Congo":"🇨🇩","Uzbekistan":"🇺🇿","Colombia":"🇨🇴","England":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","Croatia":"🇭🇷","Ghana":"🇬🇭","Panama":"🇵🇦"};
 const POSNUM={"1st":1,"2nd":2,"3rd":3,"4th":4};
-const GROUP_PTS={1:3,2:3,3:2,4:1}, QUALIFIER=2, CHAMP1=15, CHAMP2=10, R16PT=3, QFPT=5, SFPT=7, BOOTPT=7, BALLPT=7;
+const GROUP_PTS={1:3,2:3,3:2,4:1}, QUALIFIER=2, CHAMP1=15, CHAMP2=10, R16PT=3, QFPT=5, SFPT=7, FINPT=8, BOOTPT=7, BALLPT=7;
 const SLUG_ROUND={"round-of-32":1,"round-of-16":2,"quarterfinals":3,"semifinals":4,"final":5};  // ESPN season.slug -> knockout round
 const BOOT_TOPN=10;  // how many top scorers get exact assists+minutes pulled for the Golden Boot tiebreak
 const BOOT_KEYS=[["yamal","Lamine Yamal"],["mbappe","Kylian Mbappé"],["haaland","Erling Haaland"],["kane","Harry Kane"],["ronaldo","Cristiano Ronaldo"],["vinicius","Vinícius Jr."],["alvarez","Julián Álvarez"],["bellingham","Jude Bellingham"],["dembele","Ousmane Dembélé"],["messi","Lionel Messi"],["pulisic","Christian Pulisic"]];
@@ -1942,10 +1942,11 @@ function scoreOf(p){
   const r16=p.ko.r32.filter(t=>R.winR.R32.has(t)).length*R16PT;  // reached R16 (3 ea, 16 picks)
   const qf=p.ko.r16.filter(t=>R.winR.R16.has(t)).length*QFPT;    // reached QF (5 ea, 8 picks)
   const sf=p.ko.qf.filter(t=>R.winR.QF.has(t)).length*SFPT;      // reached SF (7 ea, 4 picks)
-  const knk=r16+qf+sf;  // the 2 Final picks (p.ko.sf) are shown but not scored; champion scores via c2
+  const fin=p.ko.sf.filter(t=>R.winR.SF.has(t)).length*FINPT;   // reached the Final (8 ea, 2 picks)
+  const knk=r16+qf+sf+fin;  // champion scores separately via c2
   const boot=(R.bootLeaders||[]).includes(bootKey(p.boot))?BOOTPT:0;
   const ball=(R.goldenBall&&p.ko.goldenBallKey===R.goldenBall)?BALLPT:0;
-  return {grp,knk,c1,c2,boot,ball,r16:r16/R16PT,qf:qf/QFPT,sf:sf/SFPT,exact,qh,total:grp+knk+c1+c2+boot+ball};
+  return {grp,knk,c1,c2,boot,ball,r16:r16/R16PT,qf:qf/QFPT,sf:sf/SFPT,fin:fin/FINPT,exact,qh,total:grp+knk+c1+c2+boot+ball};
 }
 function teamStatus(t){ // chip status for a champion pick: "alive" | "out" | "unknown"
   if(!t) return "unknown";
