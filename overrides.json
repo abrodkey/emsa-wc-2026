@@ -1,6 +1,7 @@
 {
-  "_comment": "Manual results the live feed can't know. Set champion + goldenBall once decided (FIFA Golden Ball is a manual award). thirds optionally overrides the 8 R32 qualifiers. Blank = ignored.",
+  "_comment": "Manual results the live feed can't know. Set champion once decided. goldenBall is a manual FIFA award. boot settles the Golden Boot when scorers are tied on goals: the official tiebreak is goals > assists > fewest minutes played, and ESPN publishes neither assists nor minutes, so set the winner here once FIFA announces it (until then tied scorers are co-leaders). thirds optionally overrides the 8 R32 qualifiers. Blank = ignored.",
   "champion": "",
   "goldenBall": "",
+  "boot": "",
   "thirds": []
 }

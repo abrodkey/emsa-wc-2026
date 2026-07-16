@@ -1824,6 +1824,7 @@ const GL=Object.keys(GROUPS);
 const FLAG={"Mexico":"🇲🇽","South Africa":"🇿🇦","Korea Republic":"🇰🇷","Czechia":"🇨🇿","Canada":"🇨🇦","Bosnia-Herzegovina":"🇧🇦","Qatar":"🇶🇦","Switzerland":"🇨🇭","Brazil":"🇧🇷","Morocco":"🇲🇦","Haiti":"🇭🇹","Scotland":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","USA":"🇺🇸","Paraguay":"🇵🇾","Australia":"🇦🇺","Türkiye":"🇹🇷","Germany":"🇩🇪","Curaçao":"🇨🇼","Ivory Coast":"🇨🇮","Ecuador":"🇪🇨","Netherlands":"🇳🇱","Japan":"🇯🇵","Sweden":"🇸🇪","Tunisia":"🇹🇳","Belgium":"🇧🇪","Egypt":"🇪🇬","Iran":"🇮🇷","New Zealand":"🇳🇿","Spain":"🇪🇸","Cape Verde":"🇨🇻","Saudi Arabia":"🇸🇦","Uruguay":"🇺🇾","France":"🇫🇷","Senegal":"🇸🇳","Iraq":"🇮🇶","Norway":"🇳🇴","Argentina":"🇦🇷","Algeria":"🇩🇿","Austria":"🇦🇹","Jordan":"🇯🇴","Portugal":"🇵🇹","DR Congo":"🇨🇩","Uzbekistan":"🇺🇿","Colombia":"🇨🇴","England":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","Croatia":"🇭🇷","Ghana":"🇬🇭","Panama":"🇵🇦"};
 const POSNUM={"1st":1,"2nd":2,"3rd":3,"4th":4};
 const GROUP_PTS={1:3,2:3,3:2,4:1}, QUALIFIER=2, CHAMP1=15, CHAMP2=10, R16PT=3, QFPT=5, SFPT=7, BOOTPT=7, BALLPT=7;
+const SLUG_ROUND={"round-of-32":1,"round-of-16":2,"quarterfinals":3,"semifinals":4,"final":5};  // ESPN season.slug -> knockout round
 const BOOT_KEYS=[["yamal","Lamine Yamal"],["mbappe","Kylian Mbappé"],["haaland","Erling Haaland"],["kane","Harry Kane"],["ronaldo","Cristiano Ronaldo"],["vinicius","Vinícius Jr."],["alvarez","Julián Álvarez"],["bellingham","Jude Bellingham"],["dembele","Ousmane Dembélé"],["messi","Lionel Messi"],["pulisic","Christian Pulisic"]];
 const ESPN_ALIAS={"South Korea":"Korea Republic","Korea, Republic of":"Korea Republic","United States":"USA","Turkey":"Türkiye","Czech Republic":"Czechia","Côte d'Ivoire":"Ivory Coast","Cote d'Ivoire":"Ivory Coast","Cabo Verde":"Cape Verde","Congo DR":"DR Congo","Bosnia and Herzegovina":"Bosnia-Herzegovina","Curacao":"Curaçao","IR Iran":"Iran"};
 const POOL=GL.flatMap(g=>GROUPS[g]), POOLSET=new Set(POOL), GROUP_OF={}; GL.forEach(g=>GROUPS[g].forEach(t=>GROUP_OF[t]=g));
@@ -1876,7 +1877,7 @@ async function compute(){
     const winner=(cs.find(c=>c.winner)?(mapTeam([cs.find(c=>c.winner).team.displayName])):(state==="post"?(hs>as?ht:as>hs?at:null):null));
     const v=comp.venue||{},addr=v.address||{};
     const venue=[v.fullName,[addr.city,addr.state||addr.country].filter(Boolean).join(", ")].filter(Boolean).join(" · ");
-    const rec={home:ht,away:at,hs,as,state,date:ev.date,winner,detail:(ev.status.type.shortDetail||""),venue};
+    const rec={home:ht,away:at,hs,as,state,date:ev.date,winner,detail:(ev.status.type.shortDetail||""),venue,slug:(ev.season&&ev.season.slug)||""};
     if(GROUP_OF[ht]===GROUP_OF[at]) grpMatches.push(rec); else koMatches.push(rec);
   }
   // ---- groups (final) ----
@@ -1887,21 +1888,26 @@ async function compute(){
   let thirds=ov.thirds&&ov.thirds.length?ov.thirds.slice():[];
   if(GL.every(g=>complete[g])&&!thirds.length){const th=GL.map(g=>(tableMeta[g]||[])[2]).filter(Boolean);th.sort((x,y)=>y.Pts-x.Pts||y.GD-x.GD||y.GF-x.GF||x.t.localeCompare(y.t));thirds=th.slice(0,8).map(e=>e.t);}
   // ---- golden boot leaders ----
+  // Official tiebreak: goals -> assists -> fewest minutes played. ESPN's feed carries goals only
+  // (0 of its scoring plays include an assist, and minutes aren't published anywhere), so we resolve
+  // as far as the data allows and leave a genuine tie shared until `boot` is set in overrides.json.
   const VALID=new Set(BOOT_KEYS.map(b=>b[0]));
-  const scorers=Object.values(goalsByName).filter(e=>e.goals>0).map(e=>({name:e.name,goals:e.goals,pens:e.pens,assists:e.assists})).sort((a,b)=>b.goals-a.goals||(b.goals-b.pens)-(a.goals-a.pens)||b.assists-a.assists||a.name.localeCompare(b.name));
-  let r=0,pv=null,sn=0; scorers.forEach(e=>{sn++;if(pv===null||e.goals!==pv){r=sn;pv=e.goals;}e.rank=r;});
-  const maxG=scorers.length?scorers[0].goals:0; const bootLeaders=[];
-  scorers.forEach(e=>{if(e.goals===maxG&&maxG>0){const k=bootKey(e.name);if(VALID.has(k)&&!bootLeaders.includes(k))bootLeaders.push(k);}});
+  const scorers=Object.values(goalsByName).filter(e=>e.goals>0).map(e=>({name:e.name,goals:e.goals,pens:e.pens,assists:e.assists})).sort((a,b)=>b.goals-a.goals||b.assists-a.assists||a.name.localeCompare(b.name));
+  let r=0,pg=null,pa=null,sn=0; scorers.forEach(e=>{sn++;if(pg===null||e.goals!==pg||e.assists!==pa){r=sn;pg=e.goals;pa=e.assists;}e.rank=r;});
+  const bootLeaders=[];
+  if(ov.boot){ const k=bootKey(ov.boot); if(k)bootLeaders.push(k); }  // FIFA's official call (settles minutes) wins outright
+  else scorers.filter(e=>e.rank===1).forEach(e=>{const k=bootKey(e.name);if(VALID.has(k)&&!bootLeaders.includes(k))bootLeaders.push(k);});
   const totalGoals=scorers.reduce((s,e)=>s+e.goals,0);
-  // ---- knockout rounds (classify by per-team match count) ----
+  // ---- knockout rounds: ESPN's season.slug is authoritative; per-team match count is the fallback ----
   const koSorted=koMatches.slice().sort((a,b)=>new Date(a.date)-new Date(b.date));
-  const cnt={}, rnd={R32:[],R16:[],QF:[],SF:[],F5:[]};
+  const cnt={}, rnd={R32:[],R16:[],QF:[],SF:[],F5:[],TP:[]};
   const winR={R32:new Set(),R16:new Set(),QF:new Set(),SF:new Set()}, koOut=new Set(); let koChampion="";  // winR.R32 = teams that REACHED the R16 (won R32); koOut = eliminated teams
   for(const m of koSorted){
-    const rNum=Math.max(cnt[m.home]||0,cnt[m.away]||0)+1; m.round=rNum;
+    m.thirdPlace = m.slug==="3rd-place-match";   // the 3rd-place playoff is not a round and is not scored
+    const rNum = SLUG_ROUND[m.slug] || (Math.max(cnt[m.home]||0,cnt[m.away]||0)+1); m.round=rNum;
     if(m.state==="post"){cnt[m.home]=(cnt[m.home]||0)+1;cnt[m.away]=(cnt[m.away]||0)+1;}
-    if(rNum===2)rnd.R16.push(m); else if(rNum===3)rnd.QF.push(m); else if(rNum===4)rnd.SF.push(m); else if(rNum===5)rnd.F5.push(m); else rnd.R32.push(m);
-    if(m.state==="post"&&m.winner){ koOut.add(m.winner===m.home?m.away:m.home);  // loser is eliminated
+    if(m.thirdPlace)rnd.TP.push(m); else if(rNum===2)rnd.R16.push(m); else if(rNum===3)rnd.QF.push(m); else if(rNum===4)rnd.SF.push(m); else if(rNum===5)rnd.F5.push(m); else rnd.R32.push(m);
+    if(m.state==="post"&&m.winner&&!m.thirdPlace){ koOut.add(m.winner===m.home?m.away:m.home);  // loser is eliminated
       if(rNum===1)winR.R32.add(m.winner); else if(rNum===2)winR.R16.add(m.winner); else if(rNum===3)winR.QF.add(m.winner); else if(rNum===4)winR.SF.add(m.winner); else if(rNum===5&&winR.SF.has(m.home)&&winR.SF.has(m.away))koChampion=m.winner; }
   }
   R={ standings, complete, thirds, tableMeta,
@@ -1997,8 +2003,9 @@ function renderBracket(){
   const note=document.getElementById("brNote");
   const played=R.koMatches.filter(m=>m.state==="post").length;
   note.innerHTML=`Live knockout bracket from the ESPN feed · <span style="white-space:nowrap"><b>${played}</b> knockout match${played===1?"":"es"} played</span>${R.koChampion?` · 🏆 Champion: <b>${fl(R.koChampion)} ${esc(R.koChampion)}</b>`:""}.`;
-  const labels=[["R32","Round of 32"],["R16","Round of 16"],["QF","Quarterfinals"],["SF","Semifinals"],["F5","Final"]];
-  const html=labels.map(([k,lab])=>{const ms=R.rnd[k]||[];if(!ms.length)return "";
+  // most recent round first (Final at the top, Round of 32 at the bottom)
+  const labels=[["F5","Final"],["TP","3rd-Place Match"],["SF","Semifinals"],["QF","Quarterfinals"],["R16","Round of 16"],["R32","Round of 32"]];
+  const html=labels.map(([k,lab])=>{const ms=(R.rnd[k]||[]).slice().sort((a,b)=>new Date(b.date)-new Date(a.date));if(!ms.length)return "";
     const cards=ms.map(m=>{const live=m.state==="in";const homeWin=m.winner===m.home,awayWin=m.winner===m.away;
       let status;
       if(live){ status=`<div class="st live">🔴 ${esc(m.detail||'LIVE')}</div>`; }
