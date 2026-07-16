@@ -1825,6 +1825,7 @@ const FLAG={"Mexico":"🇲🇽","South Africa":"🇿🇦","Korea Republic":"🇰
 const POSNUM={"1st":1,"2nd":2,"3rd":3,"4th":4};
 const GROUP_PTS={1:3,2:3,3:2,4:1}, QUALIFIER=2, CHAMP1=15, CHAMP2=10, R16PT=3, QFPT=5, SFPT=7, BOOTPT=7, BALLPT=7;
 const SLUG_ROUND={"round-of-32":1,"round-of-16":2,"quarterfinals":3,"semifinals":4,"final":5};  // ESPN season.slug -> knockout round
+const BOOT_TOPN=10;  // how many top scorers get exact assists+minutes pulled for the Golden Boot tiebreak
 const BOOT_KEYS=[["yamal","Lamine Yamal"],["mbappe","Kylian Mbappé"],["haaland","Erling Haaland"],["kane","Harry Kane"],["ronaldo","Cristiano Ronaldo"],["vinicius","Vinícius Jr."],["alvarez","Julián Álvarez"],["bellingham","Jude Bellingham"],["dembele","Ousmane Dembélé"],["messi","Lionel Messi"],["pulisic","Christian Pulisic"]];
 const ESPN_ALIAS={"South Korea":"Korea Republic","Korea, Republic of":"Korea Republic","United States":"USA","Turkey":"Türkiye","Czech Republic":"Czechia","Côte d'Ivoire":"Ivory Coast","Cote d'Ivoire":"Ivory Coast","Cabo Verde":"Cape Verde","Congo DR":"DR Congo","Bosnia and Herzegovina":"Bosnia-Herzegovina","Curacao":"Curaçao","IR Iran":"Iran"};
 const POOL=GL.flatMap(g=>GROUPS[g]), POOLSET=new Set(POOL), GROUP_OF={}; GL.forEach(g=>GROUPS[g].forEach(t=>GROUP_OF[t]=g));
@@ -1866,8 +1867,7 @@ async function compute(){
     const state=ev.status&&ev.status.type&&ev.status.type.state; if(state!=="post"&&state!=="in"&&state!=="pre")continue;
     if(state==="in")anyLive=true;
     for(const det of (comp.details||[])){ if(!det.scoringPlay||det.ownGoal)continue; const sc=(det.athletesInvolved||[])[0]; const tmId=det.team&&det.team.id;
-      if(sc&&sc.displayName){ const k=sc.displayName; goalsByName[k]=goalsByName[k]||{name:k,goals:0,pens:0,assists:0,teamId:tmId}; goalsByName[k].goals++; if(det.penaltyKick)goalsByName[k].pens++; }
-      const as=(det.athletesInvolved||[])[1]; if(as&&as.displayName){ const k=as.displayName; goalsByName[k]=goalsByName[k]||{name:k,goals:0,pens:0,assists:0,teamId:tmId}; goalsByName[k].assists++; }
+      if(sc&&sc.displayName){ const k=sc.displayName; goalsByName[k]=goalsByName[k]||{name:k,id:sc.id,goals:0,pens:0,teamId:tmId}; goalsByName[k].goals++; if(det.penaltyKick)goalsByName[k].pens++; }
     }
     const cs=comp.competitors||[],home=cs.find(c=>c.homeAway==="home")||cs[0],away=cs.find(c=>c.homeAway==="away")||cs[1]; if(!home||!away)continue;
     const ht=mapTeam([home.team&&home.team.displayName,home.team&&home.team.shortDisplayName,home.team&&home.team.name]);
@@ -1888,14 +1888,27 @@ async function compute(){
   let thirds=ov.thirds&&ov.thirds.length?ov.thirds.slice():[];
   if(GL.every(g=>complete[g])&&!thirds.length){const th=GL.map(g=>(tableMeta[g]||[])[2]).filter(Boolean);th.sort((x,y)=>y.Pts-x.Pts||y.GD-x.GD||y.GF-x.GF||x.t.localeCompare(y.t));thirds=th.slice(0,8).map(e=>e.t);}
   // ---- golden boot leaders ----
-  // Official tiebreak: goals -> assists -> fewest minutes played. ESPN's feed carries goals only
-  // (0 of its scoring plays include an assist, and minutes aren't published anywhere), so we resolve
-  // as far as the data allows and leave a genuine tie shared until `boot` is set in overrides.json.
+  // Official tiebreak: goals > assists > fewest minutes played. The scoreboard feed carries goals only,
+  // so the top BOOT_TOPN scorers are enriched from ESPN's athlete season stats (CORS-open) for exact
+  // assists + minutes. Players outside that set keep assists/minutes = null (unknown, shown blank).
   const VALID=new Set(BOOT_KEYS.map(b=>b[0]));
-  const scorers=Object.values(goalsByName).filter(e=>e.goals>0).map(e=>({name:e.name,goals:e.goals,pens:e.pens,assists:e.assists})).sort((a,b)=>b.goals-a.goals||b.assists-a.assists||a.name.localeCompare(b.name));
-  let r=0,pg=null,pa=null,sn=0; scorers.forEach(e=>{sn++;if(pg===null||e.goals!==pg||e.assists!==pa){r=sn;pg=e.goals;pa=e.assists;}e.rank=r;});
+  const scorers=Object.values(goalsByName).filter(e=>e.goals>0)
+    .map(e=>({id:e.id,name:e.name,goals:e.goals,pens:e.pens,assists:null,minutes:null}))
+    .sort((a,b)=>b.goals-a.goals||a.name.localeCompare(b.name));
+  await Promise.all(scorers.slice(0,BOOT_TOPN).filter(e=>e.id).map(async e=>{
+    try{
+      const st=await (await fetch(`https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.world/seasons/2026/types/1/athletes/${e.id}/statistics?lang=en&region=us`,{cache:"no-store"})).json();
+      const cats=(st.splits&&st.splits.categories)||[];
+      const val=(c,n)=>{const cc=cats.find(x=>x.name===c); const s=cc&&(cc.stats||[]).find(x=>x.name===n); return s?s.value:null;};
+      const a=val("offensive","goalAssists"), mn=val("general","minutes");
+      if(a!==null)e.assists=a; if(mn!==null)e.minutes=mn;
+    }catch(err){}  // degrade gracefully: unknown assists/minutes -> tie stays shared
+  }));
+  const aOf=e=>e.assists===null?-1:e.assists, mOf=e=>e.minutes===null?Infinity:e.minutes;
+  scorers.sort((a,b)=>b.goals-a.goals||aOf(b)-aOf(a)||mOf(a)-mOf(b)||a.name.localeCompare(b.name));
+  let r=0,pk=null,sn=0; scorers.forEach(e=>{sn++;const k=`${e.goals}|${e.assists}|${e.minutes}`;if(pk===null||k!==pk){r=sn;pk=k;}e.rank=r;});
   const bootLeaders=[];
-  if(ov.boot){ const k=bootKey(ov.boot); if(k)bootLeaders.push(k); }  // FIFA's official call (settles minutes) wins outright
+  if(ov.boot){ const k=bootKey(ov.boot); if(k)bootLeaders.push(k); }  // FIFA's official call wins outright
   else scorers.filter(e=>e.rank===1).forEach(e=>{const k=bootKey(e.name);if(VALID.has(k)&&!bootLeaders.includes(k))bootLeaders.push(k);});
   const totalGoals=scorers.reduce((s,e)=>s+e.goals,0);
   // ---- knockout rounds: ESPN's season.slug is authoritative; per-team match count is the fallback ----
@@ -2064,7 +2077,7 @@ function renderGB(){
     lead.querySelectorAll(".bub[data-k]").forEach(btn=>btn.addEventListener("click",()=>{const k=btn.getAttribute("data-k");gbOpen=(gbOpen===k)?null:k;renderGB();}));
   } else { lead.style.display="none"; lead.innerHTML=""; }
   const limit=gbShowAll?sc.length:10;
-  document.getElementById("gbRows").innerHTML=sc.slice(0,limit).map(e=>{const rc=e.rank===1?"t1":e.rank===2?"t2":e.rank===3?"t3":"";const b=POOL_BOOT[bootKey(e.name)];const bb=b?`<span class="back-badge">🎯 ${b.n}</span>`:"";const sub=e.assists?`${e.assists} ast`:"";
+  document.getElementById("gbRows").innerHTML=sc.slice(0,limit).map(e=>{const rc=e.rank===1?"t1":e.rank===2?"t2":e.rank===3?"t3":"";const b=POOL_BOOT[bootKey(e.name)];const bb=b?`<span class="back-badge">🎯 ${b.n}</span>`:"";const sub=[e.assists===null?"":`${e.assists} ast`,e.minutes===null?"":`${e.minutes}'`].filter(Boolean).join(" · ");
     return `<tr><td class="rk ${rc}">${e.rank}</td><td><div class="pl"><span class="nm">${esc(e.name)}</span>${bb}</div></td><td class="gcell"><span class="gnum">${e.goals}</span>${sub?`<br><span class="gsub">${sub}</span>`:""}</td></tr>`;
   }).join("");
   document.getElementById("gbEmpty").innerHTML=sc.length?"":`<div class="empty">No goals yet.</div>`;
