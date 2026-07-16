@@ -1934,17 +1934,17 @@ function scoreOf(p){
   const ball=(R.goldenBall&&p.ko.goldenBallKey===R.goldenBall)?BALLPT:0;
   return {grp,knk,c1,c2,boot,ball,r16:r16/R16PT,qf:qf/QFPT,sf:sf/SFPT,exact,qh,total:grp+knk+c1+c2+boot+ball};
 }
-function champStatus(p){ // for the champion-pick chip (knockout champion pick)
-  const t=p.ko.champion; if(!t) return "unknown";
-  if(R.champion) return p.ko.champion===R.champion?"alive":"out";
-  // alive while still winning rounds; out once eliminated from the knockout
-  if(R.koMatches.some(m=>m.state==="post"&&m.winner&&m.winner!==t&&(m.home===t||m.away===t))) return "out";
-  return "unknown";
+function teamStatus(t){ // chip status for a champion pick: "alive" | "out" | "unknown"
+  if(!t) return "unknown";
+  if(R.champion) return t===R.champion?"alive":"out";                 // champion decided: only the winner survives
+  if(R.koOut.has(t)) return "out";                                    // lost a knockout match
+  if(GL.every(g=>R.complete[g]) && !R.koMatches.some(m=>m.home===t||m.away===t)) return "out";  // groups all final and never reached the R32
+  return "unknown";                                                   // still alive (neutral chip)
 }
 
 /* ---------- leaderboard ---------- */
 function standings(){
-  const arr=PLAYERS.map(p=>({p,s:scoreOf(p),cs:champStatus(p)}));
+  const arr=PLAYERS.map(p=>({p,s:scoreOf(p),cs:teamStatus(p.ko.champion),csG:teamStatus(p.champion)}));
   arr.sort((a,b)=>b.s.total-a.s.total||tieBreak(a.p)-tieBreak(b.p)||a.p.bracket.localeCompare(b.p.bracket));
   // ranks tie only when both total points AND the goals-tiebreak distance match
   let rank=0,pT=null,pB=null,seen=0; arr.forEach(o=>{seen++;const tb=tieBreak(o.p);if(pT===null||o.s.total!==pT||tb!==pB){rank=seen;pT=o.s.total;pB=tb;}o.rank=rank;});
@@ -1964,7 +1964,7 @@ function renderLeaderboard(){
   const body=document.getElementById("lbBody");
   body.innerHTML=arr.map((o,idx)=>{const s=o.s,w=t=>maxT?(t/maxT*100):0;
     const rc=o.rank===1?"top1":o.rank===2?"top2":o.rank===3?"top3":"";
-    const chipG=o.p.champion?`<span class="champ-chip">${fl(o.p.champion)} ${esc(o.p.champion)}</span>`:`<span class="champ-chip">—</span>`;
+    const chipG=o.p.champion?`<span class="champ-chip ${o.csG}">${fl(o.p.champion)} ${esc(o.p.champion)}</span>`:`<span class="champ-chip">—</span>`;
     const chipK=o.p.ko.champion?`<span class="champ-chip ${o.cs}">${fl(o.p.ko.champion)} ${esc(o.p.ko.champion)}</span>`:`<span class="champ-chip">—</span>`;
     const bar=s.total?`<div class="bar"><span class="s-grp" style="width:${w(s.grp)}%"></span><span class="s-knk" style="width:${w(s.knk)}%"></span><span class="s-c1" style="width:${w(s.c1)}%"></span><span class="s-c2" style="width:${w(s.c2)}%"></span><span class="s-boot" style="width:${w(s.boot)}%"></span><span class="s-ball" style="width:${w(s.ball)}%"></span></div>`:"";
     const sub=[[s.grp,"GRP"],[s.knk,"KO"],[s.c1,"CHAMP (GRP)"],[s.c2,"CHAMP (KO)"],[s.boot,"BOOT"],[s.ball,"BALL"]].filter(x=>x[0]).map(x=>`${x[0]} ${x[1]}`).join(" · ");
@@ -1980,7 +1980,7 @@ function renderLeaderboard(){
 function detailHTML(o){
   const p=o.p,s=o.s;
   const champTxt=p.ko.champion?`${fl(p.ko.champion)} ${esc(p.ko.champion)} ${R.champion?(p.ko.champion===R.champion?"✅":"❌"):(o.cs==="out"?"❌ out":"")}`:"—";
-  const champG=p.champion?`${fl(p.champion)} ${esc(p.champion)} ${R.champion?(p.champion===R.champion?"✅":"❌"):""}`:"—";
+  const champG=p.champion?`${fl(p.champion)} ${esc(p.champion)} ${R.champion?(p.champion===R.champion?"✅":"❌"):(o.csG==="out"?"❌ out":"")}`:"—";
   const box=(title,picks,winset,cols)=>{const rows=picks.map(t=>{let mk='<span class="mk none">·</span>';if(winset.has(t))mk='<span class="mk hit">✓</span>';else if(R.koOut.has(t))mk='<span class="mk miss">✕</span>';return `<div class="kpick"><span class="tn">${fl(t)} ${esc(t)}</span>${mk}</div>`;}).join("");return `<div class="kobox"><h5>${title}</h5><div class="r32grid${cols?' kc'+cols:''}">${rows||'<div style="color:var(--muted);font-size:12px">—</div>'}</div></div>`;};
   const ballTxt=p.ko.goldenBall?`${esc(fullName(p.ko.goldenBallKey,p.ko.goldenBall))} ${R.goldenBall?(p.ko.goldenBallKey===R.goldenBall?"✅":"❌"):""}`:"—";
   const bootTxt=`${esc(p.boot?fullName(bootKey(p.boot),p.boot):"—")} ${(R.bootLeaders||[]).includes(bootKey(p.boot))?"✅ leading":""}`;
